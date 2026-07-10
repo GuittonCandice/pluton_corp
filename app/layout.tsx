@@ -1,23 +1,51 @@
 import type { Metadata } from 'next'
-import { Inter, JetBrains_Mono } from 'next/font/google'
+import {
+  Inter,
+  JetBrains_Mono,
+  Libre_Baskerville,
+  Space_Grotesk,
+  Syne,
+} from 'next/font/google'
 import './globals.css'
 import Script from 'next/script'
+import { ThemeProvider } from '@/components/ThemeProvider'
+import { DEFAULT_THEME } from '@/lib/themes'
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['400', '500', '600'],
+})
+
+const syne = Syne({
+  subsets: ['latin'],
+  variable: '--font-syne',
+  weight: ['600', '700', '800'],
+})
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-space-grotesk',
+  weight: ['500', '600', '700'],
+})
+
+const libreBaskerville = Libre_Baskerville({
+  subsets: ['latin'],
+  variable: '--font-libre-baskerville',
+  weight: ['400', '700'],
+  style: ['normal', 'italic'],
 })
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   variable: '--font-jetbrains-mono',
-  weight: ['400', '600', '700'],
+  weight: ['400', '500'],
 })
 
 export const metadata: Metadata = {
-  title: 'Dev.Duo - Full Stack Development',
-  description: 'Frontend + Backend = Full Stack Excellence',
+  title: 'Pluton Corp — Agence de développement',
+  description:
+    'Agence de développement logiciel. Cadrage, développement, gestion de projet et maintenance pour accompagner la croissance de nos clients.',
 }
 
 export default function RootLayout({
@@ -26,18 +54,19 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
+    <html
+      lang="fr"
+      data-theme={DEFAULT_THEME}
+      className={`${inter.variable} ${syne.variable} ${spaceGrotesk.variable} ${libreBaskerville.variable} ${jetbrainsMono.variable}`}
+    >
       <head>
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         />
       </head>
-      <body className="bg-slate-900 text-white overflow-x-hidden">
-        <Script id="fontawesome-config" strategy="beforeInteractive">
-          {`window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};`}
-        </Script>
-        {children}
+      <body className="site-body overflow-x-hidden">
+        <ThemeProvider>{children}</ThemeProvider>
         <Script
           src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
           strategy="lazyOnload"
