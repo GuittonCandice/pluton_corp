@@ -37,6 +37,7 @@
   --font-display: var(--font-space-grotesk), sans-serif;
   --font-label: var(--font-space-grotesk), sans-serif;
   --radius: 0px;
+  --radius-btn: 0px;
   --marquee-color: #000000;
 }
 
@@ -50,6 +51,7 @@
   --color-accent: #7a2e2e;
   --color-accent-hover: #943838;
   --color-accent-text: #f5f0e8;
+  --color-accent-label: #5c2323;
   --color-border: rgba(44, 36, 25, 0.14);
   --color-header: rgba(245, 240, 232, 0.94);
   --font-display: var(--font-libre-baskerville), Georgia, serif;
@@ -131,7 +133,7 @@ body {
   color: var(--color-accent-text);
   padding: 0.75rem 1.5rem;
   font-weight: 500;
-  border-radius: var(--radius);
+  border-radius: var(--radius-btn, var(--radius));
   transition: background 0.2s ease, opacity 0.2s ease;
 }
 .btn-primary:hover {
@@ -146,7 +148,7 @@ body {
   color: var(--color-text);
   padding: 0.75rem 1.5rem;
   font-weight: 500;
-  border-radius: var(--radius);
+  border-radius: var(--radius-btn, var(--radius));
   transition: border-color 0.2s ease;
 }
 .btn-secondary:hover {
@@ -353,7 +355,10 @@ body {
   opacity: 0.85;
 }
 [data-theme='editorial'] .team-avatar img {
-  filter: grayscale(1);
+  filter: none;
+}
+[data-theme='editorial'] .contact-section .section-label {
+  color: #4a6b14;
 }
 [data-theme='editorial'] .nav-bracket {
   display: none;
@@ -372,6 +377,10 @@ body {
 }
 
 /* ─── MINIMAL ─── */
+[data-theme='minimal'] {
+  --radius: 1.25rem;
+  --radius-btn: 9999px;
+}
 [data-theme='minimal'] .section-label {
   letter-spacing: 0.35em;
   color: var(--color-faint);
@@ -471,10 +480,39 @@ body {
 [data-theme='minimal'] .tools-section h3 {
   color: rgba(255, 255, 255, 0.7);
 }
+[data-theme='minimal'] .team-marquee {
+  margin-top: 2rem;
+  padding: 0.75rem 0 1.25rem;
+}
 [data-theme='minimal'] .team-card {
-  background: transparent;
-  border: none;
-  border-top: 2px solid var(--color-text);
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+[data-theme='minimal'] a.team-card:hover {
+  border-color: var(--color-text);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+[data-theme='minimal'] .team-card.border-dashed {
+  border-style: dashed;
+  border-color: color-mix(in srgb, var(--color-text) 35%, transparent);
+}
+[data-theme='minimal'] .team-avatar,
+[data-theme='minimal'] .team-avatar img,
+[data-theme='minimal'] .team-initials {
+  border-radius: 9999px;
+}
+[data-theme='minimal'] .team-avatar img {
+  filter: none;
+}
+[data-theme='minimal'] .partner-badge {
+  border-radius: var(--radius-btn);
+  background: var(--color-text);
+  color: #fff;
+  font-weight: 500;
 }
 [data-theme='minimal'] .contact-section {
   background: #000;
@@ -505,7 +543,7 @@ body {
   font-style: italic;
   letter-spacing: 0.06em;
   font-size: 0.85rem;
-  color: var(--color-accent);
+  color: var(--color-accent-label, var(--color-accent));
 }
 [data-theme='premium'] .hero-title {
   font-size: clamp(2.25rem, 5vw, 3.75rem);
@@ -530,12 +568,15 @@ body {
 [data-theme='premium'] .team-card {
   background: var(--color-bg);
 }
+[data-theme='premium'] .team-avatar img {
+  filter: none;
+}
 [data-theme='premium'] .contact-section {
   background: var(--color-accent);
   color: var(--color-accent-text);
 }
 [data-theme='premium'] .contact-section .section-label {
-  color: color-mix(in srgb, var(--color-accent-text) 75%, transparent);
+  color: color-mix(in srgb, var(--color-accent-text) 92%, transparent);
 }
 [data-theme='premium'] .contact-section .text-muted {
   color: color-mix(in srgb, var(--color-accent-text) 80%, transparent);

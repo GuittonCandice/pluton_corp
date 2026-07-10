@@ -11,7 +11,7 @@ function Initials({ name }: { name: string }) {
     .join('')
     .slice(0, 2)
   return (
-    <div className="w-16 h-16 flex items-center justify-center text-accent font-display font-medium text-lg flex-shrink-0 border border-[var(--color-border)]">
+    <div className="team-initials w-16 h-16 flex items-center justify-center text-accent font-display font-medium text-lg flex-shrink-0 border border-[var(--color-border)] rounded-[var(--radius)]">
       {initials}
     </div>
   )
@@ -23,7 +23,7 @@ function TeamAvatar({ member }: { member: TeamMember }) {
   const crop = member.photoStyle
 
   return (
-    <div className="team-avatar w-16 h-16 overflow-hidden flex-shrink-0 border border-[var(--color-border)]">
+    <div className="team-avatar w-16 h-16 overflow-hidden flex-shrink-0 border border-[var(--color-border)] rounded-[var(--radius)]">
       <img
         src={member.photo}
         alt={member.name}
@@ -84,9 +84,7 @@ function TeamCard({ member }: { member: TeamMember }) {
 
 function OthersCard() {
   return (
-    <div
-      className={`${TEAM_CARD_CLASS} items-center justify-center text-center border-dashed`}
-    >
+    <div className={`${TEAM_CARD_CLASS} border-dashed`}>
       <span className="font-display text-3xl text-faint mb-3">+</span>
       <h3 className="font-display text-lg text-primary mb-2">Et d&apos;autres</h3>
       <p className="text-sm text-muted leading-relaxed">
