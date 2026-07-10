@@ -1,5 +1,7 @@
 const repo = 'pluton_corp'
 const isGithubPages = process.env.GITHUB_PAGES === 'true'
+// false par défaut : domaine custom plutoncorp.io (CNAME)
+const useSubpath = process.env.GITHUB_PAGES_SUBPATH === 'true'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -7,13 +9,14 @@ const nextConfig = {
   trailingSlash: true,
   images: { unoptimized: true },
   reactStrictMode: true,
-  ...(isGithubPages && {
-    basePath: `/${repo}`,
-    assetPrefix: `/${repo}/`,
-    env: {
-      NEXT_PUBLIC_BASE_PATH: `/${repo}`,
-    },
-  }),
+  ...(isGithubPages &&
+    useSubpath && {
+      basePath: `/${repo}`,
+      assetPrefix: `/${repo}/`,
+      env: {
+        NEXT_PUBLIC_BASE_PATH: `/${repo}`,
+      },
+    }),
 }
 
 export default nextConfig
