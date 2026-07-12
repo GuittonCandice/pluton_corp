@@ -1,0 +1,63 @@
+name: Déployer le site (plutoncorp.fr)
+
+# Publie la maquette autonome comme page d'accueil du site.
+# À chaque push sur `main`, `prototypes/plutonien.html` devient `index.html`
+# sur la branche `gh-pages`, que GitHub Pages sert sur plutoncorp.fr.
+# Déclenchable aussi à la main via l'onglet Actions (workflow_dispatch).
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "prototypes/plutonien.html"
+      - "public/**"
+      - ".github/workflows/deploy-site.yml"
+  workflow_dispatch:
+
+# Le GITHUB_TOKEN du job doit pouvoir écrire sur la branche gh-pages.
+permissions:
+  contents: write
+
+# Un seul déploiement à la fois ; on annule un déploiement en cours dépassé.
+concurrency:
+  group: deploy-plutoncorp
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Construire le dossier à publier
+        run: |
+          set -euo pipefail
+          rm -rf _site
+          mkdir -p _site
+          # Reprend tous les assets statiques (images, icônes, CNAME…) tels quels.
+          if [ -d public ]; then
+            cp -R public/. _site/
+          fi
+          # La maquette devient la page d'accueil servie à la racine.
+          cp prototypes/plutonien.html _site/index.html
+          # Empêche GitHub Pages de faire tourner Jekyll sur les fichiers.
+          touch _site/.nojekyll
+          # Garantit le domaine personnalisé, quoi qu'il arrive.
+          echo "plutoncorp.fr" > _site/CNAME
+
+      - name: Publier sur gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          cd _site
+          git init -q
+          git checkout -q -b gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Déploiement du site depuis ${GITHUB_SHA::7}"
+          git push -f \
+            "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
+            gh-pages:gh-pages
