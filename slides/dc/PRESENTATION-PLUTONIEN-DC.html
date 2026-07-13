@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Délice App — Proposition Pluton Corp</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper: #FAFAF8;
+      --ink: #131320;
+      --ink-60: #5B5B70;
+      --ink-30: #9E9EB0;
+      --rule: #E5E4E9;
+      --violet: #6C5CE7;
+      --violet-soft: #EFEDFE;
+      --display: 'Sora', sans-serif;
+      --body: 'Inter', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+    }
+
+    @page { size: 297mm 210mm; margin: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--body);
+      background: #e8e8ec;
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .slide {
+      width: 297mm;
+      height: 210mm;
+      background: var(--paper);
+      position: relative;
+      overflow: hidden;
+      page-break-after: always;
+      padding: 13mm 15mm 11mm;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .slide:last-child { page-break-after: auto; }
+
+    .mesh {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(28rem 20rem at 90% 8%, rgba(108,92,231,.14), transparent 60%),
+        radial-gradient(22rem 18rem at 8% 85%, rgba(108,92,231,.08), transparent 55%);
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 7mm;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header-logos { display: flex; align-items: center; gap: 14px; }
+
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: 11pt;
+      letter-spacing: -0.02em;
+    }
+
+    .logo-row.client { padding-left: 14px; border-left: 1px solid var(--rule); }
+    .logo-img { height: 20px; width: auto; }
+    .logo-img.dc { height: 24px; }
+    .dark .logo-row.client { border-color: #333; }
+    .dark .logo-row { color: var(--paper); }
+    .dark .logo-img.dc { filter: brightness(0) invert(1); }
+
+    .slide-num {
+      font-family: var(--mono);
+      font-size: 9pt;
+      color: var(--ink-30);
+      letter-spacing: 0.08em;
+    }
+
+    .content {
+      flex: 1;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 0;
+    }
+
+    .content.top { justify-content: flex-start; padding-top: 2mm; }
+
+    .pill {
+      display: inline-flex;
+      font-family: var(--mono);
+      font-size: 8pt;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--violet);
+      background: var(--violet-soft);
+      padding: 5px 12px;
+      border-radius: 999px;
+      margin-bottom: 4mm;
+      width: fit-content;
+    }
+
+    h1 {
+      font-family: var(--display);
+      font-size: 30pt;
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+    }
+
+    h1 em { font-style: normal; color: var(--violet); }
+
+    h2 {
+      font-family: var(--display);
+      font-size: 21pt;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      margin-bottom: 4mm;
+      line-height: 1.15;
+    }
+
+    .lead {
+      font-size: 12pt;
+      color: var(--ink-60);
+      line-height: 1.5;
+      max-width: 54ch;
+    }
+
+    .lead strong { color: var(--ink); font-weight: 500; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.5mm; }
+
+    .card {
+      background: rgba(255,255,255,.8);
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      padding: 4mm;
+    }
+
+    .card .k {
+      font-family: var(--mono);
+      font-size: 7pt;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--violet);
+      margin-bottom: 2mm;
+    }
+
+    .card h3 {
+      font-family: var(--display);
+      font-size: 11pt;
+      font-weight: 600;
+      margin-bottom: 2mm;
+    }
+
+    .card p { font-size: 9pt; color: var(--ink-60); line-height: 1.45; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 8.5pt;
+    }
+
+    th {
+      font-family: var(--mono);
+      font-size: 7pt;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--ink-30);
+      text-align: left;
+      padding: 2.5mm 2mm;
+      border-bottom: 1px solid var(--rule);
+      font-weight: 400;
+    }
+
+    td {
+      padding: 2.5mm 2mm;
+      border-bottom: 1px solid var(--rule);
+      vertical-align: top;
+    }
+
+    td.money, th.money { text-align: right; }
+    tr.highlight td { background: var(--violet-soft); font-weight: 600; }
+
+    .dark { background: var(--ink); color: var(--paper); }
+    .dark .mesh { background: radial-gradient(24rem 18rem at 85% 15%, rgba(108,92,231,.35), transparent 60%); }
+    .dark h1, .dark h2 { color: var(--paper); }
+    .dark .lead { color: #9E9EB0; }
+    .dark .pill { background: rgba(108,92,231,.25); color: #C4B8FF; }
+    .dark .slide-num { color: #6B6B84; }
+
+    .footer-slide {
+      margin-top: auto;
+      padding-top: 3mm;
+      border-top: 1px solid var(--rule);
+      font-family: var(--mono);
+      font-size: 7.5pt;
+      color: var(--ink-30);
+      display: flex;
+      justify-content: space-between;
+      z-index: 1;
+    }
+
+    .dark .footer-slide { border-color: #26263A; color: #9E9EB8; }
+    .dark .footer-slide span:last-child { color: #E8E8F2; }
+
+    /* Barres avancement */
+    .bar-row { display: flex; align-items: center; gap: 3mm; margin-bottom: 2mm; font-size: 8.5pt; }
+    .bar-label { width: 28mm; flex-shrink: 0; color: var(--ink-60); }
+    .bar-track { flex: 1; height: 7px; background: var(--rule); border-radius: 4px; overflow: hidden; }
+    .bar-fill { height: 100%; background: var(--violet); border-radius: 4px; }
+    .bar-pct { width: 9mm; text-align: right; font-family: var(--mono); font-size: 7.5pt; color: var(--ink-30); }
+
+    /* Capture app */
+    .app-layout {
+      display: grid;
+      grid-template-columns: 1.45fr .55fr;
+      gap: 4mm;
+      flex: 1;
+      min-height: 0;
+      align-items: stretch;
+    }
+
+    .shot-wrap {
+      border-radius: 12px;
+      border: 1px solid var(--rule);
+      overflow: hidden;
+      background: #eceae6;
+      box-shadow: 0 8px 32px rgba(19,19,32,.08);
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .shot-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .status-panel { display: flex; flex-direction: column; gap: 3mm; }
+
+    .ring-box {
+      display: flex;
+      align-items: center;
+      gap: 3mm;
+      padding: 3mm;
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+    }
+
+    .ring {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: conic-gradient(var(--violet) 0 50%, var(--rule) 50% 100%);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .ring span {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--paper);
+      display: grid;
+      place-items: center;
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: 10pt;
+      color: var(--violet);
+    }
+
+    /* Schéma cadrage */
+    .flow-3 {
+      display: grid;
+      grid-template-columns: 1fr 8mm 1fr 8mm 1fr;
+      gap: 0;
+      align-items: stretch;
+      margin-top: 3mm;
+    }
+
+    .flow-box {
+      border-radius: 12px;
+      border: 1px solid var(--rule);
+      padding: 4mm;
+      background: #fff;
+    }
+
+    .flow-box.warn { background: #FFFBF0; border-color: #E6C84A; }
+    .flow-box.mid { background: var(--violet-soft); border-color: var(--violet); }
+    .flow-box.ok { background: #f4fdf7; border-color: #8fd4a8; }
+    .flow-box h3 { font-family: var(--display); font-size: 10.5pt; margin: 1.5mm 0; }
+    .flow-box p { font-size: 8.5pt; color: var(--ink-60); line-height: 1.4; }
+    .flow-arrow { display: grid; place-items: center; color: var(--violet); font-size: 18pt; font-weight: 600; }
+
+    /* Comparatif marché */
+    .compare-col {
+      border-radius: 12px;
+      padding: 4mm;
+      border: 1px solid var(--rule);
+      background: #fff;
+      min-height: 54mm;
+    }
+
+    .compare-col.pick {
+      border: 2px solid var(--violet);
+      background: var(--violet-soft);
+      box-shadow: 0 6px 24px rgba(108,92,231,.12);
+    }
+
+    .compare-col .price {
+      font-family: var(--display);
+      font-size: 22pt;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      margin: 2mm 0;
+    }
+
+    .compare-col.pick .price { color: var(--violet); font-size: 26pt; }
+
+    .compare-col ul {
+      list-style: none;
+      font-size: 8.5pt;
+      color: var(--ink-60);
+      line-height: 1.45;
+    }
+
+    .compare-col li { padding: 1mm 0 1mm 4mm; position: relative; }
+    .compare-col li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 2.4mm;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--violet);
+    }
+
+    .price-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--ink);
+      color: #fff;
+      border-radius: 12px;
+      padding: 3.5mm 4.5mm;
+      margin-bottom: 4mm;
+    }
+
+    .price-strip .big {
+      font-family: var(--display);
+      font-size: 26pt;
+      font-weight: 600;
+      color: #C4B8FF;
+      letter-spacing: -0.03em;
+    }
+
+    .price-strip p { font-size: 9pt; color: #9E9EB0; max-width: 50ch; }
+
+    /* Timeline */
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3mm;
+    }
+
+    .tl-item {
+      border-left: 3px solid var(--violet);
+      padding-left: 3mm;
+      border: 1px solid var(--rule);
+      border-left: 3px solid var(--violet);
+      border-radius: 0 10px 10px 0;
+      padding: 3mm;
+      background: #fff;
+    }
+
+    .tl-item .when {
+      font-family: var(--mono);
+      font-size: 7pt;
+      color: var(--violet);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .tl-item h4 { font-family: var(--display); font-size: 10pt; margin: 1.5mm 0; font-weight: 600; }
+    .tl-item p { font-size: 8pt; color: var(--ink-60); line-height: 1.4; }
+
+    /* Urgence */
+    .season-bar {
+      display: flex;
+      height: 11mm;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 4mm 0;
+      font-family: var(--mono);
+      font-size: 7pt;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .season-bar .go { flex: 5; background: var(--violet); color: #fff; display: grid; place-items: center; }
+    .season-bar .stop { flex: 3; background: #E8E7EC; color: var(--ink-60); display: grid; place-items: center; }
+
+    /* Closing */
+    .closing { display: grid; grid-template-columns: 1.15fr .85fr; gap: 5mm; flex: 1; }
+
+    .cta-panel {
+      background: rgba(255,255,255,.06);
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 5mm;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .cta-panel h1 { font-size: 22pt; max-width: 100%; margin: 3mm 0; }
+    .cta-panel .amount { font-family: var(--display); font-size: 22pt; font-weight: 600; color: #C4B8FF; margin-top: 3mm; }
+
+    .annex-cover {
+      background: var(--ink);
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .annex-cover h1 { color: #fff; font-size: 24pt; max-width: 100%; }
+    .annex-cover p { color: #9E9EB0; margin-top: 4mm; font-size: 11pt; }
+
+    .team-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4mm;
+      margin-top: 4mm;
+    }
+
+    .team-mini {
+      text-align: center;
+      padding: 3mm;
+      border: 1px solid var(--rule);
+      border-radius: 11px;
+      background: #fff;
+    }
+
+    .team-mini .av {
+      width: 20mm;
+      height: 20mm;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 2mm;
+      border: 1px solid var(--rule);
+    }
+
+    .team-mini .av img { width: 100%; height: 100%; object-fit: cover; object-position: center 15%; display: block; }
+    .team-mini h3 { font-family: var(--display); font-size: 9pt; }
+    .team-mini .role { font-size: 7pt; color: var(--violet); font-family: var(--mono); text-transform: uppercase; margin-top: 1mm; }
+
+    @media screen {
+      body { padding: 20px; }
+      .slide { margin: 0 auto 24px; box-shadow: 0 8px 40px rgba(0,0,0,.12); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- 01 Cover -->
+<section class="slide dark">
+  <div class="mesh"></div>
+  <div class="header">
+    <div class="header-logos">
+      <div class="logo-row"><img src="assets/pluton-icon.svg" alt="" class="logo-img" /> Pluton Corp</div>
+      <div class="logo-row client"><img src="assets/logo-delices-corner.png" alt="Délices Corner" class="logo-img dc" /></div>
+    </div>
+    <span class="slide-num">01 / 07</span>
+  </div>
+  <div class="content">
+    <span class="pill">Proposition · Juillet 2026</span>
+    <h1>Délice App<br><em>la suite du projet</em></h1>
+    <p class="lead">Point d'avancement, périmètre validé et proposition pour boucler la roadmap.</p>
+  </div>
+  <div class="footer-slide"><span>Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
+</section>
+
+<!-- 02 Contexte & timing -->
+<section class="slide">
+  <div class="mesh"></div>
+  <div class="header">
+    <div class="header-logos">
+      <div class="logo-row"><img src="assets/pluton-icon.svg" alt="" class="logo-img" /> Pluton Corp</div>
+      <div class="logo-row client"><img src="assets/logo-delices-corner.png" alt="" class="logo-img dc" /></div>
+    </div>
+    <span class="slide-num">02 / 07</span>
+  </div>
+  <div class="content top">
+    <span class="pill">Timing</span>
+    <h2>Prendre la main <em style="color:var(--violet);font-style:normal">maintenant</em></h2>
+    <p class="lead">La basse saison est la fenêtre idéale : former l'équipe, tester sur de vrais devis, basculer depuis Trello/Excel <strong>avant la période pleine</strong>.</p>
+    <div class="season-bar">
+      <div class="go">Juillet → octobre · on agit</div>
+      <div class="stop">Novembre+ · trop tard</div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="k">Risque si on attend</div>
+        <h3>Pression saison haute</h3>
+        <p>Impossible de former Laurence et Cédric ni d'ajuster l'outil en pleine activité.</p>
+      </div>
+      <div class="card">
+        <div class="k">Fenêtre</div>
+        <h3>Juil. → oct. 2026</h3>
+        <p>Passation, développement des lots restants, tests sur événements réels.</p>
+      </div>
+      <div class="card">
+        <div class="k">Objectif</div>
+        <h3>V1 stable fin oct.</h3>
+        <p>Équipe autonome sur pipeline, devis, Pennylane, commandes et stock.</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-slide"><span>Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
+</section>
+
+<!-- 03 Ce qui tourne -->
+<section class="slide">
+  <div class="mesh"></div>
+  <div class="header">
+    <div class="header-logos">
+      <div class="logo-row"><img src="assets/pluton-icon.svg" alt="" class="logo-img" /> Pluton Corp</div>
+      <div class="logo-row client"><img src="assets/logo-delices-corner.png" alt="" class="logo-img dc" /></div>
+    </div>
+    <span class="slide-num">03 / 07</span>
+  </div>
+  <div class="content top">
+    <span class="pill">Produit</span>
+    <h2>Ce qui tourne déjà · ~50 % livré</h2>
+    <div class="app-layout">
+      <div class="shot-wrap">
+        <img src="assets/screenshot-app-devis.png" alt="Configurateur devis Délice App" />
+      </div>
+      <div class="status-panel">
+        <div class="ring-box">
+          <div class="ring"><span>50%</span></div>
+          <div>
+            <strong style="font-family:var(--display);font-size:11pt">Roadmap livrée</strong>
+            <p style="font-size:8pt;color:var(--ink-60);margin-top:1mm">Pipeline, devis PDF, catalogue, Pennylane partiel.</p>
+          </div>
+        </div>
+        <div class="card" style="flex:1">
+          <div class="bar-row"><span class="bar-label">Calendrier</span><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div><span class="bar-pct">90%</span></div>
+          <div class="bar-row"><span class="bar-label">Catalogue</span><div class="bar-track"><div class="bar-fill" style="width:70%"></div></div><span class="bar-pct">70%</span></div>
+          <div class="bar-row"><span class="bar-label">Devis</span><div class="bar-track"><div class="bar-fill" style="width:75%"></div></div><span class="bar-pct">75%</span></div>
+          <div class="bar-row"><span class="bar-label">Pennylane</span><div class="bar-track"><div class="bar-fill" style="width:65%"></div></div><span class="bar-pct">65%</span></div>
+          <div class="bar-row"><span class="bar-label">Email</span><div class="bar-track"><div class="bar-fill" style="width:20%"></div></div><span class="bar-pct">20%</span></div>
+          <div class="bar-row"><span class="bar-label">Commandes</span><div class="bar-track"><div class="bar-fill" style="width:0%"></div></div><span class="bar-pct">0%</span></div>
+          <div class="bar-row"><span class="bar-label">Stock</span><div class="bar-track"><div class="bar-fill" style="width:0%"></div></div><span class="bar-pct">0%</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-slide"><span>Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
+</section>
+
+<!-- 04 Ce qui manque + cadrage -->
+<section class="slide">
+  <div class="mesh"></div>
+  <div class="header">
+    <div class="header-logos">
+      <div class="logo-row"><img src="assets/pluton-icon.svg" alt="" class="logo-img" /> Pluton Corp</div>
+      <div class="logo-row client"><img src="assets/logo-delices-corner.png" alt="" class="logo-img dc" /></div>
+    </div>
+    <span class="slide-num">04 / 07</span>
+  </div>
+  <div class="content top">
+    <span class="pill">Cadrage</span>
+    <h2>Ce qui manque · pourquoi le cadrage change la donne</h2>
+    <div class="flow-3">
+      <div class="flow-box warn">
+        <div class="k">Aujourd'hui</div>
+        <h3>Email, commandes, stock</h3>
+        <p>Pas d'envoi email réel. Commandes et stock sans spec validée avec vous.</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box mid">
+        <div class="k">Ateliers</div>
+        <h3>2 sessions</h3>
+        <p>Format bon fournisseur, seuils stock, workflow, lien devis validé.</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box ok">
+        <div class="k">Ensuite</div>
+        <h3>Dev au bon scope</h3>
+        <p>Forfait incluant workshops et allers-retours. Pas de dev à l'aveugle.</p>
+      </div>
+    </div>
+    <div class="grid-2" style="margin-top:4mm">
+      <div class="card">
+        <div class="k">Lot 6 — Commandes</div>
+        <h3>À définir avec vous</h3>
+        <p>Regroupement par artisan, contenu du PDF, workflow d'envoi.</p>
+      </div>
+      <div class="card">
+        <div class="k">Lot 8 — Stock</div>
+        <h3>À définir avec vous</h3>
+        <p>Seuils d'alerte, moment de déduction, import Excel eau/soft.</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-slide"><span>Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
+</section>
+
+<!-- 05 Périmètre -->
+<section class="slide">
+  <div class="mesh"></div>
+  <div class="header">
+    <div class="header-logos">
+      <div class="logo-row"><img src="assets/pluton-icon.svg" alt="" class="logo-img" /> Pluton Corp</div>
+      <div class="logo-row client"><img src="assets/logo-delices-corner.png" alt="" class="logo-img dc" /></div>
+    </div>
+    <span class="slide-num">05 / 07</span>
+  </div>
+  <div class="content top">
+    <span class="pill">Périmètre</span>
+    <h2>Ce qu'on s'engage à livrer</h2>
+    <table>
+      <thead><tr><th>Lot</th><th>Livrable</th><th>Statut</th></tr></thead>
+      <tbody>
+        <tr><td>1–3</td><td>Finitions devis, pipeline, import catalogue</td><td>À finaliser</td></tr>
+        <tr><td>4</td><td>Pennylane en production + ajustements facturation</td><td>Partiel</td></tr>
+        <tr><td>5</td><td>Envoi devis par email + devis depuis mail reçu</td><td>À faire</td></tr>
+        <tr><td>6</td><td>Bons de commande fournisseur (PDF sans prix)</td><td>À cadrer</td></tr>
+        <tr><td>8</td><td>Suivi stock boissons + alertes</td><td>À cadrer</td></tr>
+        <tr class="highlight"><td colspan="2"><strong>Inclus</strong> — passation, ateliers, formation & go-live</td><td>Oct. 2026</td></tr>
+      </tbody>
+    </table>
+    <p class="lead" style="margin-top:5mm;font-size:9.5pt"><strong>Hors scope :</strong> import MEG massif, Brevo, formulaire salons (lot 7).</p>
+  </div>
+  <div class="footer-slide"><span>Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
+</section>
+
+<!-- 06 Chiffrage + comparatif -->
+<section class="slide">
+  <div class="mesh"></div>
+  <div class="header">
+    <div class="header-logos">
+      <div class="logo-row"><img src="assets/pluton-icon.svg" alt="" class="logo-img" /> Pluton Corp</div>
+      <div class="logo-row client"><img src="assets/logo-delices-corner.png" alt="" class="logo-img dc" /></div>
+    </div>
+    <span class="slide-num">06 / 07</span>
+  </div>
+  <div class="content top">
+    <span class="pill">Chiffrage</span>
+    <h2>Complément pour boucler la roadmap</h2>
+    <div class="price-strip">
+      <div class="big">16 000 € HT</div>
+      <p>Forfait 20 jours · passation, dev, ateliers, formation et go-live inclus. Détail en annexe.</p>
+    </div>
+    <div class="grid-3">
+      <div class="compare-col">
+        <div class="k">Freelance senior</div>
+        <div class="price">~18 k€</div>
+        <p style="font-size:8pt;color:var(--ink-60)">20 j à 900 € · dev seul</p>
+        <ul>
+          <li>Pas d'équipe ni reprise</li>
+          <li>Workshops en sus</li>
+          <li>Pas de maintenance structurée</li>
+        </ul>
+      </div>
+      <div class="compare-col">
+        <div class="k">DSI temps plein</div>
+        <div class="price">~90 k€/an</div>
+        <p style="font-size:8pt;color:var(--ink-60)">Salaire + charges employeur</p>
+        <ul>
+          <li>Recrutement 3 à 6 mois</li>
+          <li>1 profil, pas front + back + infra</li>
+          <li>Coût fixe toute l'année</li>
+        </ul>
+      </div>
+      <div class="compare-col pick">
+        <div class="k">Pluton Corp</div>
+        <div class="price">16 000 €</div>
+        <p style="font-size:8pt;color:var(--ink-60)">Forfait tout compris</p>
+        <ul>
+          <li>Équipe rodée + passation</li>
+          <li>Ateliers & go-live inclus</li>
+          <li>600 € HT/mois ensuite</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-slide"><span>Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
+</section>
+
+<!-- 07 Planning + modalités + next step -->
+<section class="slide dark">
+  <div class="mesh"></div>
+  <div class="header">
+    <div class="header-logos">
+      <div class="logo-row"><img src="assets/pluton-icon.svg" alt="" class="logo-img" /> Pluton Corp</div>
+      <div class="logo-row client"><img src="assets/logo-delices-corner.png" alt="" class="logo-img dc" /></div>
+    </div>
+    <span class="slide-num">07 / 07</span>
+  </div>
+  <div class="content top">
+    <div class="closing">
+      <div>
+        <span class="pill">Planning & modalités</span>
+        <h2 style="color:#fff">Juillet → octobre 2026</h2>
+        <div class="timeline">
+          <div class="tl-item" style="background:rgba(255,255,255,.04);border-color:#333"><div class="when">Juillet</div><h4 style="color:#fff">Passation</h4><p>Infra, finitions devis, Resend</p></div>
+          <div class="tl-item" style="background:rgba(255,255,255,.04);border-color:#333"><div class="when">Août</div><h4 style="color:#fff">Cadrage</h4><p>Ateliers commandes & stock</p></div>
+          <div class="tl-item" style="background:rgba(255,255,255,.04);border-color:#333"><div class="when">Sept.</div><h4 style="color:#fff">Livraison</h4><p>Email, commandes, stock, Pennylane</p></div>
+          <div class="tl-item" style="background:rgba(255,255,255,.04);border-color:#333"><div class="when">Oct.</div><h4 style="color:#fff">Go-live</h4><p>Formation · bascule équipe</p></div>
+        </div>
+        <div class="grid-2" style="margin-top:4mm">
+          <div class="card" style="background:rgba(255,255,255,.05);border-color:#333">
+            <div class="k" style="color:#C4B8FF">Échéancier 16 000 €</div>
+            <p style="color:#C8C8D8;font-size:8.5pt;line-height:1.5">30 % à la commande · <strong>4 800 €</strong><br>40 % mi-septembre · <strong>6 400 €</strong><br>30 % go-live · <strong>4 800 €</strong></p>
+          </div>
+          <div class="card" style="background:rgba(255,255,255,.05);border-color:#333">
+            <div class="k" style="color:#C4B8FF">Maintenance</div>
+            <p style="color:#C4B8FF;font-family:var(--display);font-size:15pt;font-weight:600">600 € HT / mois</p>
+            <p style="color:#9E9EB0;font-size:8pt;margin-top:1mm">Correctifs, sécurité, support — dès le go-live</p>
+          </div>
+        </div>
+      </div>
+      <div class="cta-panel">
+        <span class="pill">Prochaine étape</span>
+        <h1 style="color:#fff">Un call pour valider et lancer la passation</h1>
+        <p class="lead" style="font-size:9.5pt;max-width:34ch">On cale les ateliers commandes/stock et on démarre dès validation.</p>
+        <p class="amount">16 000 € HT</p>
+        <p style="color:#9E9EB0;font-size:8pt;margin-top:2mm">Pluton Corp ↔ Délices Corner</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-slide"><span>Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
+</section>
+
+<!-- ANNEXE -->
+<section class="slide annex-cover">
+  <div class="mesh"></div>
+  <div class="content" style="align-items:center">
+    <span class="pill">Annexe</span>
+    <h1>Détail technique</h1>
+    <p>Estimation poste par poste · répartition · équipe</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="mesh"></div>
+  <div class="header">
+    <div class="header-logos">
+      <div class="logo-row"><img src="assets/pluton-icon.svg" alt="" class="logo-img" /> Pluton Corp</div>
+      <div class="logo-row client"><img src="assets/logo-delices-corner.png" alt="" class="logo-img dc" /></div>
+    </div>
+    <span class="slide-num">Annexe A</span>
+  </div>
+  <div class="content top">
+    <span class="pill">Estimation</span>
+    <h2>Détail poste par poste</h2>
+    <table>
+      <thead><tr><th>Poste</th><th>Contenu</th><th>Jours</th><th class="money">Montant</th></tr></thead>
+      <tbody>
+        <tr><td>Passation</td><td>Prise en main technique & métier</td><td>2</td><td class="money">1 600 €</td></tr>
+        <tr><td>Finitions</td><td>Devis, pipeline, catalogue</td><td>2</td><td class="money">1 600 €</td></tr>
+        <tr><td>Pennylane</td><td>Production & ajustements facturation</td><td>2</td><td class="money">1 600 €</td></tr>
+        <tr><td>Email</td><td>Resend, envoi devis & devis depuis mail reçu</td><td>2</td><td class="money">1 600 €</td></tr>
+        <tr><td>Commandes</td><td>Bons fournisseur (workshops inclus)</td><td>3</td><td class="money">2 400 €</td></tr>
+        <tr><td>Stock</td><td>Suivi boissons & alertes (workshops inclus)</td><td>3</td><td class="money">2 400 €</td></tr>
+        <tr><td>Ateliers</td><td>Cadrage client & retours</td><td>2</td><td class="money">1 600 €</td></tr>
+        <tr><td>Go-live</td><td>Formation, déploiement & bascule</td><td>4</td><td class="money">3 200 €</td></tr>
+        <tr class="highlight"><td colspan="2"><strong>Total</strong></td><td><strong>20 j</strong></td><td class="money"><strong>16 000 €</strong></td></tr>
+      </tbody>
+    </table>
+    <div class="grid-3" style="margin-top:4mm">
+      <div class="card"><div class="k">Développement · 14 j</div><h3>11 200 €</h3><p>Finitions, Pennylane, email, commandes, stock.</p></div>
+      <div class="card"><div class="k">Cadrage · 2 j</div><h3>1 600 €</h3><p>Ateliers & validation process.</p></div>
+      <div class="card"><div class="k">Go-live · 4 j</div><h3>3 200 €</h3><p>Formation, déploiement, support 2 sem.</p></div>
+    </div>
+  </div>
+  <div class="footer-slide"><span>Annexe · Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
+</section>
+
+<section class="slide">
+  <div class="mesh"></div>
+  <div class="header">
+    <div class="header-logos">
+      <div class="logo-row"><img src="assets/pluton-icon.svg" alt="" class="logo-img" /> Pluton Corp</div>
+      <div class="logo-row client"><img src="assets/logo-delices-corner.png" alt="" class="logo-img dc" /></div>
+    </div>
+    <span class="slide-num">Annexe B</span>
+  </div>
+  <div class="content top">
+    <span class="pill">Équipe</span>
+    <h2>Pluton Corp</h2>
+    <p class="lead" style="font-size:10pt;margin-bottom:2mm">Trois produits livrés ensemble depuis 2020.</p>
+    <div class="team-row">
+      <div class="team-mini">
+        <div class="av"><img src="assets/team/candice.jpg" alt="Candice Guitton" /></div>
+        <h3>Candice Guitton</h3>
+        <div class="role">Associée</div>
+      </div>
+      <div class="team-mini">
+        <div class="av"><img src="assets/team/sami.png" alt="Sami Bekrar" /></div>
+        <h3>Sami Bekrar</h3>
+        <div class="role">Associé</div>
+      </div>
+      <div class="team-mini">
+        <div class="av"><img src="assets/team/yanis.png" alt="Yanis Bekrar" /></div>
+        <h3>Yanis Bekrar</h3>
+        <div class="role">Infrastructure</div>
+      </div>
+      <div class="team-mini">
+        <div class="av"><img src="assets/team/jonathan.png" alt="Jonathan Audhasse" /></div>
+        <h3>Jonathan Audhasse</h3>
+        <div class="role">Backend</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-slide"><span>Annexe · Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
+</section>
+
+</body>
+</html>

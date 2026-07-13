@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Inter, system-ui, sans-serif; background: #f4f3f0; padding: 16px; width: 920px; }
+    .shell { background: #fff; border-radius: 12px; border: 1px solid #e5e4e9; overflow: hidden; box-shadow: 0 8px 32px rgba(19,19,32,.08); display: grid; grid-template-columns: 1.1fr .9fr; min-height: 300px; }
+    .editor { padding: 16px; border-right: 1px solid #eee; }
+    .preview { background: #fafaf8; padding: 12px; }
+    .top { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .top img { height: 24px; }
+    .top h3 { font-size: 13px; }
+    .section { border: 1px solid #ecebef; border-radius: 8px; padding: 10px; margin-bottom: 8px; }
+    .section h4 { font-size: 10px; color: #6c5ce7; margin-bottom: 6px; text-transform: uppercase; letter-spacing: .05em; }
+    .line { display: flex; justify-content: space-between; font-size: 10px; padding: 3px 0; color: #444; }
+    .pdf { background: #fff; border: 1px solid #ddd; border-radius: 6px; padding: 10px; height: 100%; }
+    .pdf .hero { height: 56px; background: linear-gradient(120deg,#6c5ce7,#9b8cff); border-radius: 4px; margin-bottom: 8px; }
+    .pdf .thumb { display: grid; grid-template-columns: repeat(3,1fr); gap: 4px; margin: 8px 0; }
+    .pdf .thumb div { height: 36px; background: #f0efe8; border-radius: 3px; }
+    .pdf .total { margin-top: 8px; padding-top: 8px; border-top: 1px solid #eee; font-weight: 600; font-size: 11px; text-align: right; }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="editor">
+      <div class="top"><img src="logo-delices-corner.png" alt="" /><h3>Devis · Cocktail dînatoire</h3></div>
+      <div class="section"><h4>Accueil 16h30</h4><div class="line"><span>10 pièces salées × 80</span><span>640 €</span></div><div class="line"><span>Verres & art de la table</span><span>120 €</span></div></div>
+      <div class="section"><h4>Cocktail 18h</h4><div class="line"><span>Formule 12 pièces</span><span>2 880 €</span></div></div>
+    </div>
+    <div class="preview">
+      <div class="pdf">
+        <div class="hero"></div>
+        <div style="font-size:10px;font-weight:600">Séminaire LVMH · 3 nov.</div>
+        <div class="thumb"><div></div><div></div><div></div></div>
+        <div class="line"><span>Total HT</span><span>3 640 €</span></div>
+        <div class="total">3 640 € HT</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
