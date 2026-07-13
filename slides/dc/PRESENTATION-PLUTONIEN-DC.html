@@ -498,11 +498,22 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 3mm;
-      flex: 1;
-      min-height: 0;
+      align-items: start;
     }
 
-    .shot-wrap.tall img { object-fit: cover; object-position: top; max-height: 100mm; width: 100%; }
+    .shot-wrap.fit {
+      border-radius: 10px;
+      border: 1px solid var(--rule);
+      overflow: hidden;
+      line-height: 0;
+      box-shadow: 0 4px 20px rgba(19,19,32,.07);
+    }
+
+    .shot-wrap.fit img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
 
     .annex-ref {
       margin-top: 3mm;
@@ -563,24 +574,22 @@
     .compare-col.flowlab { border-style: dashed; border-color: #C8C8D4; }
     .compare-col .price.small { font-size: 18pt; }
 
-  /* Slide 7 — layout épuré */
+  /* Slide 7 — layout compact */
     .plan-layout {
-      display: grid;
-      grid-template-rows: auto 1fr auto;
-      gap: 4mm;
-      flex: 1;
-      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 3mm;
     }
 
     .plan-timeline {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 2.5mm;
     }
 
     .plan-step {
-      padding: 3.5mm;
-      border-radius: 12px;
+      padding: 2.5mm 3mm;
+      border-radius: 10px;
       background: rgba(255,255,255,.05);
       border: 1px solid #2E2E42;
     }
@@ -595,52 +604,45 @@
 
     .plan-step h4 {
       font-family: var(--display);
-      font-size: 11pt;
+      font-size: 10pt;
       color: #fff;
-      margin: 1.5mm 0 1mm;
+      margin: 1mm 0 .5mm;
       font-weight: 600;
     }
 
-    .plan-step p { font-size: 8pt; color: #9E9EB0; line-height: 1.4; }
+    .plan-step p { font-size: 7.5pt; color: #9E9EB0; line-height: 1.35; }
 
     .plan-bottom {
       display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 4mm;
+      grid-template-columns: 1fr 1fr 1.1fr;
+      gap: 2.5mm;
       align-items: stretch;
     }
 
-    .plan-facts {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2.5mm;
-    }
-
     .fact-card {
-      padding: 3.5mm;
-      border-radius: 12px;
+      padding: 2.5mm 3mm;
+      border-radius: 10px;
       background: rgba(255,255,255,.04);
       border: 1px solid #2E2E42;
     }
 
-    .fact-card .k { font-family: var(--mono); font-size: 7pt; color: #C4B8FF; text-transform: uppercase; letter-spacing: .06em; }
-    .fact-card .val { font-family: var(--display); font-size: 14pt; font-weight: 600; color: #fff; margin: 1.5mm 0; }
-    .fact-card p { font-size: 8pt; color: #9E9EB0; line-height: 1.45; }
+    .fact-card .k { font-family: var(--mono); font-size: 6.5pt; color: #C4B8FF; text-transform: uppercase; letter-spacing: .06em; }
+    .fact-card .val { font-family: var(--display); font-size: 12pt; font-weight: 600; color: #fff; margin: 1mm 0; }
+    .fact-card p { font-size: 7.5pt; color: #9E9EB0; line-height: 1.4; }
 
     .plan-cta {
-      padding: 5mm;
-      border-radius: 14px;
+      padding: 2.5mm 3mm;
+      border-radius: 10px;
       background: linear-gradient(135deg, rgba(108,92,231,.35), rgba(108,92,231,.12));
       border: 1px solid rgba(196,184,255,.35);
       display: flex;
       flex-direction: column;
       justify-content: center;
-      text-align: center;
     }
 
-    .plan-cta h2 { color: #fff; font-size: 17pt; margin: 2mm 0; line-height: 1.2; }
-    .plan-cta .amount { font-family: var(--display); font-size: 24pt; font-weight: 600; color: #C4B8FF; }
-    .plan-cta p { font-size: 8.5pt; color: #9E9EB0; margin-top: 2mm; }
+    .plan-cta h2 { color: #fff; font-size: 10pt; margin: 1mm 0; line-height: 1.2; font-weight: 600; }
+    .plan-cta .amount { font-family: var(--display); font-size: 16pt; font-weight: 600; color: #C4B8FF; margin-top: 1mm; }
+    .plan-cta p { font-size: 7.5pt; color: #9E9EB0; margin-top: 1mm; line-height: 1.35; }
 
     /* Équipe annexe */
     .team-grid {
@@ -791,14 +793,7 @@
         <div class="bar-track"><div class="bar-fill" style="width:50%"></div></div>
       </div>
     </div>
-    <div class="season-bar">
-      <div class="go"></div>
-      <div class="stop"></div>
-    </div>
-    <div class="season-legend">
-      <span><strong>Juillet → octobre</strong> · fenêtre idéale pour passer la main</span>
-      <span><strong>Novembre+</strong> · saison haute, trop risqué</span>
-    </div>
+    <p style="font-size:8.5pt;color:var(--ink-60);margin-bottom:2.5mm"><strong style="color:var(--ink)">Fenêtre idéale : juillet → septembre</strong> · avant la saison haute</p>
     <div class="lot-grid">
       <div class="lot-card"><h3>Devis & pipeline</h3><div class="mini-bar"><span style="width:75%"></span></div><div class="mini-pct">75 %</div></div>
       <div class="lot-card"><h3>Calendrier</h3><div class="mini-bar"><span style="width:100%"></span></div><div class="mini-pct">100 %</div></div>
@@ -829,10 +824,10 @@
     <h2>Ce qui tourne déjà</h2>
     <p class="lead" style="font-size:9.5pt;margin-bottom:3mm">Pipeline commercial, catalogue complet et configurateur de devis sont opérationnels. L'équipe peut déjà travailler dedans sur les lots livrés.</p>
     <div class="shots-duo">
-      <div class="shot-wrap tall">
+      <div class="shot-wrap fit">
         <img src="assets/screenshot-pipeline.png" alt="Pipeline kanban Délice App" />
       </div>
-      <div class="shot-wrap tall">
+      <div class="shot-wrap fit">
         <img src="assets/screenshot-catalogue.png" alt="Catalogue artisans Délice App" />
       </div>
     </div>
@@ -948,7 +943,7 @@
         <tr class="highlight">
           <td colspan="2"><strong>Inclus</strong></td>
           <td class="desc">Passation technique, 2 ateliers cadrage, formation Laurence & Cédric, go-live et 2 semaines de support.</td>
-          <td>Oct. 2026</td>
+          <td>Sept. 2026</td>
         </tr>
       </tbody>
     </table>
@@ -980,7 +975,7 @@
         <div class="price small">16 200 €</div>
         <p style="font-size:7.5pt;color:var(--ink-60)">Enveloppe mars 2026 · 9 briques</p>
         <ul>
-          <li>Pas d'ateliers commandes/stock</li>
+          <li>Enveloppe fixe mars 2026</li>
           <li>Recette absente du chiffrage</li>
           <li>5 j pour 2 lots complexes</li>
           <li>Périmètre non structuré</li>
@@ -1011,8 +1006,9 @@
         <div class="price">16 000 €</div>
         <p style="font-size:7.5pt;color:var(--ink-60)">Forfait tout compris</p>
         <ul>
+          <li>Suivi brique par brique</li>
+          <li>Recette terrain incluse</li>
           <li>Équipe rodée + passation</li>
-          <li>Ateliers & go-live inclus</li>
           <li>600 € HT/mois ensuite</li>
         </ul>
       </div>
@@ -1035,31 +1031,29 @@
     <div class="plan-layout">
       <div>
         <span class="pill">Planning & modalités</span>
-        <h2 style="color:#fff;margin-top:2mm">Juillet → octobre 2026</h2>
+        <h2 style="color:#fff;margin-top:1.5mm;font-size:18pt">Juillet → septembre 2026</h2>
+        <p style="font-size:8pt;color:#9E9EB0;margin-top:1mm">20 jours inchangés — planning resserré pour un go-live fin septembre.</p>
       </div>
       <div class="plan-timeline">
-        <div class="plan-step"><div class="when">Juillet</div><h4>Passation</h4><p>Infra, accès, finitions devis, démarrage Resend</p></div>
-        <div class="plan-step"><div class="when">Août</div><h4>Cadrage</h4><p>Ateliers commandes & stock · maquettes validées</p></div>
-        <div class="plan-step"><div class="when">Septembre</div><h4>Livraison</h4><p>Email, commandes, stock, Pennylane prod</p></div>
-        <div class="plan-step"><div class="when">Octobre</div><h4>Go-live</h4><p>Formation équipe · bascule · support 2 sem.</p></div>
+        <div class="plan-step"><div class="when">Juillet</div><h4>Passation & finitions</h4><p>Infra, accès, devis, Resend · démarrage cadrage commandes/stock</p></div>
+        <div class="plan-step"><div class="when">Août</div><h4>Cadrage & développement</h4><p>Ateliers validés · dev email, commandes, stock, Pennylane en parallèle</p></div>
+        <div class="plan-step"><div class="when">Septembre</div><h4>Recette & go-live</h4><p>Tests terrain brique par brique · formation · bascule équipe · support 2 sem.</p></div>
       </div>
       <div class="plan-bottom">
-        <div class="plan-facts">
-          <div class="fact-card">
-            <div class="k">Échéancier</div>
-            <div class="val">16 000 € HT</div>
-            <p>30 % commande · <strong>4 800 €</strong><br>40 % mi-sept. · <strong>6 400 €</strong><br>30 % go-live · <strong>4 800 €</strong></p>
-          </div>
-          <div class="fact-card">
-            <div class="k">Maintenance</div>
-            <div class="val">600 € / mois</div>
-            <p>Correctifs, sécurité, support — dès le go-live</p>
-          </div>
+        <div class="fact-card">
+          <div class="k">Échéancier</div>
+          <div class="val">16 000 € HT</div>
+          <p>30 % commande · <strong>4 800 €</strong><br>40 % mi-août · <strong>6 400 €</strong><br>30 % go-live · <strong>4 800 €</strong></p>
+        </div>
+        <div class="fact-card">
+          <div class="k">Maintenance</div>
+          <div class="val">600 € / mois</div>
+          <p>Correctifs, sécurité, support — dès le go-live</p>
         </div>
         <div class="plan-cta">
           <span class="pill">Prochaine étape</span>
           <h2>Valider et lancer la passation</h2>
-          <p>On cale les ateliers commandes/stock et on démarre dès votre accord.</p>
+          <p>On cale les ateliers et on démarre dès votre accord.</p>
           <p class="amount">16 000 € HT</p>
         </div>
       </div>
