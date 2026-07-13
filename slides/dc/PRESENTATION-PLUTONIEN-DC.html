@@ -417,8 +417,276 @@
       letter-spacing: .06em;
     }
 
-    .season-bar .go { flex: 5; background: var(--violet); color: #fff; display: grid; place-items: center; }
-    .season-bar .stop { flex: 3; background: #E8E7EC; color: var(--ink-60); display: grid; place-items: center; }
+    .season-bar .go { flex: 5; background: var(--violet); }
+    .season-bar .stop { flex: 3; background: #E8E7EC; }
+    .season-legend {
+      display: flex;
+      justify-content: space-between;
+      font-size: 8pt;
+      color: var(--ink-60);
+      margin-top: 2mm;
+    }
+    .season-legend strong { color: var(--ink); font-weight: 500; }
+
+    .global-progress {
+      display: flex;
+      align-items: center;
+      gap: 4mm;
+      margin-bottom: 4mm;
+      padding: 3.5mm 4mm;
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+    }
+
+    .global-progress .bar-track { height: 10px; }
+    .global-progress .pct {
+      font-family: var(--display);
+      font-size: 20pt;
+      font-weight: 600;
+      color: var(--violet);
+      flex-shrink: 0;
+      letter-spacing: -0.03em;
+    }
+
+    .lot-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2mm;
+      margin-top: 2.5mm;
+    }
+
+    .lot-card {
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 2mm 2.5mm 1.5mm;
+    }
+
+    .lot-card h3 {
+      font-family: var(--display);
+      font-size: 8pt;
+      font-weight: 600;
+      margin-bottom: 1mm;
+      line-height: 1.15;
+    }
+
+    .lot-card .mini-bar {
+      height: 5px;
+      background: var(--rule);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 1.5mm;
+    }
+
+    .lot-card .mini-bar span {
+      display: block;
+      height: 100%;
+      background: var(--violet);
+      border-radius: 3px;
+    }
+
+    .lot-card .mini-pct {
+      font-family: var(--mono);
+      font-size: 6.5pt;
+      color: var(--ink-30);
+      text-align: right;
+      margin-top: 1mm;
+    }
+
+    .shots-duo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3mm;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .shot-wrap.tall img { object-fit: cover; object-position: top; max-height: 100mm; width: 100%; }
+
+    .annex-ref {
+      margin-top: 3mm;
+      padding: 3mm 3.5mm;
+      background: var(--violet-soft);
+      border-radius: 10px;
+      font-size: 8.5pt;
+      color: var(--ink-60);
+      line-height: 1.45;
+    }
+
+    .annex-ref strong { color: var(--ink); }
+
+    /* Schéma sans cadrage */
+    .blind-flow {
+      display: grid;
+      grid-template-columns: 1fr 6mm 1fr 6mm 1fr;
+      gap: 0;
+      align-items: stretch;
+      margin: 3mm 0;
+    }
+
+    .blind-box {
+      border-radius: 12px;
+      border: 1px solid var(--rule);
+      padding: 3.5mm;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: 2mm;
+    }
+
+    .blind-box .icon {
+      width: 9mm;
+      height: 9mm;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-size: 14pt;
+    }
+
+    .blind-box.bad { background: #FFF5F5; border-color: #F0C4C4; }
+    .blind-box.bad .icon { background: #FFE0E0; }
+    .blind-box.warn { background: #FFFBF0; border-color: #E6C84A; }
+    .blind-box.warn .icon { background: #FFF0C2; }
+    .blind-box.ok { background: var(--violet-soft); border-color: var(--violet); }
+    .blind-box.ok .icon { background: #D8D0FC; }
+
+    .blind-box h3 { font-family: var(--display); font-size: 10pt; }
+    .blind-box p { font-size: 8pt; color: var(--ink-60); line-height: 1.4; }
+
+    .scope-table { font-size: 8pt; }
+    .scope-table td.desc { font-size: 7.5pt; color: var(--ink-60); line-height: 1.35; }
+
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5mm; }
+
+    .compare-col.dim { opacity: .88; }
+    .compare-col.flowlab { border-style: dashed; border-color: #C8C8D4; }
+    .compare-col .price.small { font-size: 18pt; }
+
+  /* Slide 7 — layout épuré */
+    .plan-layout {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 4mm;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .plan-timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2.5mm;
+    }
+
+    .plan-step {
+      padding: 3.5mm;
+      border-radius: 12px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid #2E2E42;
+    }
+
+    .plan-step .when {
+      font-family: var(--mono);
+      font-size: 7pt;
+      color: #C4B8FF;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .plan-step h4 {
+      font-family: var(--display);
+      font-size: 11pt;
+      color: #fff;
+      margin: 1.5mm 0 1mm;
+      font-weight: 600;
+    }
+
+    .plan-step p { font-size: 8pt; color: #9E9EB0; line-height: 1.4; }
+
+    .plan-bottom {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 4mm;
+      align-items: stretch;
+    }
+
+    .plan-facts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5mm;
+    }
+
+    .fact-card {
+      padding: 3.5mm;
+      border-radius: 12px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid #2E2E42;
+    }
+
+    .fact-card .k { font-family: var(--mono); font-size: 7pt; color: #C4B8FF; text-transform: uppercase; letter-spacing: .06em; }
+    .fact-card .val { font-family: var(--display); font-size: 14pt; font-weight: 600; color: #fff; margin: 1.5mm 0; }
+    .fact-card p { font-size: 8pt; color: #9E9EB0; line-height: 1.45; }
+
+    .plan-cta {
+      padding: 5mm;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(108,92,231,.35), rgba(108,92,231,.12));
+      border: 1px solid rgba(196,184,255,.35);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .plan-cta h2 { color: #fff; font-size: 17pt; margin: 2mm 0; line-height: 1.2; }
+    .plan-cta .amount { font-family: var(--display); font-size: 24pt; font-weight: 600; color: #C4B8FF; }
+    .plan-cta p { font-size: 8.5pt; color: #9E9EB0; margin-top: 2mm; }
+
+    /* Équipe annexe */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3.5mm;
+      margin-top: 3mm;
+    }
+
+    .team-card {
+      display: grid;
+      grid-template-columns: 22mm 1fr;
+      gap: 3.5mm;
+      padding: 3.5mm;
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      background: #fff;
+      align-items: center;
+    }
+
+    .team-card .av {
+      width: 22mm;
+      height: 22mm;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      flex-shrink: 0;
+    }
+
+    .team-card .av img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .team-card .av.candice img { object-position: center 12%; transform: scale(1.08); }
+    .team-card .av.sami img { object-position: center 10%; transform: scale(1.22); }
+    .team-card .av.yanis img { object-position: center 18%; transform: scale(1.28); }
+    .team-card .av.jonathan img { object-position: center 25%; transform: scale(1.25); }
+
+    .team-card h3 { font-family: var(--display); font-size: 10pt; margin-bottom: .5mm; }
+    .team-card .role { font-family: var(--mono); font-size: 7pt; color: var(--violet); text-transform: uppercase; letter-spacing: .06em; }
+    .team-card .bio { font-size: 8pt; color: var(--ink-60); line-height: 1.45; margin-top: 1.5mm; }
+
+    .team-intro {
+      font-size: 10pt;
+      color: var(--ink-60);
+      line-height: 1.5;
+      max-width: 72ch;
+      margin-bottom: 1mm;
+    }
 
     /* Closing */
     .closing { display: grid; grid-template-columns: 1.15fr .85fr; gap: 5mm; flex: 1; }
@@ -502,7 +770,7 @@
   <div class="footer-slide"><span>Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
 </section>
 
-<!-- 02 Contexte & timing -->
+<!-- 02 État du projet & timing -->
 <section class="slide">
   <div class="mesh"></div>
   <div class="header">
@@ -513,29 +781,34 @@
     <span class="slide-num">02 / 07</span>
   </div>
   <div class="content top">
-    <span class="pill">Timing</span>
-    <h2>Prendre la main <em style="color:var(--violet);font-style:normal">maintenant</em></h2>
-    <p class="lead">La basse saison est la fenêtre idéale : former l'équipe, tester sur de vrais devis, basculer depuis Trello/Excel <strong>avant la période pleine</strong>.</p>
-    <div class="season-bar">
-      <div class="go">Juillet → octobre · on agit</div>
-      <div class="stop">Novembre+ · trop tard</div>
+    <span class="pill">État du projet</span>
+    <h2>~50 % livré · transition douce vers le nouvel outil</h2>
+    <p class="lead" style="font-size:10pt;margin-bottom:3mm">Notre objectif : <strong>capitaliser sur la basse saison</strong> pour former l'équipe, tester sur de vrais devis et basculer depuis Trello/Excel <strong>avant la période pleine</strong> — sans rupture dans l'activité.</p>
+    <div class="global-progress">
+      <span class="pct">50%</span>
+      <div style="flex:1">
+        <p style="font-family:var(--display);font-size:10pt;font-weight:600;margin-bottom:2mm">Avancement global roadmap validée</p>
+        <div class="bar-track"><div class="bar-fill" style="width:50%"></div></div>
+      </div>
     </div>
-    <div class="grid-3">
-      <div class="card">
-        <div class="k">Risque si on attend</div>
-        <h3>Pression saison haute</h3>
-        <p>Impossible de former Laurence et Cédric ni d'ajuster l'outil en pleine activité.</p>
-      </div>
-      <div class="card">
-        <div class="k">Fenêtre</div>
-        <h3>Juil. → oct. 2026</h3>
-        <p>Passation, développement des lots restants, tests sur événements réels.</p>
-      </div>
-      <div class="card">
-        <div class="k">Objectif</div>
-        <h3>V1 stable fin oct.</h3>
-        <p>Équipe autonome sur pipeline, devis, Pennylane, commandes et stock.</p>
-      </div>
+    <div class="season-bar">
+      <div class="go"></div>
+      <div class="stop"></div>
+    </div>
+    <div class="season-legend">
+      <span><strong>Juillet → octobre</strong> · fenêtre idéale pour passer la main</span>
+      <span><strong>Novembre+</strong> · saison haute, trop risqué</span>
+    </div>
+    <div class="lot-grid">
+      <div class="lot-card"><h3>Devis & pipeline</h3><div class="mini-bar"><span style="width:75%"></span></div><div class="mini-pct">75 %</div></div>
+      <div class="lot-card"><h3>Calendrier</h3><div class="mini-bar"><span style="width:100%"></span></div><div class="mini-pct">100 %</div></div>
+      <div class="lot-card"><h3>Catalogue</h3><div class="mini-bar"><span style="width:85%"></span></div><div class="mini-pct">85 %</div></div>
+      <div class="lot-card"><h3>Pennylane</h3><div class="mini-bar"><span style="width:65%"></span></div><div class="mini-pct">65 %</div></div>
+      <div class="lot-card"><h3>Email & leads</h3><div class="mini-bar"><span style="width:5%"></span></div><div class="mini-pct">5 %</div></div>
+      <div class="lot-card"><h3>Commandes</h3><div class="mini-bar"><span style="width:0%"></span></div><div class="mini-pct">0 %</div></div>
+      <div class="lot-card"><h3>Formulaire web</h3><div class="mini-bar"><span style="width:5%"></span></div><div class="mini-pct">5 %</div></div>
+      <div class="lot-card"><h3>Stock</h3><div class="mini-bar"><span style="width:0%"></span></div><div class="mini-pct">0 %</div></div>
+      <div class="lot-card"><h3>KPI & historique</h3><div class="mini-bar"><span style="width:30%"></span></div><div class="mini-pct">30 %</div></div>
     </div>
   </div>
   <div class="footer-slide"><span>Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
@@ -553,29 +826,18 @@
   </div>
   <div class="content top">
     <span class="pill">Produit</span>
-    <h2>Ce qui tourne déjà · ~50 % livré</h2>
-    <div class="app-layout">
-      <div class="shot-wrap">
-        <img src="assets/screenshot-app-devis.png" alt="Configurateur devis Délice App" />
+    <h2>Ce qui tourne déjà</h2>
+    <p class="lead" style="font-size:9.5pt;margin-bottom:3mm">Pipeline commercial, catalogue complet et configurateur de devis sont opérationnels. L'équipe peut déjà travailler dedans sur les lots livrés.</p>
+    <div class="shots-duo">
+      <div class="shot-wrap tall">
+        <img src="assets/screenshot-pipeline.png" alt="Pipeline kanban Délice App" />
       </div>
-      <div class="status-panel">
-        <div class="ring-box">
-          <div class="ring"><span>50%</span></div>
-          <div>
-            <strong style="font-family:var(--display);font-size:11pt">Roadmap livrée</strong>
-            <p style="font-size:8pt;color:var(--ink-60);margin-top:1mm">Pipeline, devis PDF, catalogue, Pennylane partiel.</p>
-          </div>
-        </div>
-        <div class="card" style="flex:1">
-          <div class="bar-row"><span class="bar-label">Calendrier</span><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div><span class="bar-pct">90%</span></div>
-          <div class="bar-row"><span class="bar-label">Catalogue</span><div class="bar-track"><div class="bar-fill" style="width:70%"></div></div><span class="bar-pct">70%</span></div>
-          <div class="bar-row"><span class="bar-label">Devis</span><div class="bar-track"><div class="bar-fill" style="width:75%"></div></div><span class="bar-pct">75%</span></div>
-          <div class="bar-row"><span class="bar-label">Pennylane</span><div class="bar-track"><div class="bar-fill" style="width:65%"></div></div><span class="bar-pct">65%</span></div>
-          <div class="bar-row"><span class="bar-label">Email</span><div class="bar-track"><div class="bar-fill" style="width:20%"></div></div><span class="bar-pct">20%</span></div>
-          <div class="bar-row"><span class="bar-label">Commandes</span><div class="bar-track"><div class="bar-fill" style="width:0%"></div></div><span class="bar-pct">0%</span></div>
-          <div class="bar-row"><span class="bar-label">Stock</span><div class="bar-track"><div class="bar-fill" style="width:0%"></div></div><span class="bar-pct">0%</span></div>
-        </div>
+      <div class="shot-wrap tall">
+        <img src="assets/screenshot-catalogue.png" alt="Catalogue artisans Délice App" />
       </div>
+    </div>
+    <div class="annex-ref">
+      <strong>Annexe — rapport de passation</strong> : inventaire détaillé lot par lot (fait / reste à faire), specs développeur, abonnements et transferts. Document construit pour la reprise du projet.
     </div>
   </div>
   <div class="footer-slide"><span>Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
@@ -593,36 +855,44 @@
   </div>
   <div class="content top">
     <span class="pill">Cadrage</span>
-    <h2>Ce qui manque · pourquoi le cadrage change la donne</h2>
-    <div class="flow-3">
-      <div class="flow-box warn">
-        <div class="k">Aujourd'hui</div>
-        <h3>Email, commandes, stock</h3>
-        <p>Pas d'envoi email réel. Commandes et stock sans spec validée avec vous.</p>
+    <h2>Sans cadrage, on part à l'aveugle</h2>
+    <p class="lead" style="font-size:9.5pt;margin-bottom:2mm">Commandes et stock n'ont pas encore de spec validée. Coder sans ateliers, c'est deviner vos process — et découvrir les écarts à la livraison.</p>
+    <div class="blind-flow">
+      <div class="blind-box bad">
+        <div class="icon">?</div>
+        <h3>Pas de cadrage</h3>
+        <p>« On verra en dev » — format bon fournisseur, seuils stock, workflow d'envoi : tout reste implicite.</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="blind-box warn">
+        <div class="icon">⚙</div>
+        <h3>Dev à l'aveugle</h3>
+        <p>On livre une première version sans validation terrain. Allers-retours coûteux, délais qui glissent.</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="blind-box bad">
+        <div class="icon">✕</div>
+        <h3>Insatisfaction</h3>
+        <p>L'outil ne colle pas au quotidien de Laurence et Cédric. Frustration, reprise Excel/Trello, confiance entamée.</p>
+      </div>
+    </div>
+    <div class="flow-3" style="margin-top:3mm">
+      <div class="flow-box ok">
+        <div class="k">Notre approche</div>
+        <h3>2 ateliers cadrés</h3>
+        <p>Commandes : regroupement artisan, PDF sans prix, workflow. Stock : seuils, déduction, import Excel.</p>
       </div>
       <div class="flow-arrow">→</div>
       <div class="flow-box mid">
-        <div class="k">Ateliers</div>
-        <h3>2 sessions</h3>
-        <p>Format bon fournisseur, seuils stock, workflow, lien devis validé.</p>
+        <div class="k">Validation</div>
+        <h3>Maquettes & retours</h3>
+        <p>Vous validez avant le dev. Pas de surprise à l'arrivée.</p>
       </div>
       <div class="flow-arrow">→</div>
       <div class="flow-box ok">
-        <div class="k">Ensuite</div>
-        <h3>Dev au bon scope</h3>
-        <p>Forfait incluant workshops et allers-retours. Pas de dev à l'aveugle.</p>
-      </div>
-    </div>
-    <div class="grid-2" style="margin-top:4mm">
-      <div class="card">
-        <div class="k">Lot 6 — Commandes</div>
-        <h3>À définir avec vous</h3>
-        <p>Regroupement par artisan, contenu du PDF, workflow d'envoi.</p>
-      </div>
-      <div class="card">
-        <div class="k">Lot 8 — Stock</div>
-        <h3>À définir avec vous</h3>
-        <p>Seuils d'alerte, moment de déduction, import Excel eau/soft.</p>
+        <div class="k">Livraison</div>
+        <h3>Outil adopté</h3>
+        <p>Équipe formée, process alignés, go-live serein avant la haute saison.</p>
       </div>
     </div>
   </div>
@@ -642,18 +912,47 @@
   <div class="content top">
     <span class="pill">Périmètre</span>
     <h2>Ce qu'on s'engage à livrer</h2>
-    <table>
-      <thead><tr><th>Lot</th><th>Livrable</th><th>Statut</th></tr></thead>
+    <table class="scope-table">
+      <thead><tr><th>Lot</th><th>Livrable</th><th>Description</th><th>Statut</th></tr></thead>
       <tbody>
-        <tr><td>1–3</td><td>Finitions devis, pipeline, import catalogue</td><td>À finaliser</td></tr>
-        <tr><td>4</td><td>Pennylane en production + ajustements facturation</td><td>Partiel</td></tr>
-        <tr><td>5</td><td>Envoi devis par email + devis depuis mail reçu</td><td>À faire</td></tr>
-        <tr><td>6</td><td>Bons de commande fournisseur (PDF sans prix)</td><td>À cadrer</td></tr>
-        <tr><td>8</td><td>Suivi stock boissons + alertes</td><td>À cadrer</td></tr>
-        <tr class="highlight"><td colspan="2"><strong>Inclus</strong> — passation, ateliers, formation & go-live</td><td>Oct. 2026</td></tr>
+        <tr>
+          <td>1–3</td>
+          <td><strong>Finitions devis & catalogue</strong></td>
+          <td class="desc">Retours UX Laurence, checklist événement, import catalogue finalisé. Pipeline et calendrier opérationnels.</td>
+          <td>À finaliser</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><strong>Pennylane en production</strong></td>
+          <td class="desc">Factures acompte/solde en prod, SIRET, déduction acompte, ajustements post-événement.</td>
+          <td>Partiel</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><strong>Envoi devis par email</strong></td>
+          <td class="desc">Resend : envoi en un clic + création de dossier depuis un mail reçu (inbound).</td>
+          <td>À faire</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><strong>Bons de commande fournisseur</strong></td>
+          <td class="desc">PDF regroupé par artisan, contenu du devis sans les prix, workflow d'envoi validé en atelier.</td>
+          <td>À cadrer</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td><strong>Suivi stock boissons</strong></td>
+          <td class="desc">Seuils d'alerte, déduction à l'événement, import Excel eau/soft — spec validée en atelier.</td>
+          <td>À cadrer</td>
+        </tr>
+        <tr class="highlight">
+          <td colspan="2"><strong>Inclus</strong></td>
+          <td class="desc">Passation technique, 2 ateliers cadrage, formation Laurence & Cédric, go-live et 2 semaines de support.</td>
+          <td>Oct. 2026</td>
+        </tr>
       </tbody>
     </table>
-    <p class="lead" style="margin-top:5mm;font-size:9.5pt"><strong>Hors scope :</strong> import MEG massif, Brevo, formulaire salons (lot 7).</p>
+    <p class="lead" style="margin-top:4mm;font-size:9pt"><strong>Hors scope :</strong> import MEG massif, Brevo, formulaire salons (lot 7), KPI avancés.</p>
   </div>
   <div class="footer-slide"><span>Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
 </section>
@@ -675,31 +974,42 @@
       <div class="big">16 000 € HT</div>
       <p>Forfait 20 jours · passation, dev, ateliers, formation et go-live inclus. Détail en annexe.</p>
     </div>
-    <div class="grid-3">
-      <div class="compare-col">
+    <div class="grid-4">
+      <div class="compare-col flowlab dim">
+        <div class="k">Diagnostic Flowlab</div>
+        <div class="price small">16 200 €</div>
+        <p style="font-size:7.5pt;color:var(--ink-60)">Enveloppe mars 2026 · 9 briques</p>
+        <ul>
+          <li>Pas d'ateliers commandes/stock</li>
+          <li>Recette absente du chiffrage</li>
+          <li>5 j pour 2 lots complexes</li>
+          <li>Périmètre non structuré</li>
+        </ul>
+      </div>
+      <div class="compare-col dim">
         <div class="k">Freelance senior</div>
-        <div class="price">~18 k€</div>
-        <p style="font-size:8pt;color:var(--ink-60)">20 j à 900 € · dev seul</p>
+        <div class="price small">~18 k€</div>
+        <p style="font-size:7.5pt;color:var(--ink-60)">20 j à 900 € · dev seul</p>
         <ul>
           <li>Pas d'équipe ni reprise</li>
           <li>Workshops en sus</li>
           <li>Pas de maintenance structurée</li>
         </ul>
       </div>
-      <div class="compare-col">
+      <div class="compare-col dim">
         <div class="k">DSI temps plein</div>
-        <div class="price">~90 k€/an</div>
-        <p style="font-size:8pt;color:var(--ink-60)">Salaire + charges employeur</p>
+        <div class="price small">~90 k€/an</div>
+        <p style="font-size:7.5pt;color:var(--ink-60)">Salaire + charges</p>
         <ul>
           <li>Recrutement 3 à 6 mois</li>
-          <li>1 profil, pas front + back + infra</li>
+          <li>1 profil, pas full-stack</li>
           <li>Coût fixe toute l'année</li>
         </ul>
       </div>
       <div class="compare-col pick">
         <div class="k">Pluton Corp</div>
         <div class="price">16 000 €</div>
-        <p style="font-size:8pt;color:var(--ink-60)">Forfait tout compris</p>
+        <p style="font-size:7.5pt;color:var(--ink-60)">Forfait tout compris</p>
         <ul>
           <li>Équipe rodée + passation</li>
           <li>Ateliers & go-live inclus</li>
@@ -722,34 +1032,36 @@
     <span class="slide-num">07 / 07</span>
   </div>
   <div class="content top">
-    <div class="closing">
+    <div class="plan-layout">
       <div>
         <span class="pill">Planning & modalités</span>
-        <h2 style="color:#fff">Juillet → octobre 2026</h2>
-        <div class="timeline">
-          <div class="tl-item" style="background:rgba(255,255,255,.04);border-color:#333"><div class="when">Juillet</div><h4 style="color:#fff">Passation</h4><p>Infra, finitions devis, Resend</p></div>
-          <div class="tl-item" style="background:rgba(255,255,255,.04);border-color:#333"><div class="when">Août</div><h4 style="color:#fff">Cadrage</h4><p>Ateliers commandes & stock</p></div>
-          <div class="tl-item" style="background:rgba(255,255,255,.04);border-color:#333"><div class="when">Sept.</div><h4 style="color:#fff">Livraison</h4><p>Email, commandes, stock, Pennylane</p></div>
-          <div class="tl-item" style="background:rgba(255,255,255,.04);border-color:#333"><div class="when">Oct.</div><h4 style="color:#fff">Go-live</h4><p>Formation · bascule équipe</p></div>
-        </div>
-        <div class="grid-2" style="margin-top:4mm">
-          <div class="card" style="background:rgba(255,255,255,.05);border-color:#333">
-            <div class="k" style="color:#C4B8FF">Échéancier 16 000 €</div>
-            <p style="color:#C8C8D8;font-size:8.5pt;line-height:1.5">30 % à la commande · <strong>4 800 €</strong><br>40 % mi-septembre · <strong>6 400 €</strong><br>30 % go-live · <strong>4 800 €</strong></p>
-          </div>
-          <div class="card" style="background:rgba(255,255,255,.05);border-color:#333">
-            <div class="k" style="color:#C4B8FF">Maintenance</div>
-            <p style="color:#C4B8FF;font-family:var(--display);font-size:15pt;font-weight:600">600 € HT / mois</p>
-            <p style="color:#9E9EB0;font-size:8pt;margin-top:1mm">Correctifs, sécurité, support — dès le go-live</p>
-          </div>
-        </div>
+        <h2 style="color:#fff;margin-top:2mm">Juillet → octobre 2026</h2>
       </div>
-      <div class="cta-panel">
-        <span class="pill">Prochaine étape</span>
-        <h1 style="color:#fff">Un call pour valider et lancer la passation</h1>
-        <p class="lead" style="font-size:9.5pt;max-width:34ch">On cale les ateliers commandes/stock et on démarre dès validation.</p>
-        <p class="amount">16 000 € HT</p>
-        <p style="color:#9E9EB0;font-size:8pt;margin-top:2mm">Pluton Corp ↔ Délices Corner</p>
+      <div class="plan-timeline">
+        <div class="plan-step"><div class="when">Juillet</div><h4>Passation</h4><p>Infra, accès, finitions devis, démarrage Resend</p></div>
+        <div class="plan-step"><div class="when">Août</div><h4>Cadrage</h4><p>Ateliers commandes & stock · maquettes validées</p></div>
+        <div class="plan-step"><div class="when">Septembre</div><h4>Livraison</h4><p>Email, commandes, stock, Pennylane prod</p></div>
+        <div class="plan-step"><div class="when">Octobre</div><h4>Go-live</h4><p>Formation équipe · bascule · support 2 sem.</p></div>
+      </div>
+      <div class="plan-bottom">
+        <div class="plan-facts">
+          <div class="fact-card">
+            <div class="k">Échéancier</div>
+            <div class="val">16 000 € HT</div>
+            <p>30 % commande · <strong>4 800 €</strong><br>40 % mi-sept. · <strong>6 400 €</strong><br>30 % go-live · <strong>4 800 €</strong></p>
+          </div>
+          <div class="fact-card">
+            <div class="k">Maintenance</div>
+            <div class="val">600 € / mois</div>
+            <p>Correctifs, sécurité, support — dès le go-live</p>
+          </div>
+        </div>
+        <div class="plan-cta">
+          <span class="pill">Prochaine étape</span>
+          <h2>Valider et lancer la passation</h2>
+          <p>On cale les ateliers commandes/stock et on démarre dès votre accord.</p>
+          <p class="amount">16 000 € HT</p>
+        </div>
       </div>
     </div>
   </div>
@@ -813,27 +1125,39 @@
   <div class="content top">
     <span class="pill">Équipe</span>
     <h2>Pluton Corp</h2>
-    <p class="lead" style="font-size:10pt;margin-bottom:2mm">Trois produits livrés ensemble depuis 2020.</p>
-    <div class="team-row">
-      <div class="team-mini">
-        <div class="av"><img src="assets/team/candice.jpg" alt="Candice Guitton" /></div>
-        <h3>Candice Guitton</h3>
-        <div class="role">Associée</div>
+    <p class="team-intro">Quatre profils complémentaires, rodés ensemble depuis 2020. Trois produits livrés en binôme (Heywear, Furo, SoundCheck) — ingénierie <em>et</em> produit, pas seulement du code.</p>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="av candice"><img src="assets/team/candice.jpg" alt="Candice Guitton" /></div>
+        <div>
+          <h3>Candice Guitton</h3>
+          <div class="role">Associée · 8 ans</div>
+          <p class="bio">Front, architecture, produit et design UI/UX. Interlocutrice principale sur le cadrage et la relation client.</p>
+        </div>
       </div>
-      <div class="team-mini">
-        <div class="av"><img src="assets/team/sami.png" alt="Sami Bekrar" /></div>
-        <h3>Sami Bekrar</h3>
-        <div class="role">Associé</div>
+      <div class="team-card">
+        <div class="av sami"><img src="assets/team/sami.png" alt="Sami Bekrar" /></div>
+        <div>
+          <h3>Sami Bekrar</h3>
+          <div class="role">Associé · 10 ans</div>
+          <p class="bio">Architecture full-stack, DevOps, automatisation et IA. Vision technique et structuration des livraisons.</p>
+        </div>
       </div>
-      <div class="team-mini">
-        <div class="av"><img src="assets/team/yanis.png" alt="Yanis Bekrar" /></div>
-        <h3>Yanis Bekrar</h3>
-        <div class="role">Infrastructure</div>
+      <div class="team-card">
+        <div class="av yanis"><img src="assets/team/yanis.png" alt="Yanis Bekrar" /></div>
+        <div>
+          <h3>Yanis Bekrar</h3>
+          <div class="role">Infrastructure · 17 ans</div>
+          <p class="bio">Infra, backend, déploiement et DevOps — expérience grandes banques françaises. Fiabilité et mise en production.</p>
+        </div>
       </div>
-      <div class="team-mini">
-        <div class="av"><img src="assets/team/jonathan.png" alt="Jonathan Audhasse" /></div>
-        <h3>Jonathan Audhasse</h3>
-        <div class="role">Backend</div>
+      <div class="team-card">
+        <div class="av jonathan"><img src="assets/team/jonathan.png" alt="Jonathan Audhasse" /></div>
+        <div>
+          <h3>Jonathan Audhasse</h3>
+          <div class="role">Backend · 10 ans</div>
+          <p class="bio">Backend, DevOps et architecture. Intégrations API (Pennylane, Resend) et logique métier.</p>
+        </div>
       </div>
     </div>
   </div>
