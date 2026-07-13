@@ -14,8 +14,23 @@ export default function Clients() {
 
         <div className="client-strip">
           {clients.map((client) => (
-            <div key={client.name} className="client-strip-item client-logo">
-              <div className="h-12 w-full max-w-[120px] flex items-center justify-center mb-3">
+            <div
+              key={client.name}
+              className={[
+                'client-strip-item client-logo',
+                client.logoMark ? `client-logo--${client.logoMark}` : '',
+              ]
+                .filter(Boolean)
+                .join(' ')}
+            >
+              <div
+                className={[
+                  'h-12 w-full max-w-[120px] flex items-center justify-center mb-3',
+                  client.logoMark === 'disc' ? 'client-logo-mark' : '',
+                ]
+                  .filter(Boolean)
+                  .join(' ')}
+              >
                 <img
                   src={client.logo}
                   alt={client.name}

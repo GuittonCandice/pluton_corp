@@ -1,10 +1,18 @@
 import { asset } from './basePath'
 
-export const clients = [
-  { name: 'Heywear', location: 'New York', logo: asset('/clients/heywear.png') },
-  { name: 'Banque de France', location: 'France', logo: asset('/clients/banque-france.png') },
+export type Client = {
+  name: string
+  location: string
+  logo: string
+  /** invert = logo noir sur fond sombre ; disc = pastille blanche ronde (éditorial) */
+  logoMark?: 'invert' | 'disc'
+}
+
+export const clients: Client[] = [
+  { name: 'Heywear', location: 'New York', logo: asset('/clients/heywear.png'), logoMark: 'invert' },
+  { name: 'Banque de France', location: 'France', logo: asset('/clients/banque-france.png'), logoMark: 'disc' },
   { name: 'Soundcheck Capital', location: 'Los Angeles', logo: asset('/clients/soundcheck.png') },
-  { name: 'Furo', location: 'Los Angeles', logo: asset('/clients/furo.png') },
+  { name: 'Furo', location: 'Los Angeles', logo: asset('/clients/furo.png'), logoMark: 'disc' },
   { name: 'Beem Energy', location: 'France', logo: asset('/clients/beem.png') },
 ]
 

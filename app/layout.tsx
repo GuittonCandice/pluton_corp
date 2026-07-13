@@ -65,7 +65,12 @@ export default function RootLayout({
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         />
       </head>
-      <body className="site-body overflow-x-hidden">
+      <body className="site-body">
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.getItem('pluton-theme');if(t==='editorial'||t==='minimal'||t==='premium'){document.documentElement.dataset.theme=t}}catch(e){}`,
+          }}
+        />
         <ThemeProvider>{children}</ThemeProvider>
         <Script
           src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"

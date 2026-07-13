@@ -11,15 +11,17 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main>
-        <Hero />
-        <Services />
-        <Tools />
-        <Clients />
-        <Team />
-        <Contact />
-      </main>
-      <Footer />
+      <div className="overflow-x-hidden">
+        <main>
+          <Hero />
+          <Services />
+          <Tools />
+          <Clients />
+          <Team />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
     </>
   )
 }

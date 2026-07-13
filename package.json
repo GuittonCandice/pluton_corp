@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "npm run dev:site",
+    "dev:site": "node scripts/dev-site.mjs",
+    "dev:next": "next dev",
+    "preview:site": "npm run dev:site",
     "build": "next build",
     "build:pages": "GITHUB_PAGES=true next build",
     "build:pages:github": "GITHUB_PAGES=true GITHUB_PAGES_SUBPATH=true next build",

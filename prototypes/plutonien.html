@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pluton Corp · Agence de développement</title>
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-icon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
@@ -92,8 +94,13 @@ td.on::before{content:"● ";color:#9C8FFF;font-size:9px;vertical-align:middle}
 
 .team{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
 .member{background:rgba(255,255,255,.72);border:1px solid var(--rule);border-radius:18px;padding:26px}
-.avatar{width:62px;height:62px;border-radius:50%;overflow:hidden;background:var(--violet-soft);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:600;font-size:16px;color:var(--violet);margin-bottom:18px}
-.avatar img{width:100%;height:100%;object-fit:cover}
+.avatar{width:88px;height:88px;border-radius:50%;overflow:hidden;background:var(--violet-soft);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:600;font-size:18px;color:var(--violet);margin-bottom:18px;flex-shrink:0}
+.avatar:has(img){background:#fff}
+.avatar img{width:100%;height:100%;object-fit:cover;object-position:center center;display:block;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.avatar--sami img{object-position:center 32%}
+.avatar--yanis img{object-position:center 38%}
+.avatar--jonathan img{object-position:center 36%}
+.avatar--candice img{object-position:center 30%}
 .member h3{font-size:17px;font-weight:600;letter-spacing:-.02em}
 .role{font-size:12.5px;color:var(--violet);margin:3px 0 12px;font-weight:500}
 .member p{font-size:13.5px;color:var(--ink-60);line-height:1.6}
@@ -224,25 +231,25 @@ footer{border-top:1px solid var(--rule);padding:26px 0;display:flex;justify-cont
   </div>
   <div class="team">
     <div class="member">
-      <div class="avatar">SB</div>
+      <div class="avatar avatar--sami"><img src="/team/sami.png?v=4" alt="Sami Bekrar" onerror="this.parentNode.textContent='SB'"></div>
       <h3>Sami Bekrar</h3>
       <p class="role">Associé · Produit &amp; architecture</p>
       <p>CTO et ancien co-fondateur : il a déjà vécu le budget qui dérape depuis l'autre côté de la table. Sait dire non à une feature. ENSEEIHT.</p>
     </div>
     <div class="member">
-      <div class="avatar">CG</div>
+      <div class="avatar avatar--candice"><img src="/team/candice.jpg?v=4" alt="Candice Guitton" onerror="this.parentNode.textContent='CG'"></div>
       <h3>Candice Guitton</h3>
       <p class="role">Associée · Front &amp; mobile</p>
       <p>Dix ans de front et de Flutter, de Groupama à Beem Energy. Design d'interface et architecture produit.</p>
     </div>
     <div class="member">
-      <div class="avatar"><img src="/team/yanis.jpg" alt="Yanis Bekrar" onerror="this.parentNode.textContent='YB'"></div>
+      <div class="avatar avatar--yanis"><img src="/team/yanis.png?v=4" alt="Yanis Bekrar" onerror="this.parentNode.textContent='YB'"></div>
       <h3>Yanis Bekrar</h3>
       <p class="role">Architecture &amp; cloud</p>
       <p>Quinze ans d'architecture et de DevOps à la Société Générale. Terraform, Kubernetes, monitoring d'un groupe financier mondial. Télécom Paris.</p>
     </div>
     <div class="member">
-      <div class="avatar"><img src="/team/jonathan.jpg" alt="Jonathan Audhasse" onerror="this.parentNode.textContent='JA'"></div>
+      <div class="avatar avatar--jonathan"><img src="/team/jonathan.png?v=4" alt="Jonathan Audhasse" onerror="this.parentNode.textContent='JA'"></div>
       <h3>Jonathan Audhasse</h3>
       <p class="role">Backend &amp; systèmes</p>
       <p>Go, Python, C++. A construit les clés de voiture virtuelles de Continental pour Honda. Là où la panne n'est pas une option.</p>
