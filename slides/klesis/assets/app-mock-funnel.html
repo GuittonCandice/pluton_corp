@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 480px;
+      font-family: Inter, system-ui, sans-serif;
+      background: #f8fafb;
+    }
+    .shell {
+      width: 480px;
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid #dce0e5;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(46,46,46,.08);
+    }
+    .top { text-align: center; padding: 18px 16px 10px; border-bottom: 1px solid #f0f2f4; }
+    .top img { height: 30px; margin-bottom: 8px; }
+    .steps { display: flex; gap: 5px; justify-content: center; }
+    .step { width: 26px; height: 4px; border-radius: 2px; background: #dce0e5; }
+    .step.on { background: #0088c7; }
+    .body { padding: 16px; }
+    h2 { font-size: 17px; color: #2e2e2e; margin-bottom: 5px; }
+    p { font-size: 11px; color: #6a7581; margin-bottom: 12px; line-height: 1.4; }
+    .field {
+      border: 1px solid #dce0e5;
+      border-radius: 8px;
+      padding: 9px 11px;
+      margin-bottom: 8px;
+      font-size: 11px;
+      color: #2e2e2e;
+    }
+    .field label {
+      display: block;
+      font-size: 8px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: #6a7581;
+      margin-bottom: 3px;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: #0088c7;
+      color: #fff;
+      border-radius: 8px;
+      padding: 11px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+    .note {
+      margin-top: 10px;
+      padding: 9px 11px;
+      background: #fff8eb;
+      border: 1px solid #f8d9a0;
+      border-radius: 8px;
+      font-size: 10px;
+      color: #8a5a00;
+      line-height: 1.35;
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="top">
+      <img src="logo-klesis.png" alt="Klesis Junior" />
+      <div class="steps"><span class="step on"></span><span class="step on"></span><span class="step on"></span><span class="step"></span></div>
+    </div>
+    <div class="body">
+      <h2>Inscription de votre enfant</h2>
+      <p>Choisissez le créneau et validez l'acompte pour finaliser l'inscription.</p>
+      <div class="field"><label>Campus</label>Campus pilote A : Paris 15e</div>
+      <div class="field"><label>Programme & créneau</label>Mercredi 14h-16h · Niveau intermédiaire</div>
+      <div class="field"><label>Offre</label>Année scolaire 2026-2027 · 890 €</div>
+      <div class="note">Acompte 1/10 : 89 € à régler en ligne (Stripe). Solde en plusieurs échéances.</div>
+      <div class="btn">Payer l'acompte · 89 €</div>
+    </div>
+  </div>
+</body>
+</html>
