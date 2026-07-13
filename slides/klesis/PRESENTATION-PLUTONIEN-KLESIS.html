@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Klesis Junior : Proposition Pluton Corp</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper: #FAFAF8;
+      --ink: #131320;
+      --ink-60: #5B5B70;
+      --ink-30: #9E9EB0;
+      --rule: #E5E4E9;
+      --violet: #6C5CE7;
+      --violet-soft: #EFEDFE;
+      --display: 'Sora', sans-serif;
+      --body: 'Inter', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+    }
+
+    @page { size: 297mm 210mm; margin: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--body);
+      background: #e8e8ec;
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .slide {
+      width: 297mm;
+      height: 210mm;
+      background: var(--paper);
+      position: relative;
+      overflow: hidden;
+      page-break-after: always;
+      padding: 13mm 15mm 11mm;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .slide:last-child { page-break-after: auto; }
+
+    .mesh {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(28rem 20rem at 90% 8%, rgba(108,92,231,.14), transparent 60%),
+        radial-gradient(22rem 18rem at 8% 85%, rgba(108,92,231,.08), transparent 55%);
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 7mm;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header-logos { display: flex; align-items: center; gap: 14px; }
+
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: 11pt;
+      letter-spacing: -0.02em;
+    }
+
+    .logo-row.client { padding-left: 14px; border-left: 1px solid var(--rule); }
+    .logo-img { height: 20px; width: auto; }
+    .logo-img.klesis { height: 26px; }
+    .dark .logo-row.client { border-color: #333; }
+    .dark .logo-row { color: var(--paper); }
+    .dark .logo-img.klesis { filter: brightness(0) invert(1); }
+
+    .slide-num {
+      font-family: var(--mono);
+      font-size: 9pt;
+      color: var(--ink-30);
+      letter-spacing: 0.08em;
+    }
+
+    .content {
+      flex: 1;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 0;
+    }
+
+    .content.top { justify-content: flex-start; padding-top: 2mm; }
+
+    .pill {
+      display: inline-flex;
+      font-family: var(--mono);
+      font-size: 8pt;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--violet);
+      background: var(--violet-soft);
+      padding: 5px 12px;
+      border-radius: 999px;
+      margin-bottom: 4mm;
+      width: fit-content;
+    }
+
+    h1 {
+      font-family: var(--display);
+      font-size: 30pt;
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+    }
+
+    h1 em { font-style: normal; color: var(--violet); }
+
+    h2 {
+      font-family: var(--display);
+      font-size: 21pt;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      margin-bottom: 4mm;
+      line-height: 1.15;
+    }
+
+    .lead {
+      font-size: 12pt;
+      color: var(--ink-60);
+      line-height: 1.5;
+      max-width: 58ch;
+    }
+
+    .lead strong { color: var(--ink); font-weight: 500; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.5mm; }
+
+    .card {
+      background: rgba(255,255,255,.8);
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      padding: 4mm;
+    }
+
+    .card .k {
+      font-family: var(--mono);
+      font-size: 7pt;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--violet);
+      margin-bottom: 2mm;
+    }
+
+    .card h3 {
+      font-family: var(--display);
+      font-size: 11pt;
+      font-weight: 600;
+      margin-bottom: 2mm;
+    }
+
+    .card p { font-size: 9pt; color: var(--ink-60); line-height: 1.45; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 8.5pt;
+    }
+
+    th {
+      font-family: var(--mono);
+      font-size: 7pt;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--ink-30);
+      text-align: left;
+      padding: 2.5mm 2mm;
+      border-bottom: 1px solid var(--rule);
+      font-weight: 400;
+    }
+
+    td {
+      padding: 2.5mm 2mm;
+      border-bottom: 1px solid var(--rule);
+      vertical-align: top;
+    }
+
+    td.money, th.money { text-align: right; }
+    tr.highlight td { background: var(--violet-soft); font-weight: 600; }
+
+    .dark { background: var(--ink); color: var(--paper); }
+    .dark .mesh { background: radial-gradient(24rem 18rem at 85% 15%, rgba(108,92,231,.35), transparent 60%); }
+    .dark h1, .dark h2 { color: #fff; }
+    .dark h1 em { color: #fff; }
+    .dark .lead { color: #fff; }
+    .dark .lead strong { color: #fff; font-weight: 600; }
+    .dark .pill { background: rgba(108,92,231,.35); color: #fff; }
+    .dark .slide-num { color: #B8B8CC; }
+
+    .footer-slide {
+      margin-top: auto;
+      padding-top: 3mm;
+      border-top: 1px solid var(--rule);
+      font-family: var(--mono);
+      font-size: 7.5pt;
+      color: var(--ink-30);
+      display: flex;
+      justify-content: space-between;
+      z-index: 1;
+    }
+
+    .dark .footer-slide { border-color: #3A3A52; color: #D8D8E8; }
+    .dark .footer-slide span { color: #D8D8E8; }
+    .dark .footer-slide span:last-child { color: #fff; }
+
+    /* Slide 03 : produit : screenshots + meta */
+    .slide-product .content.top { padding-top: 2mm; }
+    .slide-product h2 { margin-bottom: 3mm; }
+    .slide-product .lead { font-size: 9pt; margin-bottom: 2.5mm; max-width: 100%; line-height: 1.45; }
+
+    .slide-product .shots-duo {
+      grid-template-columns: 0.78fr 1.22fr;
+      gap: 3mm;
+      align-items: stretch;
+      margin-bottom: 2.5mm;
+    }
+
+    .slide-product .shot-wrap.fit {
+      border-radius: 10px;
+      border: 1px solid var(--rule);
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(19,19,32,.07);
+      height: 54mm;
+      position: relative;
+    }
+
+    .slide-product .shot-wrap.fit.portrait {
+      background: #eef1f4;
+    }
+
+    .slide-product .shot-wrap.fit.landscape {
+      background: #fff;
+    }
+
+    .slide-product .shot-wrap.fit img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .slide-product .shot-wrap.fit.portrait img {
+      object-fit: contain;
+      object-position: center top;
+    }
+
+    .slide-product .shot-wrap.fit.landscape img {
+      object-fit: cover;
+      object-position: top left;
+    }
+
+    .slide-product .stack-tags {
+      margin-top: 0;
+      margin-bottom: 2mm;
+      gap: 1.5mm;
+    }
+
+    .slide-product .stack-tags span {
+      font-size: 6.5pt;
+      padding: 1.5mm 2mm;
+    }
+
+    .slide-product .annex-ref {
+      margin-top: 0;
+      padding: 2.5mm 3.5mm;
+      font-size: 8pt;
+      line-height: 1.4;
+      color: var(--ink-60);
+    }
+
+    .slide-product .annex-ref strong { color: var(--ink); }
+
+    .bar-track { flex: 1; height: 7px; background: var(--rule); border-radius: 4px; overflow: hidden; }
+    .bar-fill { height: 100%; background: var(--violet); border-radius: 4px; }
+
+    .global-progress {
+      display: flex;
+      align-items: center;
+      gap: 4mm;
+      margin-bottom: 4mm;
+      padding: 3.5mm 4mm;
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+    }
+
+    .global-progress .bar-track { height: 10px; }
+    .global-progress .pct {
+      font-family: var(--display);
+      font-size: 20pt;
+      font-weight: 600;
+      color: var(--violet);
+      flex-shrink: 0;
+      letter-spacing: -0.03em;
+    }
+
+    .lot-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2mm;
+      margin-top: 2.5mm;
+    }
+
+    .lot-card {
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 2mm 2.5mm 1.5mm;
+    }
+
+    .lot-card h3 {
+      font-family: var(--display);
+      font-size: 8pt;
+      font-weight: 600;
+      margin-bottom: 1mm;
+      line-height: 1.15;
+    }
+
+    .lot-card .mini-bar {
+      height: 5px;
+      background: var(--rule);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 1.5mm;
+    }
+
+    .lot-card .mini-bar span {
+      display: block;
+      height: 100%;
+      background: var(--violet);
+      border-radius: 3px;
+    }
+
+    .lot-card .mini-pct {
+      font-family: var(--mono);
+      font-size: 6.5pt;
+      color: var(--ink-30);
+      text-align: right;
+      margin-top: 1mm;
+    }
+
+    .shots-duo {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 3mm;
+      align-items: start;
+    }
+
+    .shot-wrap.fit {
+      border-radius: 10px;
+      border: 1px solid var(--rule);
+      overflow: hidden;
+      line-height: 0;
+      box-shadow: 0 4px 20px rgba(19,19,32,.07);
+      background: #f4f6f8;
+    }
+
+    .shot-wrap.fit img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .stack-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2mm;
+      margin-top: 2.5mm;
+    }
+
+    .stack-tags span {
+      font-family: var(--mono);
+      font-size: 7pt;
+      letter-spacing: .04em;
+      padding: 2mm 2.5mm;
+      border-radius: 6px;
+      background: #fff;
+      border: 1px solid var(--rule);
+      color: var(--ink-60);
+    }
+
+    .annex-ref {
+      margin-top: 3mm;
+      padding: 3mm 3.5mm;
+      background: var(--violet-soft);
+      border-radius: 10px;
+      font-size: 8.5pt;
+      color: var(--ink-60);
+      line-height: 1.45;
+    }
+
+    .annex-ref strong { color: var(--ink); }
+
+    .flow-3 {
+      display: grid;
+      grid-template-columns: 1fr 8mm 1fr 8mm 1fr;
+      gap: 0;
+      align-items: stretch;
+      margin-top: 3mm;
+    }
+
+    .flow-box {
+      border-radius: 12px;
+      border: 1px solid var(--rule);
+      padding: 4mm;
+      background: #fff;
+    }
+
+    .flow-box.warn { background: #FFFBF0; border-color: #E6C84A; }
+    .flow-box.mid { background: var(--violet-soft); border-color: var(--violet); }
+    .flow-box.ok { background: #f4fdf7; border-color: #8fd4a8; }
+    .flow-box.bad { background: #FFF5F5; border-color: #F0C4C4; }
+    .flow-box h3 { font-family: var(--display); font-size: 10.5pt; margin: 1.5mm 0; }
+    .flow-box p { font-size: 8.5pt; color: var(--ink-60); line-height: 1.4; }
+    .flow-box .k { font-family: var(--mono); font-size: 7pt; text-transform: uppercase; letter-spacing: .06em; color: var(--violet); margin-bottom: 1mm; }
+    .flow-arrow { display: grid; place-items: center; color: var(--violet); font-size: 18pt; font-weight: 600; }
+
+    .blind-flow {
+      display: grid;
+      grid-template-columns: 1fr 6mm 1fr 6mm 1fr;
+      gap: 0;
+      align-items: stretch;
+      margin: 3mm 0;
+    }
+
+    .blind-box {
+      border-radius: 12px;
+      border: 1px solid var(--rule);
+      padding: 3.5mm;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: 2mm;
+    }
+
+    .blind-box .icon {
+      width: 9mm;
+      height: 9mm;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-size: 14pt;
+    }
+
+    .blind-box.bad { background: #FFF5F5; border-color: #F0C4C4; }
+    .blind-box.bad .icon { background: #FFE0E0; }
+    .blind-box.warn { background: #FFFBF0; border-color: #E6C84A; }
+    .blind-box.warn .icon { background: #FFF0C2; }
+    .blind-box.ok { background: var(--violet-soft); border-color: var(--violet); }
+    .blind-box.ok .icon { background: #D8D0FC; }
+
+    .blind-box h3 { font-family: var(--display); font-size: 10pt; }
+    .blind-box p { font-size: 8pt; color: var(--ink-60); line-height: 1.4; }
+
+    .scope-table { font-size: 8pt; }
+    .scope-table td.desc { font-size: 7.5pt; color: var(--ink-60); line-height: 1.35; }
+
+    .price-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4mm;
+      background: var(--ink);
+      color: #fff;
+      border-radius: 12px;
+      padding: 3.5mm 4.5mm;
+      margin-bottom: 4mm;
+    }
+
+    .price-strip .big {
+      font-family: var(--display);
+      font-size: 26pt;
+      font-weight: 600;
+      color: #C4B8FF;
+      letter-spacing: -0.03em;
+    }
+
+    .price-strip p { font-size: 9pt; color: #9E9EB0; max-width: 52ch; }
+
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5mm; }
+
+    .compare-col {
+      border-radius: 12px;
+      padding: 4mm;
+      border: 1px solid var(--rule);
+      background: #fff;
+      min-height: 54mm;
+    }
+
+    .compare-col.pick {
+      border: 2px solid var(--violet);
+      background: var(--violet-soft);
+      box-shadow: 0 6px 24px rgba(108,92,231,.12);
+    }
+
+    .compare-col .price {
+      font-family: var(--display);
+      font-size: 22pt;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      margin: 2mm 0;
+    }
+
+    .compare-col.pick .price { color: var(--violet); font-size: 26pt; }
+
+    .compare-col ul {
+      list-style: none;
+      font-size: 8.5pt;
+      color: var(--ink-60);
+      line-height: 1.45;
+    }
+
+    .compare-col li { padding: 1mm 0 1mm 4mm; position: relative; }
+    .compare-col li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 2.4mm;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--violet);
+    }
+
+    .compare-col.dim { opacity: .88; }
+    .compare-col.flowlab { border-style: dashed; border-color: #C8C8D4; }
+    .compare-col .price.small { font-size: 18pt; }
+    .compare-col .k {
+      font-family: var(--mono);
+      font-size: 7pt;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--ink-30);
+    }
+
+    .plan-layout { display: flex; flex-direction: column; gap: 3mm; }
+
+    .plan-timeline {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5mm;
+    }
+
+    .plan-step {
+      padding: 2.5mm 3mm;
+      border-radius: 10px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid #2E2E42;
+    }
+
+    .plan-step .when {
+      font-family: var(--mono);
+      font-size: 7pt;
+      color: #C4B8FF;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .plan-step h4 {
+      font-family: var(--display);
+      font-size: 10pt;
+      color: #fff;
+      margin: 1mm 0 .5mm;
+      font-weight: 600;
+    }
+
+    .plan-step p { font-size: 7.5pt; color: #E8E8F2; line-height: 1.35; opacity: .9; }
+
+    .plan-bottom {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.1fr;
+      gap: 2.5mm;
+      align-items: stretch;
+    }
+
+    .fact-card {
+      padding: 2.5mm 3mm;
+      border-radius: 10px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid #2E2E42;
+    }
+
+    .fact-card .k { font-family: var(--mono); font-size: 6.5pt; color: #C4B8FF; text-transform: uppercase; letter-spacing: .06em; }
+    .fact-card .val { font-family: var(--display); font-size: 12pt; font-weight: 600; color: #fff; margin: 1mm 0; }
+    .fact-card p { font-size: 7.5pt; color: #E8E8F2; line-height: 1.4; opacity: .9; }
+
+    .plan-cta {
+      padding: 2.5mm 3mm;
+      border-radius: 10px;
+      background: linear-gradient(135deg, rgba(108,92,231,.35), rgba(108,92,231,.12));
+      border: 1px solid rgba(196,184,255,.35);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .plan-cta h2 { color: #fff; font-size: 10pt; margin: 1mm 0; line-height: 1.2; font-weight: 600; }
+    .plan-cta .amount { font-family: var(--display); font-size: 16pt; font-weight: 600; color: #C4B8FF; margin-top: 1mm; }
+    .plan-cta p { font-size: 7.5pt; color: #E8E8F2; margin-top: 1mm; line-height: 1.35; opacity: .9; }
+
+    .annex-cover {
+      background: var(--ink);
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .annex-cover h1 { color: #fff; font-size: 24pt; max-width: 100%; }
+    .annex-cover p { color: #9E9EB0; margin-top: 4mm; font-size: 11pt; }
+
+    .roadmap-tier { margin-bottom: 3mm; }
+    .roadmap-tier h3 {
+      font-family: var(--display);
+      font-size: 10pt;
+      margin-bottom: 1.5mm;
+      display: flex;
+      align-items: center;
+      gap: 2mm;
+    }
+
+    .roadmap-tier h3 .tag {
+      font-family: var(--mono);
+      font-size: 6.5pt;
+      padding: 1.5mm 2.5mm;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .tag.now { background: var(--violet-soft); color: var(--violet); }
+    .tag.next { background: #FFF4E5; color: #B86E00; }
+    .tag.later { background: #F0F0F4; color: var(--ink-60); }
+
+    .roadmap-tier ul {
+      font-size: 8pt;
+      color: var(--ink-60);
+      line-height: 1.5;
+      padding-left: 4mm;
+      columns: 2;
+      column-gap: 6mm;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3.5mm;
+      margin-top: 3mm;
+    }
+
+    .team-card {
+      display: grid;
+      grid-template-columns: 22mm 1fr;
+      gap: 3.5mm;
+      padding: 3.5mm;
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      background: #fff;
+      align-items: center;
+    }
+
+    .team-card .av {
+      width: 22mm;
+      height: 22mm;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      flex-shrink: 0;
+    }
+
+    .team-card .av img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .team-card .av.candice img { object-position: center 12%; transform: scale(1.08); }
+    .team-card .av.sami img { object-position: center 10%; transform: scale(1.22); }
+    .team-card .av.yanis img { object-position: center 18%; transform: scale(1.28); }
+    .team-card .av.jonathan img { object-position: center 25%; transform: scale(1.25); }
+
+    .team-card h3 { font-family: var(--display); font-size: 10pt; margin-bottom: .5mm; }
+    .team-card .role { font-family: var(--mono); font-size: 7pt; color: var(--violet); text-transform: uppercase; letter-spacing: .06em; }
+    .team-card .bio { font-size: 8pt; color: var(--ink-60); line-height: 1.45; margin-top: 1.5mm; }
+
+    .team-intro {
+      font-size: 10pt;
+      color: var(--ink-60);
+      line-height: 1.5;
+      max-width: 72ch;
+      margin-bottom: 1mm;
+    }
+
+    @media screen {
+      body { padding: 20px; }
+      .slide { margin: 0 auto 24px; box-shadow: 0 8px 40px rgba(0,0,0,.12); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- 01 Couverture -->
+<section class="slide dark">
+  <div class="mesh"></div>
+  <div class="header">
+    <div class="header-logos">
+      <div class="logo-row"><img src="assets/pluton-icon.svg" alt="" class="logo-img" /> Pluton Corp</div>
+      <div class="logo-row client"><img src="assets/logo-klesis.png" alt="Klesis Junior" class="logo-img klesis" /></div>
+    </div>
+    <span class="slide-num">01 / 07</span>
+  </div>
+  <div class="content">
+    <span class="pill">Proposition · Juillet 2026</span>
+    <h1>Klesis Junior<br><em>reprise & déploiement</em></h1>
+    <p class="lead">Suite à la fermeture de Flowlab : reprise du produit (<strong>développé depuis avril 2026</strong>), pilote sur <strong>2 campus</strong> et accompagnement jusqu'à la recette terrain.</p>
+  </div>
+  <div class="footer-slide"><span>Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
+</section>
+
+<!-- 02 État du projet -->
+<section class="slide">
+  <div class="mesh"></div>
+  <div class="header">
+    <div class="header-logos">
+      <div class="logo-row"><img src="assets/pluton-icon.svg" alt="" class="logo-img" /> Pluton Corp</div>
+      <div class="logo-row client"><img src="assets/logo-klesis.png" alt="" class="logo-img klesis" /></div>
+    </div>
+    <span class="slide-num">02 / 07</span>
+  </div>
+  <div class="content top">
+    <span class="pill">État du projet</span>
+    <h2>~78 % livré · prêt pour un pilote encadré</h2>
+    <p class="lead" style="font-size:10pt;margin-bottom:3mm">L'application est <strong>fonctionnelle en préproduction</strong>. Il reste à sécuriser la prod, valider les données migrées et faire tourner l'outil chez de vrais franchisés avant d'étendre.</p>
+    <div class="global-progress">
+      <span class="pct">78%</span>
+      <div style="flex:1">
+        <p style="font-family:var(--display);font-size:10pt;font-weight:600;margin-bottom:2mm">Avancement global produit</p>
+        <div class="bar-track"><div class="bar-fill" style="width:78%"></div></div>
+      </div>
+    </div>
+    <p style="font-size:8.5pt;color:var(--ink-60);margin-bottom:2.5mm"><strong style="color:var(--ink)">Fenêtre cible : août → octobre 2026</strong> · passation, pilote campus A & B, recette</p>
+    <div class="lot-grid">
+      <div class="lot-card"><h3>Funnel inscription</h3><div class="mini-bar"><span style="width:90%"></span></div><div class="mini-pct">90 %</div></div>
+      <div class="lot-card"><h3>Admin & listes</h3><div class="mini-bar"><span style="width:85%"></span></div><div class="mini-pct">85 %</div></div>
+      <div class="lot-card"><h3>Paiements Stripe</h3><div class="mini-bar"><span style="width:80%"></span></div><div class="mini-pct">80 %</div></div>
+      <div class="lot-card"><h3>Pennylane</h3><div class="mini-bar"><span style="width:75%"></span></div><div class="mini-pct">75 %</div></div>
+      <div class="lot-card"><h3>Emails Brevo</h3><div class="mini-bar"><span style="width:75%"></span></div><div class="mini-pct">75 %</div></div>
+      <div class="lot-card"><h3>Catalogue</h3><div class="mini-bar"><span style="width:85%"></span></div><div class="mini-pct">85 %</div></div>
+      <div class="lot-card"><h3>Migration data</h3><div class="mini-bar"><span style="width:60%"></span></div><div class="mini-pct">60 %</div></div>
+      <div class="lot-card"><h3>Déploiement prod</h3><div class="mini-bar"><span style="width:40%"></span></div><div class="mini-pct">40 %</div></div>
+      <div class="lot-card"><h3>Recette terrain</h3><div class="mini-bar"><span style="width:30%"></span></div><div class="mini-pct">30 %</div></div>
+    </div>
+  </div>
+  <div class="footer-slide"><span>Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
+</section>
+
+<!-- 03 Ce qui tourne -->
+<section class="slide slide-product">
+  <div class="mesh"></div>
+  <div class="header">
+    <div class="header-logos">
+      <div class="logo-row"><img src="assets/pluton-icon.svg" alt="" class="logo-img" /> Pluton Corp</div>
+      <div class="logo-row client"><img src="assets/logo-klesis.png" alt="" class="logo-img klesis" /></div>
+    </div>
+    <span class="slide-num">03 / 07</span>
+  </div>
+  <div class="content top">
+    <span class="pill">Produit</span>
+    <h2>Ce qui tourne déjà</h2>
+    <p class="lead">Funnel public, back-office admin, paiements Stripe multi-campus, facturation Pennylane et emails Brevo sont en place. L'équipe peut déjà travailler en préprod sur les parcours critiques.</p>
+    <div class="shots-duo">
+      <div class="shot-wrap fit portrait">
+        <img src="assets/screenshot-inscription.png" alt="Funnel inscription Klesis Junior" />
+      </div>
+      <div class="shot-wrap fit landscape">
+        <img src="assets/screenshot-campus.png" alt="Admin campus Klesis Junior" />
+      </div>
+    </div>
+    <div class="stack-tags">
+      <span>Next.js · Cloudflare</span>
+      <span>API Hono · Railway</span>
+      <span>PostgreSQL · Supabase</span>
+      <span>Stripe · Pennylane · Brevo</span>
+      <span>Sentry</span>
+    </div>
+    <div class="annex-ref">
+      <strong>Contexte Flowlab</strong> : développement depuis avril 2026, retours utilisateurs intégrés (juin 2026). Pluton Corp reprend le projet avec continuité : Candice a piloté le produit côté Flowlab.
+    </div>
+  </div>
+  <div class="footer-slide"><span>Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
+</section>
+
+<!-- 04 Stratégie pilote -->
+<section class="slide">
+  <div class="mesh"></div>
+  <div class="header">
+    <div class="header-logos">
+      <div class="logo-row"><img src="assets/pluton-icon.svg" alt="" class="logo-img" /> Pluton Corp</div>
+      <div class="logo-row client"><img src="assets/logo-klesis.png" alt="" class="logo-img klesis" /></div>
+    </div>
+    <span class="slide-num">04 / 07</span>
+  </div>
+  <div class="content top">
+    <span class="pill">Déploiement</span>
+    <h2>Pas de bascule globale d'un coup</h2>
+    <p class="lead" style="font-size:9.5pt;margin-bottom:2mm">Avec des dizaines de campus franchisés, un big bang serait risqué. On valide d'abord sur <strong>Campus pilote A & B</strong> : vrais parents, vrais paiements, vraie équipe terrain.</p>
+    <div class="blind-flow">
+      <div class="blind-box bad">
+        <div class="icon">✕</div>
+        <h3>Big bang</h3>
+        <p>Bascule de tous les campus d'un coup. Données, Stripe, Brevo, formation : trop de variables simultanées.</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="blind-box warn">
+        <div class="icon">⚠</div>
+        <h3>Prod sans recette</h3>
+        <p>Mettre en ligne sans tester chez des franchisés. Les écarts métier apparaissent en production, sous pression.</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="blind-box bad">
+        <div class="icon">↓</div>
+        <h3>Confiance entamée</h3>
+        <p>Parents et équipes perdent le fil entre Softr, Klesis App et le nouvel outil.</p>
+      </div>
+    </div>
+    <div class="flow-3" style="margin-top:3mm">
+      <div class="flow-box ok">
+        <div class="k">Notre approche</div>
+        <h3>2 campus pilotes</h3>
+        <p>Campus A & B volontaires. Config Stripe, Brevo et données propres par campus. Softr reste en parallèle le temps du pilote.</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box mid">
+        <div class="k">Recette terrain</div>
+        <h3>Vrais flux métier</h3>
+        <p>Inscriptions, acomptes, relances, exports. Corrections ciblées sur retours franchisés et équipe centrale.</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box ok">
+        <div class="k">Extension</div>
+        <h3>Bascule progressive</h3>
+        <p>Plan de rollout campus par campus. Le forfait couvre le pilote ; l'extension se chiffre ensuite.</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-slide"><span>Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
+</section>
+
+<!-- 05 Périmètre -->
+<section class="slide">
+  <div class="mesh"></div>
+  <div class="header">
+    <div class="header-logos">
+      <div class="logo-row"><img src="assets/pluton-icon.svg" alt="" class="logo-img" /> Pluton Corp</div>
+      <div class="logo-row client"><img src="assets/logo-klesis.png" alt="" class="logo-img klesis" /></div>
+    </div>
+    <span class="slide-num">05 / 07</span>
+  </div>
+  <div class="content top">
+    <span class="pill">Périmètre</span>
+    <h2>Ce qu'on s'engage à livrer</h2>
+    <table class="scope-table">
+      <thead><tr><th>Phase</th><th>Livrable</th><th>Description</th><th>J · €</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>1</strong></td>
+          <td><strong>Passation technique</strong></td>
+          <td class="desc">Reprise repo, infra (Cloudflare, Railway, Supabase), accès, doc runbook, audit état des lieux. Livrable validé avant toute suite.</td>
+          <td><strong>5 j · 4 000 €</strong></td>
+        </tr>
+        <tr>
+          <td><strong>2</strong></td>
+          <td><strong>Pilote campus A & B</strong></td>
+          <td class="desc">Stripe prod, QA flux critiques (inscription → paiement), formation franchisés, go-live, support 2 sem. Déclenchée si Phase 1 OK.</td>
+          <td><strong>8 j · 6 000 €</strong></td>
+        </tr>
+        <tr class="highlight">
+          <td colspan="2"><strong>Engagement max</strong></td>
+          <td class="desc">5 + 8 j · périmètre figé par phase · pas de facturation ouverte. Le reste du backlog en régie ensuite.</td>
+          <td><strong>10 000 €</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="lead" style="margin-top:4mm;font-size:9pt"><strong>Hors scope forfait :</strong> migration globale tous campus, PayDunya Afrique, features « requested next » (parrainage, RDV Eunice…), nice to have, Brevo par campus pour l'ensemble du réseau.</p>
+  </div>
+  <div class="footer-slide"><span>Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
+</section>
+
+<!-- 06 Chiffrage -->
+<section class="slide">
+  <div class="mesh"></div>
+  <div class="header">
+    <div class="header-logos">
+      <div class="logo-row"><img src="assets/pluton-icon.svg" alt="" class="logo-img" /> Pluton Corp</div>
+      <div class="logo-row client"><img src="assets/logo-klesis.png" alt="" class="logo-img klesis" /></div>
+    </div>
+    <span class="slide-num">06 / 07</span>
+  </div>
+  <div class="content top">
+    <span class="pill">Chiffrage</span>
+    <h2>Deux phases : pas de surprise</h2>
+    <div class="price-strip">
+      <div>
+        <div class="big">4 000 € HT</div>
+        <p style="font-size:8pt;color:#C4B8FF;margin-top:1mm">Phase 1 · passation</p>
+      </div>
+      <p>Puis <strong style="color:#fff">6 000 €</strong> Phase 2 (pilote A & B, 8 j) si vous validez. <strong style="color:#fff">10 000 € max</strong> : périmètre verrouillé par phase, pas de dérive comme Flowlab. Maintenance 600 €/mois.</p>
+    </div>
+    <div class="grid-4">
+      <div class="compare-col flowlab dim">
+        <div class="k">Expérience Flowlab</div>
+        <div class="price small">700 €/j</div>
+        <p style="font-size:7.5pt;color:var(--ink-60)">+ 600 €/mois maintenance</p>
+        <ul>
+          <li>Deploy & recette sous-estimés</li>
+          <li>Périmètre qui a dérivé</li>
+          <li>Agence en fermeture</li>
+          <li>Facturation opaque</li>
+        </ul>
+      </div>
+      <div class="compare-col dim">
+        <div class="k">Freelance senior</div>
+        <div class="price small">~12 k€</div>
+        <p style="font-size:7.5pt;color:var(--ink-60)">13 j à 900 € · dev seul</p>
+        <ul>
+          <li>Pas de reprise structurée</li>
+          <li>Pas d'équipe infra</li>
+          <li>Recette franchisés en sus</li>
+          <li>Même risque de dérive</li>
+        </ul>
+      </div>
+      <div class="compare-col dim">
+        <div class="k">Forfait global</div>
+        <div class="price small">14 k€+</div>
+        <p style="font-size:7.5pt;color:var(--ink-60)">Tout d'un coup</p>
+        <ul>
+          <li>Engagement lourd d'entrée</li>
+          <li>Difficile à valider en comité</li>
+          <li>Rappelle les mauvaises surprises</li>
+          <li>Peu de flexibilité</li>
+        </ul>
+      </div>
+      <div class="compare-col pick">
+        <div class="k">Pluton Corp</div>
+        <div class="price">4 000 €</div>
+        <p style="font-size:7.5pt;color:var(--ink-60)">puis 6 000 € · max 10 k€</p>
+        <ul>
+          <li>Phase 1 seule pour démarrer</li>
+          <li>Périmètre figé par écrit</li>
+          <li>Continuité produit (Candice)</li>
+          <li>600 €/mois ensuite</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-slide"><span>Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
+</section>
+
+<!-- 07 Planning -->
+<section class="slide dark">
+  <div class="mesh"></div>
+  <div class="header">
+    <div class="header-logos">
+      <div class="logo-row"><img src="assets/pluton-icon.svg" alt="" class="logo-img" /> Pluton Corp</div>
+      <div class="logo-row client"><img src="assets/logo-klesis.png" alt="" class="logo-img klesis" /></div>
+    </div>
+    <span class="slide-num">07 / 07</span>
+  </div>
+  <div class="content top">
+    <div class="plan-layout">
+      <div>
+        <span class="pill">Planning & modalités</span>
+        <h2 style="color:#fff;margin-top:1.5mm;font-size:18pt">Août → octobre 2026</h2>
+        <p style="font-size:8pt;color:#fff;margin-top:1mm;opacity:.85">13 jours en 2 phases : vous ne payez la Phase 2 qu'après validation de la passation.</p>
+      </div>
+      <div class="plan-timeline">
+        <div class="plan-step"><div class="when">Août · Phase 1</div><h4>Passation · 5 j</h4><p>4 000 € · infra, accès, audit · livrable de reprise validé</p></div>
+        <div class="plan-step"><div class="when">Sept. · Phase 2</div><h4>Pilote · 8 j</h4><p>6 000 € · Stripe prod A & B, QA flux critiques, formation franchisés</p></div>
+        <div class="plan-step"><div class="when">Octobre</div><h4>Recette & bilan</h4><p>Validation terrain · plan extension · support 2 sem. · maintenance</p></div>
+      </div>
+      <div class="plan-bottom">
+        <div class="fact-card">
+          <div class="k">Phase 1</div>
+          <div class="val">4 000 € HT</div>
+          <p>50 % commande · <strong>2 000 €</strong><br>50 % livraison passation · <strong>2 000 €</strong></p>
+        </div>
+        <div class="fact-card">
+          <div class="k">Phase 2 · optionnelle</div>
+          <div class="val">6 000 € HT</div>
+          <p>8 j · déclenchée si Phase 1 OK<br>50/50 début pilote / go-live</p>
+        </div>
+        <div class="plan-cta">
+          <span class="pill">Prochaine étape</span>
+          <h2>Lancer la Phase 1 : passation</h2>
+          <p>Pas d'engagement sur le pilote tant que la reprise n'est pas validée.</p>
+          <p class="amount">4 000 € HT</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-slide"><span>Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
+</section>
+
+<!-- ANNEXE -->
+<section class="slide annex-cover">
+  <div class="mesh"></div>
+  <div class="content" style="align-items:center">
+    <span class="pill">Annexe</span>
+    <h1>Détail technique</h1>
+    <p>Estimation par phase · roadmap · équipe</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="mesh"></div>
+  <div class="header">
+    <div class="header-logos">
+      <div class="logo-row"><img src="assets/pluton-icon.svg" alt="" class="logo-img" /> Pluton Corp</div>
+      <div class="logo-row client"><img src="assets/logo-klesis.png" alt="" class="logo-img klesis" /></div>
+    </div>
+    <span class="slide-num">Annexe A1</span>
+  </div>
+  <div class="content top">
+    <span class="pill">Estimation</span>
+    <h2>Phase 1 : Passation · 5 j · 4 000 €</h2>
+    <p class="lead" style="font-size:9.5pt;margin-bottom:4mm">Reprise technique cadrée. Livrable validé par Klesis avant de déclencher la Phase 2.</p>
+    <table>
+      <thead><tr><th>Poste</th><th>Contenu</th><th class="money">Jours</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Accès</strong></td><td>Transfert GitHub, Cloudflare, Railway, Supabase, Sentry</td><td class="money">1</td></tr>
+        <tr><td><strong>Infra</strong></td><td>Revue secrets, variables d'environnement, comptes et droits</td><td class="money">1</td></tr>
+        <tr><td><strong>Runbook</strong></td><td>Doc deploy / rollback + handover équipe centrale Klesis</td><td class="money">1,5</td></tr>
+        <tr><td><strong>Audit</strong></td><td>État des lieux : backlog Linear, blocants prod, dette connue</td><td class="money">1,5</td></tr>
+        <tr class="highlight"><td colspan="2"><strong>Total Phase 1</strong></td><td class="money"><strong>5 j · 4 000 €</strong></td></tr>
+      </tbody>
+    </table>
+    <div class="grid-2" style="margin-top:5mm">
+      <div class="card"><div class="k">Livrable</div><h3>Reprise validée</h3><p>Accès opérationnels, doc à jour, liste des blocants prod priorisés. Go / no-go pour le pilote.</p></div>
+      <div class="card"><div class="k">Échéancier</div><h3>4 000 € HT</h3><p>50 % à la commande · 2 000 €<br>50 % à la livraison · 2 000 €</p></div>
+    </div>
+  </div>
+  <div class="footer-slide"><span>Annexe · Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
+</section>
+
+<section class="slide">
+  <div class="mesh"></div>
+  <div class="header">
+    <div class="header-logos">
+      <div class="logo-row"><img src="assets/pluton-icon.svg" alt="" class="logo-img" /> Pluton Corp</div>
+      <div class="logo-row client"><img src="assets/logo-klesis.png" alt="" class="logo-img klesis" /></div>
+    </div>
+    <span class="slide-num">Annexe A2</span>
+  </div>
+  <div class="content top">
+    <span class="pill">Estimation</span>
+    <h2>Phase 2 : Pilote · 8 j · 6 000 €</h2>
+    <p class="lead" style="font-size:9.5pt;margin-bottom:4mm">Phase critique : prod réelle sur campus A & B. Là où Flowlab avait sous-estimé deploy et recette.</p>
+    <table>
+      <thead><tr><th>Poste</th><th>Contenu</th><th class="money">Jours</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Stripe prod</strong></td><td>Campus A & B : webhooks, clés API, test paiement bout en bout</td><td class="money">2,5</td></tr>
+        <tr><td><strong>QA terrain</strong></td><td>Flux critique : inscription → acompte → Pennylane</td><td class="money">2</td></tr>
+        <tr><td><strong>Correctifs</strong></td><td>Bugs bloquants issus de la QA (périmètre pilote uniquement)</td><td class="money">2</td></tr>
+        <tr><td><strong>Go-live</strong></td><td>Formation franchisés A & B + support semaine 1</td><td class="money">1,5</td></tr>
+        <tr class="highlight"><td colspan="2"><strong>Total Phase 2</strong></td><td class="money"><strong>8 j · 6 000 €</strong></td></tr>
+      </tbody>
+    </table>
+    <table style="margin-top:4mm">
+      <thead><tr><th></th><th>Synthèse</th><th>Jours</th><th class="money">Montant</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Passation</td><td>5</td><td class="money">4 000 €</td></tr>
+        <tr><td>2</td><td>Pilote campus A & B</td><td>8</td><td class="money">6 000 €</td></tr>
+        <tr class="highlight"><td colspan="2"><strong>Total si les 2 phases</strong></td><td><strong>13 j</strong></td><td class="money"><strong>10 000 €</strong></td></tr>
+      </tbody>
+    </table>
+    <div class="grid-3" style="margin-top:4mm">
+      <div class="card"><div class="k">Phase 1</div><h3>800 €/j</h3><p>Passation cadrée : livrable clair avant d'aller plus loin.</p></div>
+      <div class="card"><div class="k">Phase 2</div><h3>750 €/j</h3><p>Prod réelle, QA terrain, franchisés : budget concentré sur le risque.</p></div>
+      <div class="card"><div class="k">Leçon Flowlab</div><h3>Pas de dérive</h3><p>Chaque phase = livrable + prix fixe. Rien en plus sans accord écrit.</p></div>
+    </div>
+  </div>
+  <div class="footer-slide"><span>Annexe · Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
+</section>
+
+<section class="slide">
+  <div class="mesh"></div>
+  <div class="header">
+    <div class="header-logos">
+      <div class="logo-row"><img src="assets/pluton-icon.svg" alt="" class="logo-img" /> Pluton Corp</div>
+      <div class="logo-row client"><img src="assets/logo-klesis.png" alt="" class="logo-img klesis" /></div>
+    </div>
+    <span class="slide-num">Annexe B</span>
+  </div>
+  <div class="content top">
+    <span class="pill">Roadmap</span>
+    <h2>Ce qui reste après le pilote</h2>
+    <p class="lead" style="font-size:9pt;margin-bottom:3mm">Synthèse du backlog Linear : classé par palier d'engagement. Le forfait couvre le pilote ; le reste se priorise ensemble après la recette.</p>
+    <div class="roadmap-tier">
+      <h3><span class="tag now">Pilote · inclus</span> Bloquants go-live campus A & B</h3>
+      <ul>
+        <li>Stripe prod + webhooks par campus</li>
+        <li>Flux inscription → paiement → Pennylane E2E</li>
+        <li>Audit cohérence data finance (campus pilotes)</li>
+        <li>QA critique (~10 parcours : funnel, multi-offres, relances…)</li>
+        <li>Formation franchisés & support 2 semaines</li>
+      </ul>
+    </div>
+    <div class="roadmap-tier">
+      <h3><span class="tag next">Palier 2</span> Migration Softr & extension réseau</h3>
+      <ul>
+        <li>Rollout campus par campus (hors pilote)</li>
+        <li>Migration data complète & année scolaire</li>
+        <li>Brevo / expéditeur par campus (convention franchisés)</li>
+        <li>Multi-campus par franchisé</li>
+        <li>Campagnes réinscription admin</li>
+      </ul>
+    </div>
+    <div class="roadmap-tier">
+      <h3><span class="tag later">Palier 3</span> Features next & nice to have</h3>
+      <ul>
+        <li>PayDunya Afrique (Abidjan, Dakar)</li>
+        <li>Parrainage, RDV Super Parent × SB (Eunice)</li>
+        <li>Dashboard KPI, rappels pré-atelier</li>
+        <li>Codes promo UI, carte cadeau, top clients CA</li>
+        <li>Événements & recrutement superbooster (à trancher)</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-slide"><span>Annexe · Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
+</section>
+
+<section class="slide">
+  <div class="mesh"></div>
+  <div class="header">
+    <div class="header-logos">
+      <div class="logo-row"><img src="assets/pluton-icon.svg" alt="" class="logo-img" /> Pluton Corp</div>
+      <div class="logo-row client"><img src="assets/logo-klesis.png" alt="" class="logo-img klesis" /></div>
+    </div>
+    <span class="slide-num">Annexe C</span>
+  </div>
+  <div class="content top">
+    <span class="pill">Équipe</span>
+    <h2>Pluton Corp</h2>
+    <p class="team-intro">Quatre profils complémentaires, rodés ensemble depuis 2020. Candice a piloté Klesis Junior côté Flowlab : continuité produit et relation client garanties.</p>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="av candice"><img src="assets/team/candice.jpg" alt="Candice Guitton" /></div>
+        <div>
+          <h3>Candice Guitton</h3>
+          <div class="role">Associée · 8 ans</div>
+          <p class="bio">Front, architecture, produit et design UI/UX. Pilote Klesis depuis le cadrage Flowlab : interlocutrice principale.</p>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="av sami"><img src="assets/team/sami.png" alt="Sami Bekrar" /></div>
+        <div>
+          <h3>Sami Bekrar</h3>
+          <div class="role">Associé · 10 ans</div>
+          <p class="bio">Architecture full-stack, DevOps, automatisation et IA. Vision technique et structuration des livraisons.</p>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="av yanis"><img src="assets/team/yanis.png" alt="Yanis Bekrar" /></div>
+        <div>
+          <h3>Yanis Bekrar</h3>
+          <div class="role">Infrastructure · 17 ans</div>
+          <p class="bio">Infra, backend, déploiement et DevOps : Cloudflare, Railway, fiabilité et mise en production.</p>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="av jonathan"><img src="assets/team/jonathan.png" alt="Jonathan Audhasse" /></div>
+        <div>
+          <h3>Jonathan Audhasse</h3>
+          <div class="role">Backend · 10 ans</div>
+          <p class="bio">Backend, intégrations API (Stripe, Pennylane, Brevo) et logique métier paiements.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-slide"><span>Annexe · Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
+</section>
+
+</body>
+</html>
