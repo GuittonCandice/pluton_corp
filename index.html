@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pluton Corp · Agence de développement</title>
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FAFAF8;
+  --ink:#131320;
+  --ink-60:#5B5B70;
+  --ink-30:#9E9EB0;
+  --rule:#E5E4E9;
+  --violet:#6C5CE7;
+  --violet-soft:#EFEDFE;
+  --display:'Sora',sans-serif;
+  --body:'Inter',sans-serif;
+  --mono:'JetBrains Mono',monospace;
+  --gut:clamp(20px,4vw,64px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,.display{font-family:var(--display)}
+.wrap{max-width:1220px;margin:0 auto;padding:0 var(--gut);position:relative;z-index:1}
+
+/* mesh de fond, très désaturé : la seule concession au gradient */
+.mesh{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(46rem 34rem at 82% 6%, rgba(108,92,231,.16), transparent 62%),
+    radial-gradient(38rem 30rem at 12% 30%, rgba(92,180,231,.10), transparent 60%),
+    radial-gradient(30rem 26rem at 70% 88%, rgba(231,92,180,.07), transparent 60%);}
+
+nav{position:sticky;top:0;z-index:50;background:rgba(250,250,248,.8);backdrop-filter:blur(14px);border-bottom:1px solid var(--rule)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:70px}
+.logo{font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:-.02em;display:flex;align-items:center;gap:9px}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--violet);box-shadow:0 0 0 4px var(--violet-soft)}
+.nav-links{display:flex;gap:30px;font-size:14px;color:var(--ink-60)}
+.nav-links a:hover{color:var(--violet)}
+.nav-cta{font-size:14px;font-weight:500;background:var(--ink);color:var(--paper);padding:10px 18px;border-radius:999px;transition:.2s}
+.nav-cta:hover{background:var(--violet)}
+@media(max-width:880px){.nav-links{display:none}}
+
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:var(--gut);align-items:center;padding:clamp(48px,8vw,96px) 0}
+.pill{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--violet);background:var(--violet-soft);padding:7px 14px;border-radius:999px;margin-bottom:26px}
+h1{font-size:clamp(36px,4.9vw,62px);line-height:1.06;letter-spacing:-.035em;font-weight:600;max-width:15ch}
+h1 em{font-style:normal;color:var(--violet)}
+.lede{font-size:clamp(17px,1.5vw,19px);color:var(--ink-60);margin-top:24px;max-width:46ch}
+.actions{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
+.btn{display:inline-block;font-size:15px;font-weight:500;padding:14px 26px;border-radius:999px;transition:.2s;font-family:var(--display);white-space:nowrap}
+.btn-p{background:var(--violet);color:#fff}
+.btn-p:hover{background:#5A4BD1;transform:translateY(-1px)}
+.btn-s{border:1px solid var(--rule);background:rgba(255,255,255,.6)}
+.btn-s:hover{border-color:var(--ink)}
+.assur{margin-top:32px;display:flex;flex-wrap:wrap;gap:10px 22px;list-style:none}
+.assur li{font-size:13px;color:var(--ink-60);display:flex;gap:7px;align-items:center}
+.assur li::before{content:"✓";color:var(--violet);font-weight:600}
+#orb{width:100%;height:clamp(320px,40vw,470px);display:block;cursor:crosshair}
+@media(max-width:920px){.hero{grid-template-columns:1fr}.hero-fig{order:-1}}
+
+section{padding:clamp(56px,7vw,92px) 0}
+.sec-head{max-width:60ch;margin-bottom:48px}
+.sec-label{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-30);margin-bottom:14px}
+h2{font-size:clamp(26px,3.1vw,38px);line-height:1.18;letter-spacing:-.03em;font-weight:600}
+.sec-head p{color:var(--ink-60);margin-top:14px;font-size:17px}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.card{background:rgba(255,255,255,.72);backdrop-filter:blur(8px);border:1px solid var(--rule);border-radius:18px;padding:26px;transition:.22s}
+.card:hover{border-color:var(--violet);transform:translateY(-3px)}
+.card .q{font-family:var(--display);font-size:18px;font-weight:400;line-height:1.4;letter-spacing:-.02em;margin-bottom:16px}
+.card .a{font-size:13.5px;color:var(--ink-60)}
+.card .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--violet);display:block;margin-bottom:5px}
+
+.proof{background:var(--ink);color:var(--paper);border-radius:28px;padding:clamp(36px,5vw,64px);margin:0 var(--gut)}
+.proof h2{color:var(--paper);max-width:18ch}
+.proof .sec-label{color:#6B6B84}
+.proof .sec-head p{color:#9E9EB0}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:15px 12px;text-align:left;border-bottom:1px solid #26263A}
+thead th{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#6B6B84;font-weight:400}
+tbody th{font-weight:500;color:var(--paper);width:150px;font-family:var(--display)}
+td{color:#8B8BA3}
+td.on{color:var(--paper)}
+td.off{color:#4A4A5E}
+td.on::before{content:"● ";color:#9C8FFF;font-size:9px;vertical-align:middle}
+.proof-note{margin-top:26px;font-size:17px;color:#C9C9D6;max-width:56ch}
+@media(max-width:760px){table{font-size:12px}th,td{padding:11px 6px}tbody th{width:auto}}
+
+.team{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.member{background:rgba(255,255,255,.72);border:1px solid var(--rule);border-radius:18px;padding:26px}
+.avatar{width:88px;height:88px;border-radius:50%;overflow:hidden;background:var(--violet-soft);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:600;font-size:18px;color:var(--violet);margin-bottom:18px;flex-shrink:0}
+.avatar:has(img){background:#fff}
+.avatar img{width:100%;height:100%;object-fit:cover;object-position:center center;display:block;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.avatar--sami img{object-position:center 32%}
+.avatar--yanis img{object-position:center 38%}
+.avatar--jonathan img{object-position:center 36%}
+.avatar--candice img{object-position:center 30%}
+.member h3{font-size:17px;font-weight:600;letter-spacing:-.02em}
+.role{font-size:12.5px;color:var(--violet);margin:3px 0 12px;font-weight:500}
+.member p{font-size:13.5px;color:var(--ink-60);line-height:1.6}
+
+.prod{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.prod-i{background:rgba(255,255,255,.72);backdrop-filter:blur(8px);border:1px solid var(--rule);border-radius:18px;padding:26px;transition:.22s}
+.prod-i:hover{border-color:var(--violet);transform:translateY(-3px)}
+.prod-i .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--violet);margin-bottom:12px}
+.prod-i h3{font-family:var(--display);font-size:17px;font-weight:600;letter-spacing:-.02em;margin-bottom:8px}
+.prod-i p{font-size:13.5px;color:var(--ink-60);line-height:1.6}
+.prod-note{margin-top:26px;font-size:18px;color:var(--ink-60);max-width:58ch}
+
+.models{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.model{background:rgba(255,255,255,.72);border:1px solid var(--rule);border-radius:18px;padding:30px}
+.model.hl{border:1.5px solid var(--violet);background:var(--violet-soft)}
+.model .n{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-30)}
+.model.hl .n{color:var(--violet)}
+.model h3{font-family:var(--display);font-size:23px;font-weight:600;letter-spacing:-.02em;margin:8px 0 10px}
+.model p{color:var(--ink-60);font-size:15px}
+.model.hl p{color:#4A4470}
+.model ul{margin-top:20px;list-style:none;font-size:13.5px;display:flex;flex-direction:column;gap:9px}
+.model li{display:flex;gap:9px}
+.model li b{font-weight:500;min-width:96px;color:var(--ink-30)}
+@media(max-width:760px){.models{grid-template-columns:1fr}}
+
+.stack{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--mono);font-size:12px;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.7);border:1px solid var(--rule);color:var(--ink-60);transition:.15s}
+.chip:hover{border-color:var(--violet);color:var(--violet);background:var(--violet-soft)}
+
+.cta{text-align:center;padding:clamp(60px,8vw,110px) 0}
+.cta h2{font-size:clamp(30px,4.2vw,50px);max-width:16ch;margin:0 auto}
+.cta p{color:var(--ink-60);margin:18px auto 32px;max-width:48ch;font-size:17px}
+footer{border-top:1px solid var(--rule);padding:26px 0;display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--ink-30)}
+@media(max-width:760px){footer{flex-direction:column;gap:8px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="mesh"></div>
+
+<nav><div class="wrap nav-in">
+  <div class="logo"><span class="dot"></span> Pluton Corp</div>
+  <div class="nav-links">
+    <a href="#pains">Ce qu'on répare</a>
+    <a href="#proof">Notre historique</a>
+    <a href="#produit">Produit</a>
+    <a href="#team">L'équipe</a>
+    <a href="#model">Tarification</a>
+  </div>
+  <a href="https://calendar.app.google/NLT4rpkpUy4d2smq7" class="nav-cta">Parler à un ingénieur</a>
+</div></nav>
+
+<div class="wrap">
+  <header class="hero">
+    <div>
+      <span class="pill">● Quatre ingénieurs · Six ans ensemble</span>
+      <h1>On ne monte pas une équipe pour votre projet. <em>Elle existe déjà.</em></h1>
+      <p class="lede">Nous avons déjà livré trois produits ensemble : un logiciel santé, une plateforme de facturation, une infrastructure financière. Et nous avons tous, à un moment, décidé <em style="font-style:normal;color:var(--violet);font-weight:500">quoi</em> construire, pas seulement comment.</p>
+      <div class="actions">
+        <a href="#contact" class="btn btn-p">Parler de votre projet</a>
+        <a href="#proof" class="btn btn-s">Voir notre historique</a>
+      </div>
+      <ul class="assur">
+        <li>Un ingénieur vous répond, pas un commercial</li>
+        <li>Votre code, sur votre Git, dès le jour 1</li>
+        <li>On vous dit quand une feature ne vaut pas son coût</li>
+        <li>Chiffrage sous 5 jours</li>
+      </ul>
+    </div>
+    <div class="hero-fig"><canvas id="orb"></canvas></div>
+  </header>
+</div>
+
+<section id="pains"><div class="wrap">
+  <div class="sec-head">
+    <p class="sec-label">Ce qu'on répare</p>
+    <h2>Vos problèmes. Nos réponses techniques.</h2>
+    <p>Pas de « transformation digitale ». On regarde le problème, on propose une réponse technique claire, on la déploie.</p>
+  </div>
+  <div class="cards">
+    <div class="card"><p class="q">« Mon outil interne est devenu ingérable. »</p><p class="a"><span class="tag">Refonte</span>On reprend l'existant, on stabilise, on remet en marche.</p></div>
+    <div class="card"><p class="q">« Mon prestataire a disparu du jour au lendemain. »</p><p class="a"><span class="tag">Reprise</span>Audit du legacy, reprise de la main, continuité de service.</p></div>
+    <div class="card"><p class="q">« Mon MVP doit sortir avant la levée. »</p><p class="a"><span class="tag">Produit</span>Cadrage serré, arbitrages francs, date tenue.</p></div>
+    <div class="card"><p class="q">« Je veux de l'IA, pas du théâtre. »</p><p class="a"><span class="tag">IA &amp; automatisation</span>Agents, RAG, workflows n8n. Ce qui sert, rien d'autre.</p></div>
+    <div class="card"><p class="q">« Ça ne tient plus la charge. »</p><p class="a"><span class="tag">Architecture</span>Vingt ans de production critique dans l'équipe.</p></div>
+    <div class="card"><p class="q">« J'ai une idée, pas de CTO. »</p><p class="a"><span class="tag">Accompagnement</span>On tient le rôle jusqu'à ce que vous recrutiez le vôtre.</p></div>
+  </div>
+</div></section>
+
+<section id="proof"><div class="proof">
+  <div class="sec-head">
+    <p class="sec-label">Notre historique</p>
+    <h2>Trois produits. Trois entreprises. La même équipe.</h2>
+    <p>La plupart des agences assemblent une équipe le jour où vous signez.</p>
+  </div>
+  <table>
+    <thead><tr><th></th><th>Heywear<br><span style="color:#55556B">2020 à 2022</span></th><th>Furo<br><span style="color:#55556B">2023 à 2024</span></th><th>SoundCheck<br><span style="color:#55556B">depuis 2024</span></th></tr></thead>
+    <tbody>
+      <tr><th>Sami Bekrar</th><td class="on">Lead engineer</td><td class="on">Co-fondateur</td><td class="on">CTO</td></tr>
+      <tr><th>Candice Guitton</th><td class="on">Ingénieure</td><td class="on">Software engineer</td><td class="on">Ingénieure</td></tr>
+      <tr><th>Jonathan Audhasse</th><td class="on">Senior engineer</td><td class="on">Software engineer</td><td class="off">Non</td></tr>
+      <tr><th>Yanis Bekrar</th><td class="off">Non</td><td class="on">Senior technical advisor</td><td class="off">Non</td></tr>
+    </tbody>
+  </table>
+  <p class="proof-note">Une agence de quatre-vingts personnes peut vous promettre beaucoup de choses. Elle ne peut pas fabriquer six ans d'historique commun.</p>
+</div></section>
+
+<section id="produit"><div class="wrap">
+  <div class="sec-head">
+    <p class="sec-label">Ingénierie &amp; produit</p>
+    <h2>On ne construit pas ce que vous demandez. On construit ce dont vous avez besoin.</h2>
+    <p>Une agence exécute un cahier des charges. Nous, on a tous été de l'autre côté de la table : à décider quoi construire, à défendre un budget, à couper une feature qui ne valait pas son prix.</p>
+  </div>
+  <div class="prod">
+    <div class="prod-i"><p class="k">Sami</p><h3>A porté un P&amp;L</h3><p>Co-fondateur, puis CTO. Il a arbitré une roadmap avec de l'argent qui était le sien. Il sait ce que coûte une feature qu'on n'aurait pas dû faire.</p></div>
+    <div class="prod-i"><p class="k">Candice</p><h3>Dessine avant de coder</h3><p>Produit et design d'interface. Le parcours utilisateur passe avant le composant, et le composant avant le framework.</p></div>
+    <div class="prod-i"><p class="k">Yanis</p><h3>Défend un budget</h3><p>A construit et fait valider des business cases devant la direction d'un groupe bancaire. Chiffrer, justifier, obtenir le financement, livrer.</p></div>
+    <div class="prod-i"><p class="k">Jonathan</p><h3>Cherche le product-market fit</h3><p>A enchaîné les prototypes chez Furo jusqu'à trouver le bon produit. Construire vite pour apprendre vite, puis jeter ce qui ne marche pas.</p></div>
+  </div>
+  <p class="prod-note">La partie de notre travail que vous ne payez pas est celle qui vous fait économiser le plus : celle où on vous dit non.</p>
+</div></section>
+
+<section id="team"><div class="wrap">
+  <div class="sec-head">
+    <p class="sec-label">L'équipe</p>
+    <h2>Quatre ingénieurs. Zéro junior. Zéro sous-traitance.</h2>
+    <p>De l'infrastructure bancaire au pixel de l'application mobile, et personne entre vous et celui qui écrit le code.</p>
+  </div>
+  <div class="team">
+    <div class="member">
+      <div class="avatar avatar--sami"><img src="/team/sami.png?v=4" alt="Sami Bekrar" onerror="this.parentNode.textContent='SB'"></div>
+      <h3>Sami Bekrar</h3>
+      <p class="role">Associé · Produit &amp; architecture</p>
+      <p>CTO et ancien co-fondateur : il a déjà vécu le budget qui dérape depuis l'autre côté de la table. Sait dire non à une feature. ENSEEIHT.</p>
+    </div>
+    <div class="member">
+      <div class="avatar avatar--candice"><img src="/team/candice.jpg?v=4" alt="Candice Guitton" onerror="this.parentNode.textContent='CG'"></div>
+      <h3>Candice Guitton</h3>
+      <p class="role">Associée · Front &amp; mobile</p>
+      <p>Dix ans de front et de Flutter, de Groupama à Beem Energy. Design d'interface et architecture produit.</p>
+    </div>
+    <div class="member">
+      <div class="avatar avatar--yanis"><img src="/team/yanis.png?v=4" alt="Yanis Bekrar" onerror="this.parentNode.textContent='YB'"></div>
+      <h3>Yanis Bekrar</h3>
+      <p class="role">Architecture &amp; cloud</p>
+      <p>Quinze ans d'architecture et de DevOps à la Société Générale. Terraform, Kubernetes, monitoring d'un groupe financier mondial. Télécom Paris.</p>
+    </div>
+    <div class="member">
+      <div class="avatar avatar--jonathan"><img src="/team/jonathan.png?v=4" alt="Jonathan Audhasse" onerror="this.parentNode.textContent='JA'"></div>
+      <h3>Jonathan Audhasse</h3>
+      <p class="role">Backend &amp; systèmes</p>
+      <p>Go, Python, C++. A construit les clés de voiture virtuelles de Continental pour Honda. Là où la panne n'est pas une option.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="model"><div class="wrap">
+  <div class="sec-head">
+    <p class="sec-label">Tarification</p>
+    <h2>On construit en régie. On entretient au forfait.</h2>
+    <p>Pas de grille opaque, pas de forfait gonflé « au cas où ».</p>
+  </div>
+  <div class="models">
+    <div class="model hl">
+      <p class="n">Temps 1 · Construire</p>
+      <h3>Régie au TJM</h3>
+      <p>Vous payez les jours d'ingénieur réellement passés sur votre produit. Vous voyez le backlog, les commits et la facture.</p>
+      <ul>
+        <li><b>Engagement</b> Aucun, vous arrêtez quand vous voulez</li>
+        <li><b>Pilotage</b> Vous arbitrez, on exécute et on conseille</li>
+        <li><b>Équipe</b> 1 à 4 ingénieurs selon la charge</li>
+      </ul>
+    </div>
+    <div class="model">
+      <p class="n">Temps 2 · Faire vivre</p>
+      <h3>Forfait de maintenance</h3>
+      <p>Une fois en production, un montant fixe couvre la maintenance, les correctifs et les évolutions. Le produit ne s'arrête pas au lancement.</p>
+      <ul>
+        <li><b>Engagement</b> Mensuel, révisable</li>
+        <li><b>Pilotage</b> On surveille, on corrige, on propose</li>
+        <li><b>Évolutions</b> Incluses dans l'enveloppe convenue</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="sec-head">
+    <p class="sec-label">Outils</p>
+    <h2>On s'adapte à votre existant.</h2>
+    <p>Les technologies récentes ne nous font pas peur. On ne les impose jamais pour le plaisir.</p>
+  </div>
+  <div class="stack">
+    <span class="chip">TypeScript</span><span class="chip">React</span><span class="chip">Next.js</span><span class="chip">Flutter</span><span class="chip">Go</span><span class="chip">Python</span><span class="chip">Node.js</span><span class="chip">PostgreSQL</span><span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">Terraform</span><span class="chip">AWS</span><span class="chip">GCP</span><span class="chip">CI/CD</span><span class="chip">gRPC</span><span class="chip">Supabase</span><span class="chip">LangChain</span><span class="chip">n8n</span><span class="chip">Figma</span>
+  </div>
+</div></section>
+
+<section class="cta" id="contact"><div class="wrap">
+  <h2>Trente minutes, sans engagement.</h2>
+  <p>On regarde votre projet. Si ce n'est pas pour nous, on vous le dit tout de suite et on vous réoriente.</p>
+  <a href="https://calendar.app.google/NLT4rpkpUy4d2smq7" class="btn btn-p">Réserver un créneau</a>
+</div></section>
+
+<div class="wrap"><footer>
+  <span>Pluton Corp</span><span>© 2026</span>
+</footer></div>
+
+<script>
+// Signature B : une sphère filaire lente qui s'incline vers le curseur.
+const c = document.getElementById('orb'), x = c.getContext('2d');
+let W,H,R, mx=0, my=0, tx=0, ty=0, t=0;
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+function fit(){ const r=c.getBoundingClientRect(), d=devicePixelRatio||1;
+  c.width=r.width*d; c.height=r.height*d; x.setTransform(d,0,0,d,0,0);
+  W=r.width; H=r.height; R=Math.min(W,H)*0.36; }
+addEventListener('resize',fit); fit();
+addEventListener('mousemove', e=>{ const r=c.getBoundingClientRect();
+  tx=((e.clientX-(r.left+r.width/2))/r.width)*0.9;
+  ty=((e.clientY-(r.top+r.height/2))/r.height)*0.9; });
+
+// points sur la sphère (spirale de Fibonacci)
+const N=520, pts=[];
+for(let i=0;i<N;i++){ const k=1-2*(i+.5)/N, ph=Math.acos(k), th=Math.PI*(1+Math.sqrt(5))*i;
+  pts.push([Math.sin(ph)*Math.cos(th), Math.sin(ph)*Math.sin(th), Math.cos(ph)]); }
+
+function draw(){
+  x.clearRect(0,0,W,H);
+  mx += (tx-mx)*.045; my += (ty-my)*.045;
+  const cx=W/2, cy=H/2;
+  const a = t*0.0016 + mx*1.1;   // yaw
+  const b = -0.30 + my*0.75;     // pitch
+  const ca=Math.cos(a), sa=Math.sin(a), cb=Math.cos(b), sb=Math.sin(b);
+
+  // parallèles + méridiens
+  x.lineWidth=1;
+  for(let m=0;m<10;m++){
+    x.beginPath();
+    for(let s=0;s<=64;s++){
+      const u=s/64*Math.PI*2, v=(m/10-.5)*Math.PI*0.98;
+      let X=Math.cos(v)*Math.cos(u), Y=Math.sin(v), Z=Math.cos(v)*Math.sin(u);
+      let X2=X*ca-Z*sa, Z2=X*sa+Z*ca;
+      let Y2=Y*cb-Z2*sb, Z3=Y*sb+Z2*cb;
+      const p=1.9/(1.9+Z3);
+      s?x.lineTo(cx+X2*R*p, cy+Y2*R*p):x.moveTo(cx+X2*R*p, cy+Y2*R*p);
+    }
+    x.strokeStyle='rgba(108,92,231,.16)'; x.stroke();
+  }
+  // nuage de points
+  pts.forEach(([X,Y,Z])=>{
+    let X2=X*ca-Z*sa, Z2=X*sa+Z*ca;
+    let Y2=Y*cb-Z2*sb, Z3=Y*sb+Z2*cb;
+    const p=1.9/(1.9+Z3), d=(Z3+1)/2;
+    x.fillStyle=`rgba(19,19,32,${(1-d)*0.55+0.06})`;
+    x.beginPath(); x.arc(cx+X2*R*p, cy+Y2*R*p, (1-d)*1.9+0.5, 0, 7); x.fill();
+  });
+  // halo intérieur
+  x.strokeStyle='rgba(108,92,231,.35)'; x.lineWidth=1.2;
+  x.beginPath(); x.arc(cx,cy,R*1.02,0,7); x.stroke();
+
+  t+=1; if(!reduce) requestAnimationFrame(draw);
+}
+draw();
+</script>
+</body>
+</html>
