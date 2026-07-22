@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Délice App : Proposition Pluton Corp</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper: #FAFAF8;
+      --ink: #131320;
+      --ink-60: #5B5B70;
+      --ink-30: #9E9EB0;
+      --rule: #E5E4E9;
+      --violet: #6C5CE7;
+      --violet-soft: #EFEDFE;
+      --display: 'Sora', sans-serif;
+      --body: 'Inter', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+    }
+
+    @page { size: 297mm 210mm; margin: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--body);
+      background: #e8e8ec;
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .slide {
+      width: 297mm;
+      height: 210mm;
+      background: var(--paper);
+      position: relative;
+      overflow: hidden;
+      page-break-after: always;
+      padding: 13mm 15mm 11mm;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .slide:last-child { page-break-after: auto; }
+
+    .mesh {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(28rem 20rem at 90% 8%, rgba(108,92,231,.14), transparent 60%),
+        radial-gradient(22rem 18rem at 8% 85%, rgba(108,92,231,.08), transparent 55%);
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 7mm;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header-logos { display: flex; align-items: center; gap: 14px; }
+
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: 11pt;
+      letter-spacing: -0.02em;
+    }
+
+    .logo-row.client { padding-left: 14px; border-left: 1px solid var(--rule); }
+    .logo-img { height: 20px; width: auto; }
+    .logo-img.dc { height: 24px; }
+    .dark .logo-row.client { border-color: #333; }
+    .dark .logo-row { color: var(--paper); }
+    .dark .logo-img.dc { filter: brightness(0) invert(1); }
+
+    .slide-num {
+      font-family: var(--mono);
+      font-size: 9pt;
+      color: var(--ink-30);
+      letter-spacing: 0.08em;
+    }
+
+    .content {
+      flex: 1;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 0;
+    }
+
+    .content.top { justify-content: flex-start; padding-top: 2mm; }
+
+    .pill {
+      display: inline-flex;
+      font-family: var(--mono);
+      font-size: 8pt;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--violet);
+      background: var(--violet-soft);
+      padding: 5px 12px;
+      border-radius: 999px;
+      margin-bottom: 4mm;
+      width: fit-content;
+    }
+
+    h1 {
+      font-family: var(--display);
+      font-size: 30pt;
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+    }
+
+    h1 em { font-style: normal; color: var(--violet); }
+
+    h2 {
+      font-family: var(--display);
+      font-size: 21pt;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      margin-bottom: 4mm;
+      line-height: 1.15;
+    }
+
+    .lead {
+      font-size: 12pt;
+      color: var(--ink-60);
+      line-height: 1.5;
+      max-width: 54ch;
+    }
+
+    .lead strong { color: var(--ink); font-weight: 500; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.5mm; }
+
+    .card {
+      background: rgba(255,255,255,.8);
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      padding: 4mm;
+    }
+
+    .card .k {
+      font-family: var(--mono);
+      font-size: 7pt;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--violet);
+      margin-bottom: 2mm;
+    }
+
+    .card h3 {
+      font-family: var(--display);
+      font-size: 11pt;
+      font-weight: 600;
+      margin-bottom: 2mm;
+    }
+
+    .card p { font-size: 9pt; color: var(--ink-60); line-height: 1.45; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 8.5pt;
+    }
+
+    th {
+      font-family: var(--mono);
+      font-size: 7pt;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--ink-30);
+      text-align: left;
+      padding: 2.5mm 2mm;
+      border-bottom: 1px solid var(--rule);
+      font-weight: 400;
+    }
+
+    td {
+      padding: 2.5mm 2mm;
+      border-bottom: 1px solid var(--rule);
+      vertical-align: top;
+    }
+
+    td.money, th.money { text-align: right; }
+    tr.highlight td { background: var(--violet-soft); font-weight: 600; }
+
+    .dark { background: var(--ink); color: var(--paper); }
+    .dark .mesh { background: radial-gradient(24rem 18rem at 85% 15%, rgba(108,92,231,.35), transparent 60%); }
+    .dark h1, .dark h2 { color: var(--paper); }
+    .dark .lead { color: #9E9EB0; }
+    .dark .pill { background: rgba(108,92,231,.25); color: #C4B8FF; }
+    .dark .slide-num { color: #6B6B84; }
+
+    .footer-slide {
+      margin-top: auto;
+      padding-top: 3mm;
+      border-top: 1px solid var(--rule);
+      font-family: var(--mono);
+      font-size: 7.5pt;
+      color: var(--ink-30);
+      display: flex;
+      justify-content: space-between;
+      z-index: 1;
+    }
+
+    .dark .footer-slide { border-color: #26263A; color: #9E9EB8; }
+    .dark .footer-slide span:last-child { color: #E8E8F2; }
+
+    /* Barres avancement */
+    .bar-row { display: flex; align-items: center; gap: 3mm; margin-bottom: 2mm; font-size: 8.5pt; }
+    .bar-label { width: 28mm; flex-shrink: 0; color: var(--ink-60); }
+    .bar-track { flex: 1; height: 7px; background: var(--rule); border-radius: 4px; overflow: hidden; }
+    .bar-fill { height: 100%; background: var(--violet); border-radius: 4px; }
+    .bar-pct { width: 9mm; text-align: right; font-family: var(--mono); font-size: 7.5pt; color: var(--ink-30); }
+
+    /* Capture app */
+    .app-layout {
+      display: grid;
+      grid-template-columns: 1.45fr .55fr;
+      gap: 4mm;
+      flex: 1;
+      min-height: 0;
+      align-items: stretch;
+    }
+
+    .shot-wrap {
+      border-radius: 12px;
+      border: 1px solid var(--rule);
+      overflow: hidden;
+      background: #eceae6;
+      box-shadow: 0 8px 32px rgba(19,19,32,.08);
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .shot-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .status-panel { display: flex; flex-direction: column; gap: 3mm; }
+
+    .ring-box {
+      display: flex;
+      align-items: center;
+      gap: 3mm;
+      padding: 3mm;
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+    }
+
+    .ring {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: conic-gradient(var(--violet) 0 50%, var(--rule) 50% 100%);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .ring span {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--paper);
+      display: grid;
+      place-items: center;
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: 10pt;
+      color: var(--violet);
+    }
+
+    /* Schéma cadrage */
+    .flow-3 {
+      display: grid;
+      grid-template-columns: 1fr 8mm 1fr 8mm 1fr;
+      gap: 0;
+      align-items: stretch;
+      margin-top: 3mm;
+    }
+
+    .flow-box {
+      border-radius: 12px;
+      border: 1px solid var(--rule);
+      padding: 4mm;
+      background: #fff;
+    }
+
+    .flow-box.warn { background: #FFFBF0; border-color: #E6C84A; }
+    .flow-box.mid { background: var(--violet-soft); border-color: var(--violet); }
+    .flow-box.ok { background: #f4fdf7; border-color: #8fd4a8; }
+    .flow-box h3 { font-family: var(--display); font-size: 10.5pt; margin: 1.5mm 0; }
+    .flow-box p { font-size: 8.5pt; color: var(--ink-60); line-height: 1.4; }
+    .flow-arrow { display: grid; place-items: center; color: var(--violet); font-size: 18pt; font-weight: 600; }
+
+    /* Comparatif marché */
+    .compare-col {
+      border-radius: 12px;
+      padding: 4mm;
+      border: 1px solid var(--rule);
+      background: #fff;
+      min-height: 54mm;
+    }
+
+    .compare-col.pick {
+      border: 2px solid var(--violet);
+      background: var(--violet-soft);
+      box-shadow: 0 6px 24px rgba(108,92,231,.12);
+    }
+
+    .compare-col .price {
+      font-family: var(--display);
+      font-size: 22pt;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      margin: 2mm 0;
+    }
+
+    .compare-col.pick .price { color: var(--violet); font-size: 26pt; }
+
+    .compare-col ul {
+      list-style: none;
+      font-size: 8.5pt;
+      color: var(--ink-60);
+      line-height: 1.45;
+    }
+
+    .compare-col li { padding: 1mm 0 1mm 4mm; position: relative; }
+    .compare-col li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 2.4mm;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--violet);
+    }
+
+    .price-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--ink);
+      color: #fff;
+      border-radius: 12px;
+      padding: 3.5mm 4.5mm;
+      margin-bottom: 4mm;
+    }
+
+    .price-strip .big {
+      font-family: var(--display);
+      font-size: 26pt;
+      font-weight: 600;
+      color: #C4B8FF;
+      letter-spacing: -0.03em;
+    }
+
+    .price-strip p { font-size: 9pt; color: #9E9EB0; max-width: 50ch; }
+
+    /* Timeline */
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3mm;
+    }
+
+    .tl-item {
+      border-left: 3px solid var(--violet);
+      padding-left: 3mm;
+      border: 1px solid var(--rule);
+      border-left: 3px solid var(--violet);
+      border-radius: 0 10px 10px 0;
+      padding: 3mm;
+      background: #fff;
+    }
+
+    .tl-item .when {
+      font-family: var(--mono);
+      font-size: 7pt;
+      color: var(--violet);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .tl-item h4 { font-family: var(--display); font-size: 10pt; margin: 1.5mm 0; font-weight: 600; }
+    .tl-item p { font-size: 8pt; color: var(--ink-60); line-height: 1.4; }
+
+    /* Urgence */
+    .season-bar {
+      display: flex;
+      height: 11mm;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 4mm 0;
+      font-family: var(--mono);
+      font-size: 7pt;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .season-bar .go { flex: 5; background: var(--violet); }
+    .season-bar .stop { flex: 3; background: #E8E7EC; }
+    .season-legend {
+      display: flex;
+      justify-content: space-between;
+      font-size: 8pt;
+      color: var(--ink-60);
+      margin-top: 2mm;
+    }
+    .season-legend strong { color: var(--ink); font-weight: 500; }
+
+    .global-progress {
+      display: flex;
+      align-items: center;
+      gap: 4mm;
+      margin-bottom: 4mm;
+      padding: 3.5mm 4mm;
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+    }
+
+    .global-progress .bar-track { height: 10px; }
+    .global-progress .pct {
+      font-family: var(--display);
+      font-size: 20pt;
+      font-weight: 600;
+      color: var(--violet);
+      flex-shrink: 0;
+      letter-spacing: -0.03em;
+    }
+
+    .lot-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2mm;
+      margin-top: 2.5mm;
+    }
+
+    .lot-card {
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 2mm 2.5mm 1.5mm;
+    }
+
+    .lot-card h3 {
+      font-family: var(--display);
+      font-size: 8pt;
+      font-weight: 600;
+      margin-bottom: 1mm;
+      line-height: 1.15;
+    }
+
+    .lot-card .mini-bar {
+      height: 5px;
+      background: var(--rule);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 1.5mm;
+    }
+
+    .lot-card .mini-bar span {
+      display: block;
+      height: 100%;
+      background: var(--violet);
+      border-radius: 3px;
+    }
+
+    .lot-card .mini-pct {
+      font-family: var(--mono);
+      font-size: 6.5pt;
+      color: var(--ink-30);
+      text-align: right;
+      margin-top: 1mm;
+    }
+
+    .shots-duo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3mm;
+      align-items: start;
+    }
+
+    .shot-wrap.fit {
+      border-radius: 10px;
+      border: 1px solid var(--rule);
+      overflow: hidden;
+      line-height: 0;
+      box-shadow: 0 4px 20px rgba(19,19,32,.07);
+    }
+
+    .shot-wrap.fit img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .annex-ref {
+      margin-top: 3mm;
+      padding: 3mm 3.5mm;
+      background: var(--violet-soft);
+      border-radius: 10px;
+      font-size: 8.5pt;
+      color: var(--ink-60);
+      line-height: 1.45;
+    }
+
+    .annex-ref strong { color: var(--ink); }
+
+    /* Schéma sans cadrage */
+    .blind-flow {
+      display: grid;
+      grid-template-columns: 1fr 6mm 1fr 6mm 1fr;
+      gap: 0;
+      align-items: stretch;
+      margin: 3mm 0;
+    }
+
+    .blind-box {
+      border-radius: 12px;
+      border: 1px solid var(--rule);
+      padding: 3.5mm;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: 2mm;
+    }
+
+    .blind-box .icon {
+      width: 9mm;
+      height: 9mm;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-size: 14pt;
+    }
+
+    .blind-box.bad { background: #FFF5F5; border-color: #F0C4C4; }
+    .blind-box.bad .icon { background: #FFE0E0; }
+    .blind-box.warn { background: #FFFBF0; border-color: #E6C84A; }
+    .blind-box.warn .icon { background: #FFF0C2; }
+    .blind-box.ok { background: var(--violet-soft); border-color: var(--violet); }
+    .blind-box.ok .icon { background: #D8D0FC; }
+
+    .blind-box h3 { font-family: var(--display); font-size: 10pt; }
+    .blind-box p { font-size: 8pt; color: var(--ink-60); line-height: 1.4; }
+
+    .scope-table { font-size: 8pt; }
+    .scope-table td.desc { font-size: 7.5pt; color: var(--ink-60); line-height: 1.35; }
+
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5mm; }
+
+    .compare-col.dim { opacity: .88; }
+    .compare-col.flowlab { border-style: dashed; border-color: #C8C8D4; }
+    .compare-col .price.small { font-size: 18pt; }
+
+  /* Slide 7 — layout compact */
+    .plan-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 4mm;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .plan-timeline {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5mm;
+    }
+
+    .plan-step {
+      padding: 2.5mm 3mm;
+      border-radius: 10px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid #2E2E42;
+    }
+
+    .plan-step .when {
+      font-family: var(--mono);
+      font-size: 7pt;
+      color: #C4B8FF;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .plan-step h4 {
+      font-family: var(--display);
+      font-size: 10pt;
+      color: #fff;
+      margin: 1mm 0 0;
+      font-weight: 600;
+    }
+
+    .plan-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 3mm;
+      flex: 1;
+    }
+
+    .plan-pricing {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 3mm;
+      align-items: stretch;
+    }
+
+    .fact-card {
+      padding: 5mm 4mm;
+      border-radius: 12px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid #2E2E42;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .fact-card.featured {
+      background: rgba(108,92,231,.18);
+      border-color: rgba(196,184,255,.45);
+    }
+
+    .fact-card .k { font-family: var(--mono); font-size: 7pt; color: #C4B8FF; text-transform: uppercase; letter-spacing: .06em; }
+    .fact-card .val { font-family: var(--display); font-size: 22pt; font-weight: 600; color: #fff; margin: 2mm 0 0; letter-spacing: -0.03em; }
+    .fact-card .sub { font-size: 8pt; color: #9E9EB0; margin-top: 1.5mm; }
+
+    .plan-plus {
+      display: grid;
+      place-items: center;
+      font-family: var(--display);
+      font-size: 20pt;
+      font-weight: 600;
+      color: #C4B8FF;
+    }
+
+    .plan-cta {
+      padding: 5mm 4mm;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(108,92,231,.4), rgba(108,92,231,.15));
+      border: 1px solid rgba(196,184,255,.45);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .plan-cta.simple {
+      margin-top: auto;
+      background: none;
+      border: none;
+      padding: 0;
+      align-items: flex-start;
+      text-align: left;
+      box-shadow: none;
+    }
+
+    .plan-cta h2 { color: #fff; font-size: 14pt; margin: 2mm 0; line-height: 1.2; font-weight: 600; }
+    .plan-cta.simple h2 { font-size: 16pt; margin: 2mm 0 0; }
+    .plan-cta .amount { font-family: var(--display); font-size: 20pt; font-weight: 600; color: #C4B8FF; margin-top: 2mm; letter-spacing: -0.02em; }
+    .plan-cta p { font-size: 8.5pt; color: #9E9EB0; margin-top: 1.5mm; line-height: 1.4; max-width: 42ch; }
+
+    /* Deux formules */
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5mm;
+      margin-top: 2mm;
+    }
+
+    .option-card {
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      padding: 4mm;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: 2mm;
+      position: relative;
+      z-index: 1;
+      isolation: isolate;
+      overflow: hidden;
+    }
+
+    .option-card.pick {
+      border-color: var(--violet);
+      border-width: 1.5px;
+      background: #fff;
+      box-shadow: none;
+    }
+
+    .option-card .k {
+      font-family: var(--mono);
+      font-size: 7pt;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--violet);
+    }
+
+    .option-card h3 {
+      font-family: var(--display);
+      font-size: 13pt;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .option-card .price-line {
+      display: flex;
+      align-items: baseline;
+      gap: 2mm;
+      flex-wrap: wrap;
+    }
+
+    .option-card .price-line .big {
+      font-family: var(--display);
+      font-size: 22pt;
+      font-weight: 600;
+      color: var(--violet);
+      letter-spacing: -0.03em;
+    }
+
+    .option-card .price-line .plus {
+      font-size: 11pt;
+      color: var(--ink-60);
+    }
+
+    .option-card ul {
+      list-style: none;
+      font-size: 8.5pt;
+      color: var(--ink-60);
+      line-height: 1.45;
+      margin-top: 1mm;
+    }
+
+    .option-card li {
+      padding: 1mm 0 1mm 4mm;
+      position: relative;
+    }
+
+    .option-card li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 2.6mm;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--violet);
+    }
+
+    .options-note {
+      margin-top: 3mm;
+      font-size: 8pt;
+      color: var(--ink-60);
+      line-height: 1.45;
+      max-width: none;
+    }
+
+    .options-lead {
+      font-size: 9.5pt;
+      color: var(--ink-60);
+      line-height: 1.5;
+      max-width: none;
+      margin-bottom: 3mm;
+    }
+
+    .options-lead strong { color: var(--ink); font-weight: 500; }
+
+    .dark .option-card {
+      background: rgba(255,255,255,.05);
+      border-color: #2E2E42;
+    }
+
+    .dark .option-card.pick {
+      background: rgba(255,255,255,.05);
+      border-color: rgba(196,184,255,.55);
+      box-shadow: none;
+    }
+
+    .dark .option-card h3 { color: #fff; }
+    .dark .option-card .price-line .big { color: #C4B8FF; }
+    .dark .option-card .price-line .plus,
+    .dark .option-card ul { color: #9E9EB0; }
+
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5mm;
+      margin-top: 3mm;
+    }
+
+    .case-card {
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      padding: 3mm;
+      background: #fff;
+    }
+
+    .case-card .tag {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 6.5pt;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      padding: 1mm 2mm;
+      border-radius: 999px;
+      margin-bottom: 2mm;
+    }
+
+    .case-card .tag.in { background: var(--violet-soft); color: var(--violet); }
+    .case-card .tag.free { background: #f4fdf7; color: #1a7f4b; }
+    .case-card .tag.out { background: #FFF5F5; color: #b91c1c; }
+
+    .case-card h3 {
+      font-family: var(--display);
+      font-size: 10pt;
+      margin-bottom: 1.5mm;
+    }
+
+    .case-card p {
+      font-size: 8pt;
+      color: var(--ink-60);
+      line-height: 1.4;
+    }
+
+    /* Équipe annexe */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3.5mm;
+      margin-top: 3mm;
+    }
+
+    .team-card {
+      display: grid;
+      grid-template-columns: 22mm 1fr;
+      gap: 3.5mm;
+      padding: 3.5mm;
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      background: #fff;
+      align-items: center;
+    }
+
+    .team-card .av {
+      width: 22mm;
+      height: 22mm;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      flex-shrink: 0;
+    }
+
+    .team-card .av img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .team-card .av.candice img { object-position: center 12%; transform: scale(1.08); }
+    .team-card .av.sami img { object-position: center 10%; transform: scale(1.22); }
+    .team-card .av.yanis img { object-position: center 18%; transform: scale(1.28); }
+    .team-card .av.jonathan img { object-position: center 25%; transform: scale(1.25); }
+
+    .team-card h3 { font-family: var(--display); font-size: 10pt; margin-bottom: .5mm; }
+    .team-card .role { font-family: var(--mono); font-size: 7pt; color: var(--violet); text-transform: uppercase; letter-spacing: .06em; }
+    .team-card .bio { font-size: 8pt; color: var(--ink-60); line-height: 1.45; margin-top: 1.5mm; }
+
+    .team-intro {
+      font-size: 10pt;
+      color: var(--ink-60);
+      line-height: 1.5;
+      max-width: 72ch;
+      margin-bottom: 1mm;
+    }
+
+    /* Closing */
+    .closing { display: grid; grid-template-columns: 1.15fr .85fr; gap: 5mm; flex: 1; }
+
+    .cta-panel {
+      background: rgba(255,255,255,.06);
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 5mm;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .cta-panel h1 { font-size: 22pt; max-width: 100%; margin: 3mm 0; }
+    .cta-panel .amount { font-family: var(--display); font-size: 22pt; font-weight: 600; color: #C4B8FF; margin-top: 3mm; }
+
+    .annex-cover {
+      background: var(--ink);
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .annex-cover h1 { color: #fff; font-size: 24pt; max-width: 100%; }
+    .annex-cover p { color: #9E9EB0; margin-top: 4mm; font-size: 11pt; }
+
+    .team-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4mm;
+      margin-top: 4mm;
+    }
+
+    .team-mini {
+      text-align: center;
+      padding: 3mm;
+      border: 1px solid var(--rule);
+      border-radius: 11px;
+      background: #fff;
+    }
+
+    .team-mini .av {
+      width: 20mm;
+      height: 20mm;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 2mm;
+      border: 1px solid var(--rule);
+    }
+
+    .team-mini .av img { width: 100%; height: 100%; object-fit: cover; object-position: center 15%; display: block; }
+    .team-mini h3 { font-family: var(--display); font-size: 9pt; }
+    .team-mini .role { font-size: 7pt; color: var(--violet); font-family: var(--mono); text-transform: uppercase; margin-top: 1mm; }
+
+    @media screen {
+      body { padding: 20px; }
+      .slide { margin: 0 auto 24px; box-shadow: 0 8px 40px rgba(0,0,0,.12); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- 01 Cover -->
+<section class="slide dark">
+  <div class="mesh"></div>
+  <div class="header">
+    <div class="header-logos">
+      <div class="logo-row"><img src="assets/pluton-icon.svg" alt="" class="logo-img" /> Pluton Corp</div>
+      <div class="logo-row client"><img src="assets/logo-delices-corner.png" alt="Délices Corner" class="logo-img dc" /></div>
+    </div>
+    <span class="slide-num">01 / 07</span>
+  </div>
+  <div class="content">
+    <span class="pill">Proposition · Juillet 2026</span>
+    <h1>Délice App<br><em>la suite du projet</em></h1>
+    <p class="lead">Point d'avancement, périmètre validé et proposition pour boucler la roadmap.</p>
+  </div>
+  <div class="footer-slide"><span>Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
+</section>
+
+<!-- 02 État du projet & timing -->
+<section class="slide">
+  <div class="mesh"></div>
+  <div class="header">
+    <div class="header-logos">
+      <div class="logo-row"><img src="assets/pluton-icon.svg" alt="" class="logo-img" /> Pluton Corp</div>
+      <div class="logo-row client"><img src="assets/logo-delices-corner.png" alt="" class="logo-img dc" /></div>
+    </div>
+    <span class="slide-num">02 / 07</span>
+  </div>
+  <div class="content top">
+    <span class="pill">État du projet</span>
+    <h2>~50 % livré · transition douce vers le nouvel outil</h2>
+    <p class="lead" style="font-size:10pt;margin-bottom:3mm">Notre objectif : <strong>capitaliser sur la basse saison</strong> pour former l'équipe, tester sur de vrais devis et basculer depuis Trello/Excel <strong>avant la période pleine</strong>, sans rupture dans l'activité.</p>
+    <div class="global-progress">
+      <span class="pct">50%</span>
+      <div style="flex:1">
+        <p style="font-family:var(--display);font-size:10pt;font-weight:600;margin-bottom:2mm">Avancement global roadmap validée</p>
+        <div class="bar-track"><div class="bar-fill" style="width:50%"></div></div>
+      </div>
+    </div>
+    <p style="font-size:8.5pt;color:var(--ink-60);margin-bottom:2.5mm"><strong style="color:var(--ink)">Fenêtre idéale : juillet → septembre</strong> · avant la saison haute</p>
+    <div class="lot-grid">
+      <div class="lot-card"><h3>Devis & pipeline</h3><div class="mini-bar"><span style="width:75%"></span></div><div class="mini-pct">75 %</div></div>
+      <div class="lot-card"><h3>Calendrier</h3><div class="mini-bar"><span style="width:100%"></span></div><div class="mini-pct">100 %</div></div>
+      <div class="lot-card"><h3>Catalogue</h3><div class="mini-bar"><span style="width:85%"></span></div><div class="mini-pct">85 %</div></div>
+      <div class="lot-card"><h3>Pennylane</h3><div class="mini-bar"><span style="width:65%"></span></div><div class="mini-pct">65 %</div></div>
+      <div class="lot-card"><h3>Email & leads</h3><div class="mini-bar"><span style="width:5%"></span></div><div class="mini-pct">5 %</div></div>
+      <div class="lot-card"><h3>Commandes</h3><div class="mini-bar"><span style="width:0%"></span></div><div class="mini-pct">0 %</div></div>
+      <div class="lot-card"><h3>Formulaire web</h3><div class="mini-bar"><span style="width:5%"></span></div><div class="mini-pct">5 %</div></div>
+      <div class="lot-card"><h3>Stock</h3><div class="mini-bar"><span style="width:0%"></span></div><div class="mini-pct">0 %</div></div>
+      <div class="lot-card"><h3>KPI & historique</h3><div class="mini-bar"><span style="width:30%"></span></div><div class="mini-pct">30 %</div></div>
+    </div>
+  </div>
+  <div class="footer-slide"><span>Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
+</section>
+
+<!-- 03 Ce qui tourne -->
+<section class="slide">
+  <div class="mesh"></div>
+  <div class="header">
+    <div class="header-logos">
+      <div class="logo-row"><img src="assets/pluton-icon.svg" alt="" class="logo-img" /> Pluton Corp</div>
+      <div class="logo-row client"><img src="assets/logo-delices-corner.png" alt="" class="logo-img dc" /></div>
+    </div>
+    <span class="slide-num">03 / 07</span>
+  </div>
+  <div class="content top">
+    <span class="pill">Produit</span>
+    <h2>Ce qui tourne déjà</h2>
+    <p class="lead" style="font-size:9.5pt;margin-bottom:3mm">Pipeline commercial, catalogue complet et configurateur de devis sont opérationnels. L'équipe peut déjà travailler dedans sur les lots livrés.</p>
+    <div class="shots-duo">
+      <div class="shot-wrap fit">
+        <img src="assets/screenshot-pipeline.png" alt="Pipeline kanban Délice App" />
+      </div>
+      <div class="shot-wrap fit">
+        <img src="assets/screenshot-catalogue.png" alt="Catalogue artisans Délice App" />
+      </div>
+    </div>
+    <div class="annex-ref">
+      <strong>Annexe : rapport de passation</strong> : inventaire détaillé lot par lot (fait / reste à faire), specs développeur, abonnements et transferts. Document construit pour la reprise du projet.
+    </div>
+  </div>
+  <div class="footer-slide"><span>Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
+</section>
+
+<!-- 04 Ce qui manque + cadrage -->
+<section class="slide">
+  <div class="mesh"></div>
+  <div class="header">
+    <div class="header-logos">
+      <div class="logo-row"><img src="assets/pluton-icon.svg" alt="" class="logo-img" /> Pluton Corp</div>
+      <div class="logo-row client"><img src="assets/logo-delices-corner.png" alt="" class="logo-img dc" /></div>
+    </div>
+    <span class="slide-num">04 / 07</span>
+  </div>
+  <div class="content top">
+    <span class="pill">Cadrage</span>
+    <h2>Sans cadrage, on part à l'aveugle</h2>
+    <p class="lead" style="font-size:9.5pt;margin-bottom:2mm">Commandes et stock n'ont pas encore de spec validée. Coder sans ateliers, c'est deviner vos process : on découvre les écarts à la livraison.</p>
+    <div class="blind-flow">
+      <div class="blind-box bad">
+        <div class="icon">?</div>
+        <h3>Pas de cadrage</h3>
+        <p>« On verra en dev » : format bon fournisseur, seuils stock, workflow d'envoi, tout reste implicite.</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="blind-box warn">
+        <div class="icon">⚙</div>
+        <h3>Dev à l'aveugle</h3>
+        <p>On livre une première version sans validation terrain. Allers-retours coûteux, délais qui glissent.</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="blind-box bad">
+        <div class="icon">✕</div>
+        <h3>Insatisfaction</h3>
+        <p>L'outil ne colle pas au quotidien de Laurence et Cédric. Frustration, reprise Excel/Trello, confiance entamée.</p>
+      </div>
+    </div>
+    <div class="flow-3" style="margin-top:3mm">
+      <div class="flow-box ok">
+        <div class="k">Notre approche</div>
+        <h3>2 ateliers cadrés</h3>
+        <p>Commandes : regroupement artisan, PDF sans prix, workflow. Stock : seuils, déduction, import Excel.</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box mid">
+        <div class="k">Validation</div>
+        <h3>Maquettes & retours</h3>
+        <p>Vous validez avant le dev. Pas de surprise à l'arrivée.</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box ok">
+        <div class="k">Livraison</div>
+        <h3>Outil adopté</h3>
+        <p>Équipe formée, process alignés, go-live serein avant la haute saison.</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-slide"><span>Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
+</section>
+
+<!-- 05 Périmètre -->
+<section class="slide">
+  <div class="mesh"></div>
+  <div class="header">
+    <div class="header-logos">
+      <div class="logo-row"><img src="assets/pluton-icon.svg" alt="" class="logo-img" /> Pluton Corp</div>
+      <div class="logo-row client"><img src="assets/logo-delices-corner.png" alt="" class="logo-img dc" /></div>
+    </div>
+    <span class="slide-num">05 / 07</span>
+  </div>
+  <div class="content top">
+    <span class="pill">Périmètre</span>
+    <h2>Ce qu'on s'engage à livrer</h2>
+    <table class="scope-table">
+      <thead><tr><th>Lot</th><th>Livrable</th><th>Description</th><th>Statut</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>1–3</td>
+          <td><strong>Finitions devis & catalogue</strong></td>
+          <td class="desc">Retours UX Laurence, checklist événement, import catalogue finalisé. Pipeline et calendrier opérationnels.</td>
+          <td>À finaliser</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><strong>Pennylane en production</strong></td>
+          <td class="desc">Factures acompte/solde en prod, SIRET, déduction acompte, ajustements post-événement.</td>
+          <td>Partiel</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><strong>Envoi devis par email</strong></td>
+          <td class="desc">Resend : envoi en un clic + création de dossier depuis un mail reçu (inbound).</td>
+          <td>À faire</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><strong>Bons de commande fournisseur</strong></td>
+          <td class="desc">PDF regroupé par artisan, contenu du devis sans les prix, workflow d'envoi validé en atelier.</td>
+          <td>À cadrer</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td><strong>Suivi stock boissons</strong></td>
+          <td class="desc">Seuils d'alerte, déduction à l'événement, import Excel eau/soft : spec validée en atelier.</td>
+          <td>À cadrer</td>
+        </tr>
+        <tr class="highlight">
+          <td colspan="2"><strong>Inclus</strong></td>
+          <td class="desc">Passation offerte, 2 ateliers cadrage, formation Laurence & Cédric, go-live et 2 semaines de support.</td>
+          <td>Sept. 2026</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="footer-slide"><span>Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
+</section>
+
+<!-- 06 Chiffrage + deux formules -->
+<section class="slide">
+  <div class="mesh"></div>
+  <div class="header">
+    <div class="header-logos">
+      <div class="logo-row"><img src="assets/pluton-icon.svg" alt="" class="logo-img" /> Pluton Corp</div>
+      <div class="logo-row client"><img src="assets/logo-delices-corner.png" alt="" class="logo-img dc" /></div>
+    </div>
+    <span class="slide-num">06 / 07</span>
+  </div>
+  <div class="content top">
+    <span class="pill">Chiffrage</span>
+    <h2>Deux formules : projet + maintenance</h2>
+    <p class="options-lead">TJM aligné sur le forfait projet (~700 € / j). La maintenance, ce n’est pas le prix d’un fix : c’est un volume engagé (infra, correctifs, petits ajustements). Les features restent en régie.</p>
+    <div class="options-grid">
+      <div class="option-card">
+        <div class="k">Option A</div>
+        <h3>Projet + demi-journée / mois</h3>
+        <div class="price-line">
+          <span class="big">14 000 €</span>
+          <span class="plus">+ 350 € / mois</span>
+        </div>
+      </div>
+      <div class="option-card">
+        <div class="k">Option B</div>
+        <h3>Projet réduit + 1 journée / mois</h3>
+        <div class="price-line">
+          <span class="big">12 000 €</span>
+          <span class="plus">+ 700 € / mois</span>
+        </div>
+      </div>
+    </div>
+    <p class="options-note">Voir l’annexe B pour le détail de la maintenance (inclus, bugs de recette, features en régie).</p>
+  </div>
+  <div class="footer-slide"><span>Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
+</section>
+
+<!-- 07 Planning + modalités + next step -->
+<section class="slide dark">
+  <div class="mesh"></div>
+  <div class="header">
+    <div class="header-logos">
+      <div class="logo-row"><img src="assets/pluton-icon.svg" alt="" class="logo-img" /> Pluton Corp</div>
+      <div class="logo-row client"><img src="assets/logo-delices-corner.png" alt="" class="logo-img dc" /></div>
+    </div>
+    <span class="slide-num">07 / 07</span>
+  </div>
+  <div class="content top">
+    <div class="plan-layout">
+      <div>
+        <span class="pill">Planning & modalités</span>
+        <h2 style="color:#fff;margin-top:1.5mm;font-size:18pt">Juillet → septembre 2026</h2>
+      </div>
+      <div class="plan-timeline">
+        <div class="plan-step"><div class="when">Juillet</div><h4>Passation & finitions</h4></div>
+        <div class="plan-step"><div class="when">Août</div><h4>Cadrage & développement</h4></div>
+        <div class="plan-step"><div class="when">Septembre</div><h4>Phase beta & go-live</h4></div>
+      </div>
+      <div class="plan-cta simple">
+        <span class="pill">Prochaine étape</span>
+        <h2>Choisir la formule et lancer la passation</h2>
+      </div>
+    </div>
+  </div>
+  <div class="footer-slide"><span>Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
+</section>
+
+<!-- ANNEXE -->
+<section class="slide annex-cover">
+  <div class="mesh"></div>
+  <div class="content" style="align-items:center">
+    <span class="pill">Annexe</span>
+    <h1>Détail technique</h1>
+    <p>Estimation · maintenance · équipe</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="mesh"></div>
+  <div class="header">
+    <div class="header-logos">
+      <div class="logo-row"><img src="assets/pluton-icon.svg" alt="" class="logo-img" /> Pluton Corp</div>
+      <div class="logo-row client"><img src="assets/logo-delices-corner.png" alt="" class="logo-img dc" /></div>
+    </div>
+    <span class="slide-num">Annexe A</span>
+  </div>
+  <div class="content top">
+    <span class="pill">Estimation</span>
+    <h2>Détail poste par poste · passation offerte</h2>
+    <table>
+      <thead><tr><th>Poste</th><th>Contenu</th><th>Jours</th><th class="money">Montant</th></tr></thead>
+      <tbody>
+        <tr><td>Passation</td><td>Prise en main technique & métier</td><td>2</td><td class="money">Offert</td></tr>
+        <tr><td>Finitions</td><td>Devis, pipeline, catalogue</td><td>2</td><td class="money">1 600 €</td></tr>
+        <tr><td>Pennylane</td><td>Production & ajustements facturation</td><td>2</td><td class="money">1 600 €</td></tr>
+        <tr><td>Email</td><td>Resend, envoi devis & devis depuis mail reçu</td><td>2</td><td class="money">1 600 €</td></tr>
+        <tr><td>Commandes</td><td>Bons fournisseur (workshops inclus)</td><td>3</td><td class="money">2 400 €</td></tr>
+        <tr><td>Stock</td><td>Suivi boissons & alertes (workshops inclus)</td><td>3</td><td class="money">2 400 €</td></tr>
+        <tr><td>Ateliers</td><td>Cadrage client & retours</td><td>2</td><td class="money">1 600 €</td></tr>
+        <tr><td>Go-live</td><td>Formation, déploiement & bascule</td><td>3,5</td><td class="money">2 800 €</td></tr>
+        <tr class="highlight"><td colspan="2"><strong>Total</strong></td><td><strong>19,5 j</strong></td><td class="money"><strong>14 000 €</strong></td></tr>
+      </tbody>
+    </table>
+    <div class="grid-3" style="margin-top:4mm">
+      <div class="card"><div class="k">Passation · 2 j</div><h3>Offerte</h3><p>Reprise technique & métier incluse sans facturation.</p></div>
+      <div class="card"><div class="k">Développement · 12 j</div><h3>9 600 €</h3><p>Finitions, Pennylane, email, commandes, stock.</p></div>
+      <div class="card"><div class="k">Cadrage & go-live · 5,5 j</div><h3>4 400 €</h3><p>Ateliers, formation, déploiement, support 2 sem.</p></div>
+    </div>
+  </div>
+  <div class="footer-slide"><span>Annexe · Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
+</section>
+
+<section class="slide">
+  <div class="mesh"></div>
+  <div class="header">
+    <div class="header-logos">
+      <div class="logo-row"><img src="assets/pluton-icon.svg" alt="" class="logo-img" /> Pluton Corp</div>
+      <div class="logo-row client"><img src="assets/logo-delices-corner.png" alt="" class="logo-img dc" /></div>
+    </div>
+    <span class="slide-num">Annexe B</span>
+  </div>
+  <div class="content top">
+    <span class="pill">Maintenance</span>
+    <h2>Ce que couvre l’engagement mensuel</h2>
+    <p class="lead" style="font-size:9.5pt;margin-bottom:2mm">Volume engagé (0,5 j ou 1 j) : pas le prix d’une modification isolée. Mois calme = dispo / assurance. Dépassement = régie après accord.</p>
+    <div class="grid-2">
+      <div class="card">
+        <div class="k">Inclus</div>
+        <h3>Infra, correctifs, petits ajustements</h3>
+        <p>Suivi prod, mises à jour services si besoin, sécurité, bugs sur le périmètre livré, modifications simples (libellé, règle mineure) dans le volume.</p>
+      </div>
+      <div class="card">
+        <div class="k">Hors forfait</div>
+        <h3>Features & évolutions métier</h3>
+        <p>Nouvelle fonctionnalité, changement de process majeur, lots hors roadmap : devis ou régie (~700 € / j).</p>
+      </div>
+    </div>
+    <div class="cases-grid">
+      <div class="case-card">
+        <span class="tag free">Hors forfait · offert</span>
+        <h3>Bug de recette</h3>
+        <p>Aurait dû être vu en phase beta / go-live : corrigé sans consommer le volume mensuel (garantie projet).</p>
+      </div>
+      <div class="case-card">
+        <span class="tag in">Inclus</span>
+        <h3>Bug post-stabilisation</h3>
+        <p>Sur le périmètre livré, après go-live : pris dans le volume engagé du mois.</p>
+      </div>
+      <div class="case-card">
+        <span class="tag out">Régie</span>
+        <h3>Besoin de feature</h3>
+        <p>Évolution produit ou nouveau lot : chiffrage dédié, hors engagement maintenance.</p>
+      </div>
+    </div>
+    <table style="margin-top:4mm">
+      <thead><tr><th>Formule</th><th>Projet</th><th>Mensuel</th><th>Volume</th><th class="money">6 mois post go-live</th></tr></thead>
+      <tbody>
+        <tr><td><strong>A</strong></td><td>14 000 €</td><td>350 €</td><td>0,5 j</td><td class="money">~16 100 €</td></tr>
+        <tr class="highlight"><td><strong>B</strong></td><td>12 000 €</td><td>700 €</td><td>1 j</td><td class="money">~16 200 €</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="footer-slide"><span>Annexe · Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
+</section>
+
+<section class="slide">
+  <div class="mesh"></div>
+  <div class="header">
+    <div class="header-logos">
+      <div class="logo-row"><img src="assets/pluton-icon.svg" alt="" class="logo-img" /> Pluton Corp</div>
+      <div class="logo-row client"><img src="assets/logo-delices-corner.png" alt="" class="logo-img dc" /></div>
+    </div>
+    <span class="slide-num">Annexe C</span>
+  </div>
+  <div class="content top">
+    <span class="pill">Équipe</span>
+    <h2>Pluton Corp</h2>
+    <p class="team-intro">Quatre profils complémentaires, rodés ensemble depuis 2020. Trois produits livrés en binôme (Heywear, Furo, SoundCheck) : ingénierie <em>et</em> produit, pas seulement du code.</p>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="av candice"><img src="assets/team/candice.jpg" alt="Candice Guitton" /></div>
+        <div>
+          <h3>Candice Guitton</h3>
+          <div class="role">Associée · 8 ans</div>
+          <p class="bio">Front, architecture, produit et design UI/UX. Interlocutrice principale sur le cadrage et la relation client.</p>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="av sami"><img src="assets/team/sami.png" alt="Sami Bekrar" /></div>
+        <div>
+          <h3>Sami Bekrar</h3>
+          <div class="role">Associé · 10 ans</div>
+          <p class="bio">Architecture full-stack, DevOps, automatisation et IA. Vision technique et structuration des livraisons.</p>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="av yanis"><img src="assets/team/yanis.png" alt="Yanis Bekrar" /></div>
+        <div>
+          <h3>Yanis Bekrar</h3>
+          <div class="role">Infrastructure · 17 ans</div>
+          <p class="bio">Infra, backend, déploiement et DevOps : expérience grandes banques françaises. Fiabilité et mise en production.</p>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="av jonathan"><img src="assets/team/jonathan.png" alt="Jonathan Audhasse" /></div>
+        <div>
+          <h3>Jonathan Audhasse</h3>
+          <div class="role">Backend · 10 ans</div>
+          <p class="bio">Backend, DevOps et architecture. Intégrations API (Pennylane, Resend) et logique métier.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-slide"><span>Annexe · Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
+</section>
+
+</body>
+</html>
