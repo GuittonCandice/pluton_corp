@@ -686,12 +686,17 @@
       display: flex;
       flex-direction: column;
       gap: 2mm;
+      position: relative;
+      z-index: 1;
+      isolation: isolate;
+      overflow: hidden;
     }
 
     .option-card.pick {
-      border: 2px solid var(--violet);
-      background: var(--violet-soft);
-      box-shadow: 0 6px 24px rgba(108,92,231,.1);
+      border-color: var(--violet);
+      border-width: 1.5px;
+      background: #fff;
+      box-shadow: none;
     }
 
     .option-card .k {
@@ -758,7 +763,18 @@
       font-size: 8pt;
       color: var(--ink-60);
       line-height: 1.45;
+      max-width: none;
     }
+
+    .options-lead {
+      font-size: 9.5pt;
+      color: var(--ink-60);
+      line-height: 1.5;
+      max-width: none;
+      margin-bottom: 3mm;
+    }
+
+    .options-lead strong { color: var(--ink); font-weight: 500; }
 
     .dark .option-card {
       background: rgba(255,255,255,.05);
@@ -766,8 +782,9 @@
     }
 
     .dark .option-card.pick {
-      background: rgba(108,92,231,.22);
-      border-color: rgba(196,184,255,.45);
+      background: rgba(255,255,255,.05);
+      border-color: rgba(196,184,255,.55);
+      box-shadow: none;
     }
 
     .dark .option-card h3 { color: #fff; }
@@ -1136,9 +1153,9 @@
   <div class="content top">
     <span class="pill">Chiffrage</span>
     <h2>Deux formules : projet + maintenance</h2>
-    <p class="lead" style="font-size:9.5pt;margin-bottom:3mm">TJM aligné sur le forfait projet (~700 € / j). La maintenance, ce n’est pas le prix d’un fix : c’est un volume engagé (infra, correctifs, petits ajustements). Les features restent en régie.</p>
+    <p class="options-lead">TJM aligné sur le forfait projet (~700 € / j). La maintenance, ce n’est pas le prix d’un fix : c’est un volume engagé (infra, correctifs, petits ajustements). Les features restent en régie.</p>
     <div class="options-grid">
-      <div class="option-card pick">
+      <div class="option-card">
         <div class="k">Option A</div>
         <h3>Projet + demi-journée / mois</h3>
         <div class="price-line">
@@ -1195,7 +1212,7 @@
         <div class="plan-step"><div class="when">Septembre</div><h4>Phase beta & go-live</h4></div>
       </div>
       <div class="options-grid" style="margin-top:0">
-        <div class="option-card pick">
+        <div class="option-card">
           <div class="k">Option A</div>
           <h3>14 000 € + 350 € / mois</h3>
           <ul>
