@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <title>Délice App — Proposition Pluton Corp</title>
+  <title>Délice App : Proposition Pluton Corp</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -606,43 +606,215 @@
       font-family: var(--display);
       font-size: 10pt;
       color: #fff;
-      margin: 1mm 0 .5mm;
+      margin: 1mm 0 0;
       font-weight: 600;
     }
 
-    .plan-step p { font-size: 7.5pt; color: #9E9EB0; line-height: 1.35; }
-
     .plan-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 3mm;
+      flex: 1;
+    }
+
+    .plan-pricing {
       display: grid;
-      grid-template-columns: 1fr 1fr 1.1fr;
-      gap: 2.5mm;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 3mm;
       align-items: stretch;
     }
 
     .fact-card {
-      padding: 2.5mm 3mm;
-      border-radius: 10px;
-      background: rgba(255,255,255,.04);
+      padding: 5mm 4mm;
+      border-radius: 12px;
+      background: rgba(255,255,255,.06);
       border: 1px solid #2E2E42;
-    }
-
-    .fact-card .k { font-family: var(--mono); font-size: 6.5pt; color: #C4B8FF; text-transform: uppercase; letter-spacing: .06em; }
-    .fact-card .val { font-family: var(--display); font-size: 12pt; font-weight: 600; color: #fff; margin: 1mm 0; }
-    .fact-card p { font-size: 7.5pt; color: #9E9EB0; line-height: 1.4; }
-
-    .plan-cta {
-      padding: 2.5mm 3mm;
-      border-radius: 10px;
-      background: linear-gradient(135deg, rgba(108,92,231,.35), rgba(108,92,231,.12));
-      border: 1px solid rgba(196,184,255,.35);
+      text-align: center;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
 
-    .plan-cta h2 { color: #fff; font-size: 10pt; margin: 1mm 0; line-height: 1.2; font-weight: 600; }
-    .plan-cta .amount { font-family: var(--display); font-size: 16pt; font-weight: 600; color: #C4B8FF; margin-top: 1mm; }
-    .plan-cta p { font-size: 7.5pt; color: #9E9EB0; margin-top: 1mm; line-height: 1.35; }
+    .fact-card.featured {
+      background: rgba(108,92,231,.18);
+      border-color: rgba(196,184,255,.45);
+    }
+
+    .fact-card .k { font-family: var(--mono); font-size: 7pt; color: #C4B8FF; text-transform: uppercase; letter-spacing: .06em; }
+    .fact-card .val { font-family: var(--display); font-size: 22pt; font-weight: 600; color: #fff; margin: 2mm 0 0; letter-spacing: -0.03em; }
+    .fact-card .sub { font-size: 8pt; color: #9E9EB0; margin-top: 1.5mm; }
+
+    .plan-plus {
+      display: grid;
+      place-items: center;
+      font-family: var(--display);
+      font-size: 20pt;
+      font-weight: 600;
+      color: #C4B8FF;
+    }
+
+    .plan-cta {
+      padding: 5mm 4mm;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(108,92,231,.4), rgba(108,92,231,.15));
+      border: 1px solid rgba(196,184,255,.45);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex: 1;
+    }
+
+    .plan-cta h2 { color: #fff; font-size: 14pt; margin: 2mm 0; line-height: 1.2; font-weight: 600; }
+    .plan-cta .amount { font-family: var(--display); font-size: 20pt; font-weight: 600; color: #C4B8FF; margin-top: 2mm; letter-spacing: -0.02em; }
+    .plan-cta p { font-size: 8.5pt; color: #9E9EB0; margin-top: 1.5mm; line-height: 1.4; max-width: 42ch; }
+
+    /* Deux formules */
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5mm;
+      margin-top: 2mm;
+    }
+
+    .option-card {
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      padding: 4mm;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: 2mm;
+    }
+
+    .option-card.pick {
+      border: 2px solid var(--violet);
+      background: var(--violet-soft);
+      box-shadow: 0 6px 24px rgba(108,92,231,.1);
+    }
+
+    .option-card .k {
+      font-family: var(--mono);
+      font-size: 7pt;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--violet);
+    }
+
+    .option-card h3 {
+      font-family: var(--display);
+      font-size: 13pt;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .option-card .price-line {
+      display: flex;
+      align-items: baseline;
+      gap: 2mm;
+      flex-wrap: wrap;
+    }
+
+    .option-card .price-line .big {
+      font-family: var(--display);
+      font-size: 22pt;
+      font-weight: 600;
+      color: var(--violet);
+      letter-spacing: -0.03em;
+    }
+
+    .option-card .price-line .plus {
+      font-size: 11pt;
+      color: var(--ink-60);
+    }
+
+    .option-card ul {
+      list-style: none;
+      font-size: 8.5pt;
+      color: var(--ink-60);
+      line-height: 1.45;
+      margin-top: 1mm;
+    }
+
+    .option-card li {
+      padding: 1mm 0 1mm 4mm;
+      position: relative;
+    }
+
+    .option-card li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 2.6mm;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--violet);
+    }
+
+    .options-note {
+      margin-top: 3mm;
+      font-size: 8pt;
+      color: var(--ink-60);
+      line-height: 1.45;
+    }
+
+    .dark .option-card {
+      background: rgba(255,255,255,.05);
+      border-color: #2E2E42;
+    }
+
+    .dark .option-card.pick {
+      background: rgba(108,92,231,.22);
+      border-color: rgba(196,184,255,.45);
+    }
+
+    .dark .option-card h3 { color: #fff; }
+    .dark .option-card .price-line .big { color: #C4B8FF; }
+    .dark .option-card .price-line .plus,
+    .dark .option-card ul { color: #9E9EB0; }
+
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5mm;
+      margin-top: 3mm;
+    }
+
+    .case-card {
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      padding: 3mm;
+      background: #fff;
+    }
+
+    .case-card .tag {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 6.5pt;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      padding: 1mm 2mm;
+      border-radius: 999px;
+      margin-bottom: 2mm;
+    }
+
+    .case-card .tag.in { background: var(--violet-soft); color: var(--violet); }
+    .case-card .tag.free { background: #f4fdf7; color: #1a7f4b; }
+    .case-card .tag.out { background: #FFF5F5; color: #b91c1c; }
+
+    .case-card h3 {
+      font-family: var(--display);
+      font-size: 10pt;
+      margin-bottom: 1.5mm;
+    }
+
+    .case-card p {
+      font-size: 8pt;
+      color: var(--ink-60);
+      line-height: 1.4;
+    }
 
     /* Équipe annexe */
     .team-grid {
@@ -785,7 +957,7 @@
   <div class="content top">
     <span class="pill">État du projet</span>
     <h2>~50 % livré · transition douce vers le nouvel outil</h2>
-    <p class="lead" style="font-size:10pt;margin-bottom:3mm">Notre objectif : <strong>capitaliser sur la basse saison</strong> pour former l'équipe, tester sur de vrais devis et basculer depuis Trello/Excel <strong>avant la période pleine</strong> — sans rupture dans l'activité.</p>
+    <p class="lead" style="font-size:10pt;margin-bottom:3mm">Notre objectif : <strong>capitaliser sur la basse saison</strong> pour former l'équipe, tester sur de vrais devis et basculer depuis Trello/Excel <strong>avant la période pleine</strong>, sans rupture dans l'activité.</p>
     <div class="global-progress">
       <span class="pct">50%</span>
       <div style="flex:1">
@@ -832,7 +1004,7 @@
       </div>
     </div>
     <div class="annex-ref">
-      <strong>Annexe — rapport de passation</strong> : inventaire détaillé lot par lot (fait / reste à faire), specs développeur, abonnements et transferts. Document construit pour la reprise du projet.
+      <strong>Annexe : rapport de passation</strong> : inventaire détaillé lot par lot (fait / reste à faire), specs développeur, abonnements et transferts. Document construit pour la reprise du projet.
     </div>
   </div>
   <div class="footer-slide"><span>Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
@@ -851,12 +1023,12 @@
   <div class="content top">
     <span class="pill">Cadrage</span>
     <h2>Sans cadrage, on part à l'aveugle</h2>
-    <p class="lead" style="font-size:9.5pt;margin-bottom:2mm">Commandes et stock n'ont pas encore de spec validée. Coder sans ateliers, c'est deviner vos process — et découvrir les écarts à la livraison.</p>
+    <p class="lead" style="font-size:9.5pt;margin-bottom:2mm">Commandes et stock n'ont pas encore de spec validée. Coder sans ateliers, c'est deviner vos process : on découvre les écarts à la livraison.</p>
     <div class="blind-flow">
       <div class="blind-box bad">
         <div class="icon">?</div>
         <h3>Pas de cadrage</h3>
-        <p>« On verra en dev » — format bon fournisseur, seuils stock, workflow d'envoi : tout reste implicite.</p>
+        <p>« On verra en dev » : format bon fournisseur, seuils stock, workflow d'envoi, tout reste implicite.</p>
       </div>
       <div class="flow-arrow">→</div>
       <div class="blind-box warn">
@@ -937,22 +1109,21 @@
         <tr>
           <td>8</td>
           <td><strong>Suivi stock boissons</strong></td>
-          <td class="desc">Seuils d'alerte, déduction à l'événement, import Excel eau/soft — spec validée en atelier.</td>
+          <td class="desc">Seuils d'alerte, déduction à l'événement, import Excel eau/soft : spec validée en atelier.</td>
           <td>À cadrer</td>
         </tr>
         <tr class="highlight">
           <td colspan="2"><strong>Inclus</strong></td>
-          <td class="desc">Passation technique, 2 ateliers cadrage, formation Laurence & Cédric, go-live et 2 semaines de support.</td>
+          <td class="desc">Passation offerte, 2 ateliers cadrage, formation Laurence & Cédric, go-live et 2 semaines de support.</td>
           <td>Sept. 2026</td>
         </tr>
       </tbody>
     </table>
-    <p class="lead" style="margin-top:4mm;font-size:9pt"><strong>Hors scope :</strong> import MEG massif, Brevo, formulaire salons (lot 7), KPI avancés.</p>
   </div>
   <div class="footer-slide"><span>Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
 </section>
 
-<!-- 06 Chiffrage + comparatif -->
+<!-- 06 Chiffrage + deux formules -->
 <section class="slide">
   <div class="mesh"></div>
   <div class="header">
@@ -964,55 +1135,39 @@
   </div>
   <div class="content top">
     <span class="pill">Chiffrage</span>
-    <h2>Complément pour boucler la roadmap</h2>
-    <div class="price-strip">
-      <div class="big">16 000 € HT</div>
-      <p>Forfait 20 jours · passation, dev, ateliers, formation et go-live inclus. Détail en annexe.</p>
-    </div>
-    <div class="grid-4">
-      <div class="compare-col flowlab dim">
-        <div class="k">Diagnostic Flowlab</div>
-        <div class="price small">16 200 €</div>
-        <p style="font-size:7.5pt;color:var(--ink-60)">Enveloppe mars 2026 · 9 briques</p>
+    <h2>Deux formules : projet + maintenance</h2>
+    <p class="lead" style="font-size:9.5pt;margin-bottom:3mm">TJM aligné sur le forfait projet (~700 € / j). La maintenance, ce n’est pas le prix d’un fix : c’est un volume engagé (infra, correctifs, petits ajustements). Les features restent en régie.</p>
+    <div class="options-grid">
+      <div class="option-card pick">
+        <div class="k">Option A</div>
+        <h3>Projet + demi-journée / mois</h3>
+        <div class="price-line">
+          <span class="big">14 000 €</span>
+          <span class="plus">+ 350 € / mois</span>
+        </div>
         <ul>
-          <li>Enveloppe fixe mars 2026</li>
-          <li>Recette absente du chiffrage</li>
-          <li>5 j pour 2 lots complexes</li>
-          <li>Périmètre non structuré</li>
+          <li>Projet complet · passation offerte</li>
+          <li>0,5 j / mois engagé (~700 € / j)</li>
+          <li>Infra, mises à jour services, bugs</li>
+          <li>Petits ajustements dans le volume</li>
         </ul>
       </div>
-      <div class="compare-col dim">
-        <div class="k">Freelance senior</div>
-        <div class="price small">~18 k€</div>
-        <p style="font-size:7.5pt;color:var(--ink-60)">20 j à 900 € · dev seul</p>
+      <div class="option-card">
+        <div class="k">Option B</div>
+        <h3>Projet réduit + 1 journée / mois</h3>
+        <div class="price-line">
+          <span class="big">12 000 €</span>
+          <span class="plus">+ 700 € / mois</span>
+        </div>
         <ul>
-          <li>Pas d'équipe ni reprise</li>
-          <li>Workshops en sus</li>
-          <li>Pas de maintenance structurée</li>
-        </ul>
-      </div>
-      <div class="compare-col dim">
-        <div class="k">DSI temps plein</div>
-        <div class="price small">~90 k€/an</div>
-        <p style="font-size:7.5pt;color:var(--ink-60)">Salaire + charges</p>
-        <ul>
-          <li>Recrutement 3 à 6 mois</li>
-          <li>1 profil, pas full-stack</li>
-          <li>Coût fixe toute l'année</li>
-        </ul>
-      </div>
-      <div class="compare-col pick">
-        <div class="k">Pluton Corp</div>
-        <div class="price">16 000 €</div>
-        <p style="font-size:7.5pt;color:var(--ink-60)">Forfait tout compris</p>
-        <ul>
-          <li>Suivi brique par brique</li>
-          <li>Recette terrain incluse</li>
-          <li>Équipe rodée + passation</li>
-          <li>600 € HT/mois ensuite</li>
+          <li>−2 000 € sur le projet</li>
+          <li>1 j / mois engagé (bugs + mods simples)</li>
+          <li>Plus de marge pour le run au quotidien</li>
+          <li>Features toujours en régie</li>
         </ul>
       </div>
     </div>
+    <p class="options-note"><strong>Repère marché :</strong> diagnostic Flowlab 16 200 € · freelance ~18 k€ · DSI ~90 k€/an. Features hors forfait = régie. Détail maintenance en annexe.</p>
   </div>
   <div class="footer-slide"><span>Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
 </section>
@@ -1032,30 +1187,35 @@
       <div>
         <span class="pill">Planning & modalités</span>
         <h2 style="color:#fff;margin-top:1.5mm;font-size:18pt">Juillet → septembre 2026</h2>
-        <p style="font-size:8pt;color:#9E9EB0;margin-top:1mm">20 jours — planning resserré pour un go-live fin septembre.</p>
+        <p style="font-size:8pt;color:#9E9EB0;margin-top:1mm">19,5 jours : planning resserré pour un go-live fin septembre. Maintenance dès le go-live.</p>
       </div>
       <div class="plan-timeline">
-        <div class="plan-step"><div class="when">Juillet</div><h4>Passation & finitions</h4><p>Infra, accès, devis, Resend · démarrage cadrage commandes/stock</p></div>
-        <div class="plan-step"><div class="when">Août</div><h4>Cadrage & développement</h4><p>Ateliers validés · dev email, commandes, stock, Pennylane en parallèle</p></div>
-        <div class="plan-step"><div class="when">Septembre</div><h4>Recette & go-live</h4><p>Tests terrain brique par brique · formation · bascule équipe · support 2 sem.</p></div>
+        <div class="plan-step"><div class="when">Juillet</div><h4>Passation & finitions</h4></div>
+        <div class="plan-step"><div class="when">Août</div><h4>Cadrage & développement</h4></div>
+        <div class="plan-step"><div class="when">Septembre</div><h4>Phase beta & go-live</h4></div>
       </div>
-      <div class="plan-bottom">
-        <div class="fact-card">
-          <div class="k">Échéancier</div>
-          <div class="val">16 000 € HT</div>
-          <p>30 % commande · <strong>4 800 €</strong><br>40 % mi-août · <strong>6 400 €</strong><br>30 % go-live · <strong>4 800 €</strong></p>
+      <div class="options-grid" style="margin-top:0">
+        <div class="option-card pick">
+          <div class="k">Option A</div>
+          <h3>14 000 € + 350 € / mois</h3>
+          <ul>
+            <li>0,5 j / mois · ticket projet plein</li>
+            <li>~16 100 € sur 6 mois post go-live</li>
+          </ul>
         </div>
-        <div class="fact-card">
-          <div class="k">Maintenance</div>
-          <div class="val">600 € / mois</div>
-          <p>Correctifs, sécurité, support — dès le go-live</p>
+        <div class="option-card">
+          <div class="k">Option B</div>
+          <h3>12 000 € + 700 € / mois</h3>
+          <ul>
+            <li>1 j / mois · projet réduit</li>
+            <li>~16 200 € sur 6 mois post go-live</li>
+          </ul>
         </div>
-        <div class="plan-cta">
-          <span class="pill">Prochaine étape</span>
-          <h2>Valider et lancer la passation</h2>
-          <p>On cale les ateliers et on démarre dès votre accord.</p>
-          <p class="amount">16 000 € HT</p>
-        </div>
+      </div>
+      <div class="plan-cta" style="flex:0;margin-top:0">
+        <span class="pill">Prochaine étape</span>
+        <h2>Choisir la formule et lancer la passation</h2>
+        <p>Même livrables projet. L’arbitrage : ticket d’entrée vs volume de run mensuel.</p>
       </div>
     </div>
   </div>
@@ -1068,7 +1228,7 @@
   <div class="content" style="align-items:center">
     <span class="pill">Annexe</span>
     <h1>Détail technique</h1>
-    <p>Estimation poste par poste · répartition · équipe</p>
+    <p>Estimation · maintenance · équipe</p>
   </div>
 </section>
 
@@ -1083,25 +1243,25 @@
   </div>
   <div class="content top">
     <span class="pill">Estimation</span>
-    <h2>Détail poste par poste</h2>
+    <h2>Détail poste par poste · passation offerte</h2>
     <table>
       <thead><tr><th>Poste</th><th>Contenu</th><th>Jours</th><th class="money">Montant</th></tr></thead>
       <tbody>
-        <tr><td>Passation</td><td>Prise en main technique & métier</td><td>2</td><td class="money">1 600 €</td></tr>
+        <tr><td>Passation</td><td>Prise en main technique & métier</td><td>2</td><td class="money">Offert</td></tr>
         <tr><td>Finitions</td><td>Devis, pipeline, catalogue</td><td>2</td><td class="money">1 600 €</td></tr>
         <tr><td>Pennylane</td><td>Production & ajustements facturation</td><td>2</td><td class="money">1 600 €</td></tr>
         <tr><td>Email</td><td>Resend, envoi devis & devis depuis mail reçu</td><td>2</td><td class="money">1 600 €</td></tr>
         <tr><td>Commandes</td><td>Bons fournisseur (workshops inclus)</td><td>3</td><td class="money">2 400 €</td></tr>
         <tr><td>Stock</td><td>Suivi boissons & alertes (workshops inclus)</td><td>3</td><td class="money">2 400 €</td></tr>
         <tr><td>Ateliers</td><td>Cadrage client & retours</td><td>2</td><td class="money">1 600 €</td></tr>
-        <tr><td>Go-live</td><td>Formation, déploiement & bascule</td><td>4</td><td class="money">3 200 €</td></tr>
-        <tr class="highlight"><td colspan="2"><strong>Total</strong></td><td><strong>20 j</strong></td><td class="money"><strong>16 000 €</strong></td></tr>
+        <tr><td>Go-live</td><td>Formation, déploiement & bascule</td><td>3,5</td><td class="money">2 800 €</td></tr>
+        <tr class="highlight"><td colspan="2"><strong>Total</strong></td><td><strong>19,5 j</strong></td><td class="money"><strong>14 000 €</strong></td></tr>
       </tbody>
     </table>
     <div class="grid-3" style="margin-top:4mm">
-      <div class="card"><div class="k">Développement · 14 j</div><h3>11 200 €</h3><p>Finitions, Pennylane, email, commandes, stock.</p></div>
-      <div class="card"><div class="k">Cadrage · 2 j</div><h3>1 600 €</h3><p>Ateliers & validation process.</p></div>
-      <div class="card"><div class="k">Go-live · 4 j</div><h3>3 200 €</h3><p>Formation, déploiement, support 2 sem.</p></div>
+      <div class="card"><div class="k">Passation · 2 j</div><h3>Offerte</h3><p>Reprise technique & métier incluse sans facturation.</p></div>
+      <div class="card"><div class="k">Développement · 12 j</div><h3>9 600 €</h3><p>Finitions, Pennylane, email, commandes, stock.</p></div>
+      <div class="card"><div class="k">Cadrage & go-live · 5,5 j</div><h3>4 400 €</h3><p>Ateliers, formation, déploiement, support 2 sem.</p></div>
     </div>
   </div>
   <div class="footer-slide"><span>Annexe · Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
@@ -1117,9 +1277,62 @@
     <span class="slide-num">Annexe B</span>
   </div>
   <div class="content top">
+    <span class="pill">Maintenance</span>
+    <h2>Ce que couvre l’engagement mensuel</h2>
+    <p class="lead" style="font-size:9.5pt;margin-bottom:2mm">Volume engagé (0,5 j ou 1 j) : pas le prix d’une modification isolée. Mois calme = dispo / assurance. Dépassement = régie après accord.</p>
+    <div class="grid-2">
+      <div class="card">
+        <div class="k">Inclus</div>
+        <h3>Infra, correctifs, petits ajustements</h3>
+        <p>Suivi prod, mises à jour services si besoin, sécurité, bugs sur le périmètre livré, mods simples (libellé, règle mineure) dans le volume.</p>
+      </div>
+      <div class="card">
+        <div class="k">Hors forfait</div>
+        <h3>Features & évolutions métier</h3>
+        <p>Nouvelle fonctionnalité, changement de process majeur, lots hors roadmap : devis ou régie (~700 € / j).</p>
+      </div>
+    </div>
+    <div class="cases-grid">
+      <div class="case-card">
+        <span class="tag free">Hors forfait · offert</span>
+        <h3>Bug de recette</h3>
+        <p>Aurait dû être vu en phase beta / go-live : corrigé sans consommer le volume mensuel (garantie projet).</p>
+      </div>
+      <div class="case-card">
+        <span class="tag in">Inclus</span>
+        <h3>Bug post-stabilisation</h3>
+        <p>Sur le périmètre livré, après go-live : pris dans le volume engagé du mois.</p>
+      </div>
+      <div class="case-card">
+        <span class="tag out">Régie</span>
+        <h3>Besoin de feature</h3>
+        <p>Évolution produit ou nouveau lot : chiffrage dédié, hors engagement maintenance.</p>
+      </div>
+    </div>
+    <table style="margin-top:4mm">
+      <thead><tr><th>Formule</th><th>Projet</th><th>Mensuel</th><th>Volume</th><th class="money">6 mois post go-live</th></tr></thead>
+      <tbody>
+        <tr><td><strong>A</strong></td><td>14 000 €</td><td>350 €</td><td>0,5 j</td><td class="money">~16 100 €</td></tr>
+        <tr class="highlight"><td><strong>B</strong></td><td>12 000 €</td><td>700 €</td><td>1 j</td><td class="money">~16 200 €</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="footer-slide"><span>Annexe · Proposition Pluton Corp</span><span>PLUTON CORP</span></div>
+</section>
+
+<section class="slide">
+  <div class="mesh"></div>
+  <div class="header">
+    <div class="header-logos">
+      <div class="logo-row"><img src="assets/pluton-icon.svg" alt="" class="logo-img" /> Pluton Corp</div>
+      <div class="logo-row client"><img src="assets/logo-delices-corner.png" alt="" class="logo-img dc" /></div>
+    </div>
+    <span class="slide-num">Annexe C</span>
+  </div>
+  <div class="content top">
     <span class="pill">Équipe</span>
     <h2>Pluton Corp</h2>
-    <p class="team-intro">Quatre profils complémentaires, rodés ensemble depuis 2020. Trois produits livrés en binôme (Heywear, Furo, SoundCheck) — ingénierie <em>et</em> produit, pas seulement du code.</p>
+    <p class="team-intro">Quatre profils complémentaires, rodés ensemble depuis 2020. Trois produits livrés en binôme (Heywear, Furo, SoundCheck) : ingénierie <em>et</em> produit, pas seulement du code.</p>
     <div class="team-grid">
       <div class="team-card">
         <div class="av candice"><img src="assets/team/candice.jpg" alt="Candice Guitton" /></div>
@@ -1142,7 +1355,7 @@
         <div>
           <h3>Yanis Bekrar</h3>
           <div class="role">Infrastructure · 17 ans</div>
-          <p class="bio">Infra, backend, déploiement et DevOps — expérience grandes banques françaises. Fiabilité et mise en production.</p>
+          <p class="bio">Infra, backend, déploiement et DevOps : expérience grandes banques françaises. Fiabilité et mise en production.</p>
         </div>
       </div>
       <div class="team-card">
